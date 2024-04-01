@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Container } from 'react-bootstrap';
 import { Home } from './pages/Home';
 import { Header } from './components/Header/Header';
 import { NavBar } from './components/Header/NavBar/NavBar';
@@ -13,11 +13,9 @@ export default function App() {
       <Header>
         <NavBar />
       </Header>
-      <Container>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </Container>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
       <Footer />
     </Router>
   );

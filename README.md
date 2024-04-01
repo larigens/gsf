@@ -27,6 +27,7 @@
 
 ![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-000000?logo=express&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-4b0082?logo=bootstrap&logoColor=white)
 
 </div>
@@ -131,6 +132,7 @@ Our Code of Conduct follows the same principles as the [Contributor Covenant](ht
 - [W3 Schools](https://www.w3schools.com)
 - [MDN](https://developer.mozilla.org/en-US/)
 - [Node.js](https://nodejs.org/en/)
+- [Express.js](https://expressjs.com/en/4x/api.html)
 - [NPM](https://www.npmjs.com/)
 - [React](https://react.dev/learn)
 - [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/)

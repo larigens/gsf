@@ -1,4 +1,4 @@
-import { Nav } from 'react-bootstrap';
+import { Button, Nav } from 'react-bootstrap';
 // import { MdMenu } from "react-icons/md";
 import { Link, useLocation } from 'react-router-dom';
 
@@ -68,19 +68,28 @@ export const NavBar = () => {
     ]
 
     return (
-        <Nav >
+        <Nav>
             {navlinks.map((link) => (
-                <Link
-                    key={link.id}
-                    to={link.href}
-                    className={classNames(
-                        link.current ? 'light-accent' : 'light-shades light-accent-hv',
-                        'p-1',
+                link.name === 'Apply Now' ?
+                    <Button id='apply-btn' key={link.id} onClick={() => window.location.href = link.href} className={classNames(
+                        link.current ? 'light-accent remove-bg' : 'light-shades light-accent-hv',
+                        'py-1 px-2 mx-2 fs-17',
                     )}
-                    style={{ marginRight: '20px' }}
-                >
-                    {link.name}
-                </Link>
+                    >
+                        {link.name}
+
+                    </Button>
+                    :
+                    <Link
+                        key={link.id}
+                        to={link.href}
+                        className={classNames(
+                            link.current ? 'light-accent' : 'light-shades light-accent-hv',
+                            'p-1 mx-2',
+                        )}
+                    >
+                        {link.name}
+                    </Link>
             ))}
         </Nav>
     );

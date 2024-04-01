@@ -8,7 +8,7 @@
   --light-accent: #5ea7db;
   --light-shades: #fefcfb;
   --gradient-dark: linear-gradient(45deg, var(--dark-accent), var(--dark-shades), var(--dark-accent), var(--dark-shades));
-  --gradient-bg: linear-gradient(45deg, var(--dark-shades), var(--main-brand), var(--dark-accent));
+  --gradient-bg: linear-gradient(45deg, var(--light-accent), var(--main-brand), var(--light-accent));
   --gradient: -webkit-linear-gradient(30deg, var(--light-accent), var(--light-shades), var(--light-accent));
   --gradient-light: -webkit-linear-gradient(30deg, var(--light-shades), var(--light-accent), var(--light-shades));
   --body: 'Poppins', sans-serif;
@@ -17,22 +17,83 @@
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
 }
 
-.path {
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-size: 500px;
-  background-attachment: fixed;
-  background-image: src('/assets/path.png');
+body {
+  font-family: var(--body) !important;
+  color: var(--light-shades);
 }
 
+/* To ensure that the entire page is covered and there are no margins or padding around it. */
+html,
+body {
+  background: var(--dark-shades) !important;
+  height: 100% !important;
+  margin: 0 !important;
+}
+
+/* Ensures that the main content takes up at least the full height of the page. */
+.main {
+  min-height: calc(100%-5em) !important;
+  /* 5em is the height of the footer */
+  margin-bottom: 10rem;
+}
+
+/* This ensures that the footer always stays at the bottom of the page, regardless of the height of the main content. */
+footer {
+  height: 5em !important;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+textarea {
+  resize: none !important;
+  white-space: pre-wrap !important;
+  /* Any line breaks or multiple spaces that were entered in the textarea will be preserved and displayed */
+}
 
 .bordered-text {
   color: var(--light-shades) !important;
   /* Make text color transparent */
   text-shadow: 0px 7px 8px var(--main-brand);
+}
+
+.fs-24 {
+  font-size: 24px;
+}
+
+.fs-20 {
+  font-size: 20px;
+}
+
+.fs-19 {
+  font-size: 19px;
+}
+
+.fs-17 {
+  font-size: 17px;
+}
+
+.fs-15 {
+  font-size: 15px;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.border-none {
+  border: none;
+}
+
+.radius-20 {
+  border-radius: 20px;
+}
+
+.w-80 {
+  width: 80% !important;
 }
 
 .slide-right {
@@ -50,11 +111,6 @@
   animation: slide-right 0.5s ease-in 0.2s both;
 }
 
-.slide-left {
-  -webkit-animation: slide-left 0.8s ease-out both;
-  animation: slide-left 0.8s ease-out both;
-}
-
 @-webkit-keyframes slide-right {
   0% {
     -webkit-transform: translateX(-150px);
@@ -62,8 +118,8 @@
   }
 
   100% {
-    -webkit-transform: translateX(10px);
-    transform: translateX(10px);
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
   }
 }
 
@@ -74,32 +130,8 @@
   }
 
   100% {
-    -webkit-transform: translateX(10px);
-    transform: translateX(10px);
-  }
-}
-
-@-webkit-keyframes slide-left {
-  0% {
-    -webkit-transform: translateX(100px);
-    transform: translateX(100px);
-  }
-
-  100% {
-    -webkit-transform: translateX(10px);
-    transform: translateX(10px);
-  }
-}
-
-@keyframes slide-left {
-  0% {
-    -webkit-transform: translateX(100px);
-    transform: translateX(100px);
-  }
-
-  100% {
-    -webkit-transform: translateX(10px);
-    transform: translateX(10px);
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
   }
 }
 
@@ -110,25 +142,25 @@
 
 @-webkit-keyframes slide-bottom {
   0% {
-    -webkit-transform: translateY(-200px);
-    transform: translateY(-200px);
+    -webkit-transform: translateY(-210px);
+    transform: translateY(-210px);
   }
 
   100% {
-    -webkit-transform: translateY(50px);
-    transform: translateY(50px);
+    -webkit-transform: translateY(60px);
+    transform: translateY(60px);
   }
 }
 
 @keyframes slide-bottom {
   0% {
-    -webkit-transform: translateY(-200px);
-    transform: translateY(-200px);
+    -webkit-transform: translateY(-210px);
+    transform: translateY(-210px);
   }
 
   100% {
-    -webkit-transform: translateY(50px);
-    transform: translateY(50px);
+    -webkit-transform: translateY(60px);
+    transform: translateY(60px);
   }
 }
 
@@ -167,106 +199,7 @@
   }
 }
 
-.content-ani {
-  animation: appear linear;
-  animation-range: entry 0% entry 90%;
-  animation-timeline: view();
-}
 
-@keyframes appear {
-  0% {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@layer base {
-
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
-
-  body {
-    --pad: clamp(1rem, 2vw, 5rem);
-    /* min-height: 300vh; */
-  }
-
-  section {
-    min-height: 85vh;
-    padding: var(--pad);
-    background: radial-gradient(circle at center, var(--spotColor, #0a1128) 20%, transparent calc(20% + 1px)), var(--bgColor, #0a1128);
-    background-size: 2rem 2rem;
-    background-position: center center;
-    background-repeat: round;
-  }
-
-  @media (min-width: 800px) {
-    section {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: start;
-    }
-
-    section:nth-child(even) {
-      --bgColor: #0a1128;
-      --spotColor: #0a1128;
-
-      .content-ani {
-        grid-column: 2;
-      }
-    }
-  }
-
-  .content-ani {
-    /* max-width: 70ch; */
-    padding: var(--pad);
-    background: #0a1128;
-    border-radius: 0.3rem;
-    /* box-shadow: 0.05rem 0.05rem 0.35rem rgb(0 0 0 / 0.05), 0.15rem 0.15rem 0.75rem rgb(0 0 0 / 0.08); */
-  }
-}
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: var(--body) !important;
-}
-
-body {
-  font-family: var(--body) !important;
-  color: var(--light-shades);
-}
-
-/* To ensure that the entire page is covered and there are no margins or padding around it. */
-html,
-body,
-#ttr_page,
-#ttr_content,
-#ttr_content_margin,
-.ttr_post,
-.item-page {
-  /* height: 100% !important;
-margin: 0 !important; */
-  background: var(--dark-shades) !important;
-}
-
-a {
-  text-decoration: none !important;
-}
-
-textarea {
-  resize: none !important;
-  white-space: pre-wrap !important;
-  /* Any line breaks or multiple spaces that were entered in the textarea will be preserved and displayed */
-}
 
 .glassmorphism {
   background: rgba(20, 33, 61, 0.15) !important;
@@ -306,35 +239,45 @@ textarea {
   color: var(--light-shades) !important;
 }
 
+#apply-btn {
+  background: var(--gradient-bg);
+  border: none;
+}
+
+#apply-btn:hover {
+  background: rgba(20, 33, 61, 0.15) !important;
+  box-shadow: 0 5px 25px 0 rgba(31, 38, 135, 0.438) !important;
+}
+
+.remove-bg {
+  background: none !important;
+}
+
 /* Contact Button Style */
 #contact-btn {
-  background: rgba( 20, 33, 61, 0.15 ) !important;
-  box-shadow: 0 5px 25px 0 rgba( 31, 38, 135, 0.37 ) !important;
-  backdrop-filter: blur( 0px ) !important;
-  -webkit-backdrop-filter: blur( 0px ) !important;
-  border: 1px solid rgba( 255, 255, 255, 0.18 ) !important;
+  background: rgba(20, 33, 61, 0.15) !important;
+  box-shadow: 0 5px 25px 0 rgba(31, 38, 135, 0.37) !important;
+  backdrop-filter: blur(0px) !important;
+  -webkit-backdrop-filter: blur(0px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
   /* background-image: var(--gradient-dark) !important;
   box-shadow: 0 12px 30px 2px rgba( 31, 38, 135, 0.37 ) !important; */
   border-radius: 40px !important;
   box-sizing: border-box !important;
   color: #fff !important;
-  display: block !important;
-  height: 50px !important;
   padding: 4px !important;
-  position: relative !important;
   text-decoration: none !important;
   width: fit-content !important;
-  z-index: 2 !important;
 }
 
 #contact-btn:hover {
   background-image: linear-gradient(to right, #0a1128 0%, #14213d 100%) !important;
-  box-shadow: 0 10px 34px 0 rgba( 31, 38, 135, 0.37 ) !important;
+  box-shadow: 0 10px 34px 0 rgba(31, 38, 135, 0.37) !important;
   color: #fff !important;
   border: none !important;
 }
 
-#contact-btn .contact-btn-span{
+#contact-btn .contact-btn-span {
   align-items: center !important;
   /* background: var(--gradient-dark) !important; */
   border-radius: 40px !important;
