@@ -17,6 +17,7 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -33,7 +34,7 @@ body {
 }
 
 /* Ensures that the main content takes up at least the full height of the page. */
-.main {
+main {
   min-height: calc(100%-5em) !important;
   /* 5em is the height of the footer */
   margin-bottom: 10rem;
@@ -72,8 +73,8 @@ textarea {
   font-size: 19px;
 }
 
-.fs-17 {
-  font-size: 17px;
+.fs-18 {
+  font-size: 18px;
 }
 
 .fs-15 {

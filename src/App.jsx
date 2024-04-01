@@ -7,15 +7,17 @@ import { Header } from './components/Header/Header';
 import { NavBar } from './components/Header/NavBar/NavBar';
 import { Footer } from './components/Footer';
 
-export default function App() {
+export const App = () => {
   return (
     <Router>
       <Header>
         <NavBar />
       </Header>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </main>
       <Footer />
     </Router>
   );
