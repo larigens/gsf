@@ -5,12 +5,17 @@ import fastFunding from '../assets/icons/fast_funding.png';
 import referralFee from '../assets/icons/referral_fee.png';
 import lineCredit from '../assets/icons/line_credit.png';
 import overnight from '../assets/icons/overnight.png';
+import line from '../assets/icons/line.png';
+import forward from '../assets/icons/forward.png';
+import logo from '../assets/logo.png';
+
 import { HelmetCP } from '../components/Helmet';
 
 export const Home = () => {
     return (
         <>
             <HelmetCP pageTitle={'G Squared Funding, LLC | Factoring Services for Trucking Companies'} pageDescription={'Accelerate Your Cash Flow with Our Expert Factoring Services for Transportation and Trucking Companies. Unlock Working Capital and Fuel Your Business Growth Today!'} />
+            {/* Hero */}
             <Container fluid className="d-flex align-items-center justify-content-center my-5" style={{ minHeight: '75vh' }}>
                 <Row className="align-items-center justify-content-between">
                     <Col lg={7} className='mx-auto'>
@@ -93,7 +98,47 @@ export const Home = () => {
                     <a className="gradient-hv text-decoration-none light-accent" href="/services">Discover More Now!</a>
                 </Row>
             </Container>
-
+            {/* Call to Connect */}
+            <Container fluid className="my-4 p-2 mx-4">
+                <h3 className="font-weight-bold py-2 mb-2 light-accent">How can we tailor our factoring services to meet your unique needs?</h3>
+                <Row className="mt-2 my-2">
+                    <Col md={7} className="mt-2">
+                        <Container className="d-flex p-2 align-center radius-20">
+                            <Image className="img-fluid text-center mb-1 white-img" src={logo} width={100} alt="logo" loading="lazy" />
+                            <p className="text-justify mt-4 mx-2 light-shades fs-18">With years of experience and expertise in the field, we have been helping businesses like yours thrive by offering fast and flexible financing options.</p>
+                        </Container>
+                        <Container className=" p-2 mt-2 text-center">
+                            <p className="light-shades font-weight-bold text-center fs-28">Our mission is simple:</p>
+                        </Container>
+                        <Container className="p-2 text-end">
+                            <p className="light-accent fs-22 text-end">To empower transportation companies to focus on what they do best - delivering goods and services - while we take care of the financial aspects.</p>
+                        </Container>
+                        <Container className="p-2 mb-4">
+                            <p className="text-justify my-4 light-shades mb-2 fs-22">Our commitment to:</p>
+                            <Container className="d-flex align-items-center my-2">
+                                <Image className="w-20 h-20" src={line} alt="trucks" loading="lazy" />
+                                <p className="font-weight-bold mb-0 mx-2 light-shades fs-20">Transparency</p>
+                            </Container>
+                            <Container className="d-flex align-items-center my-2">
+                                <Image className="w-20 h-20" src={line} alt="trucks" loading="lazy" />
+                                <p className="font-weight-bold mb-0 mx-2 light-shades fs-20">Competitive Rates</p>
+                            </Container>
+                            <Container className="d-flex align-items-center my-2">
+                                <Image className="w-20 h-20" src={line} alt="trucks" loading="lazy" />
+                                <p className="font-weight-bold mb-0 mx-2 light-shades fs-20">Exceptional Customer Service</p>
+                            </Container>
+                            <p className="text-justify my-4 mx-3 fs-17 light-shades">has earned us the trust of countless clients in the transportation sector. Whether you're a trucking company, freight broker, or staffing agency, we have the financial solutions to support your growth and success.</p>
+                        </Container>
+                        <Container className="d-flex align-items-center my-4 p-2">
+                            <p className="mx-3 light-shades fs-28">Let's drive your business forward together!</p>
+                            <Image className="img-fluid white-img forward mb-3" src={forward} alt="truck icon" width="60" height="60" loading="lazy" />
+                        </Container>
+                    </Col>
+                    <Container className="mb-5 text-justify d-flex align-center">
+                        {/* Add Form */}
+                    </Container>
+                </Row>
+            </Container>
         </>
     );
 };
