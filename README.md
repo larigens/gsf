@@ -1,70 +1,141 @@
-# Getting Started with Create React App
+<h1 align='center'> G Squared Funding LLC </h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align='center'>
+    <img src='./client/src/assets/logo.png' alt='logo' width='120px' height='120px' />
+  <br><br>
+  <i> Factoring company designed to
+    <br> simplify the management of accounts receivables and payables of transportation and staffing companies </i>
+  <br>
+</p>
 
-## Available Scripts
+<p align='center'>
+  <a href='https://gsquaredfunding.com/'><strong> G Squared Funding LLC </strong></a>
+  <br>
+</p>
 
-In the project directory, you can run:
+<br>
 
-### `npm start`
+<div align='center'>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-ff69b4.svg)
+![Contributors](https://img.shields.io/github/contributors/larigens/gsf?style=plastic&color=ff69b4)
+![Licence](https://img.shields.io/static/v1?label=License&message=Apache-2.0&color=ff69b4)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+</div>
 
-### `npm test`
+<div align='center'>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-4b0082?logo=bootstrap&logoColor=white)
 
-### `npm run build`
+</div>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Description
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+G Squared Funding LLC is a Atlanta based factoring company designed specifically for transportation and staffing companies to help them manage their cash flow more efficiently. With FinWiz, transportation companies can easily convert their accounts receivable into immediate cash, enabling them to meet their daily expenses, pay their drivers and vendors, and grow their business. 
 
-### `npm run eject`
+Whether you are a small business owner or a large transportation company, G Squared Funding LLC is the perfect solution to help you manage your finances and grow your business.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Table of Contents
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [Description](#description)
+- [Table of Contents](#table-of-contents)
+- [Installation](#installation)
+  - [Cloning the Repository](#cloning-the-repository)
+  - [Setting Up](#setting-up)
+- [Mock-Up](#mock-up)
+- [Usage](#usage)
+- [Questions](#questions)
+- [Contributing](#contributing)
+  - [Contributing Guidelines](#contributing-guidelines)
+  - [Code of Conduct](#code-of-conduct)
+- [Credits](#credits)
+  - [Authors](#authors)
+  - [Acknowledgements](#acknowledgements)
+- [License](#license)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Installation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Cloning the Repository
 
-## Learn More
+Click `<> code` - the green button. After clicking, in the local tab, copy the SSH key. Open the terminal in your Macbook or [git bash](https://git-scm.com/downloads), if you have Windows/Linux, and type:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+git clone [paste ssh key]
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Setting Up
 
-### Code Splitting
+Open the project in [Visual Studio Code](https://code.visualstudio.com/download) and make sure you are in the directory of this application before installing the dependencies. To install it, type the commands below on your terminal:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+npm i
+```
 
-### Analyzing the Bundle Size
+Once you run this, npm will begin the installation process of all of the current project's dependencies.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Mock-Up
 
-### Making a Progressive Web App
+The following animations and images shows the web application's appearance and functionality:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<div align='center'>
 
-### Advanced Configuration
+<img src='./assets/homepage.gif' alt='App Screenshot' width='600px' height='300px' />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+</div>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Usage
 
-### `npm run build` fails to minify
+Launch the application by entering the command below on your terminal:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+npm run develop
+```
+
+Or access it through our oficial website [G Squared Funding LLC](https://gsquaredfunding.com/)
+
+## Questions
+
+For questions and support feel free to contact us via:
+
+**Larissa Guilherme**
+
+<a href='mailto:larigens@gsquaredfunding.com'>📧 Email </a>
+
+## Contributing
+
+### Contributing Guidelines
+
+Want to report a bug, contribute some code, request a new feature, or improve the documentation? You can submit an issue and we will gladly review it, but before submitting an issue, please search the issue tracker, as it may already exist!
+
+### Code of Conduct
+
+Our Code of Conduct follows the same principles as the [Contributor Covenant](https://www.contributor-covenant.org/version/2/1/code_of_conduct/), version 2.1.
+
+## Credits
+
+### Authors
+
+👩🏻‍💻 **Larissa Guilherme**
+
+[![GitHub](https://img.shields.io/badge/GitHub-000?style=flat&logo=github)](https://github.com/larigens)
+[![Portfolio](https://img.shields.io/badge/portfolio-000?style=flat&logo=ko-fi&logoColor=white)](https://larigens.github.io/laricodes/)
+[![Linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/larigens/)
+
+### Acknowledgements
+
+- [W3 Schools](https://www.w3schools.com)
+- [MDN](https://developer.mozilla.org/en-US/)
+- [Node.js](https://nodejs.org/en/)
+- [NPM](https://www.npmjs.com/)
+- [React](https://react.dev/learn)
+- [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+
+
+## License
+
+Please refer to the [LICENSE](https://choosealicense.com/licenses/apache-2.0/) in the repo.

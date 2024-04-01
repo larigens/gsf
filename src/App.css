@@ -1,38 +1,358 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --dark-shades: #0a1128;
+  --dark-accent: #14213d;
+  --main-brand: #034078;
+  /* --light-accent: #67B6EF; */
+  --light-accent: #5ea7db;
+  --light-shades: #fefcfb;
+  --gradient-dark: linear-gradient(45deg, var(--dark-accent), var(--dark-shades), var(--dark-accent), var(--dark-shades));
+  --gradient-bg: linear-gradient(45deg, var(--dark-shades), var(--main-brand), var(--dark-accent));
+  --gradient: -webkit-linear-gradient(30deg, var(--light-accent), var(--light-shades), var(--light-accent));
+  --gradient-light: -webkit-linear-gradient(30deg, var(--light-shades), var(--light-accent), var(--light-shades));
+  --body: 'Poppins', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.path {
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 500px;
+  background-attachment: fixed;
+  background-image: src('/assets/path.png');
+}
+
+
+.bordered-text {
+  color: var(--light-shades) !important;
+  /* Make text color transparent */
+  text-shadow: 0px 7px 8px var(--main-brand);
+}
+
+.slide-right {
+  -webkit-animation: slide-right 0.5s ease-in both;
+  animation: slide-right 0.5s ease-in both;
+}
+
+.slide-right-2 {
+  -webkit-animation: slide-right 0.5s ease-in 0.1s both;
+  animation: slide-right 0.5s ease-in 0.1s both;
+}
+
+.slide-right-3 {
+  -webkit-animation: slide-right 0.5s ease-in 0.2s both;
+  animation: slide-right 0.5s ease-in 0.2s both;
+}
+
+.slide-left {
+  -webkit-animation: slide-left 0.8s ease-out both;
+  animation: slide-left 0.8s ease-out both;
+}
+
+@-webkit-keyframes slide-right {
+  0% {
+    -webkit-transform: translateX(-150px);
+    transform: translateX(-150px);
+  }
+
+  100% {
+    -webkit-transform: translateX(10px);
+    transform: translateX(10px);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@keyframes slide-right {
+  0% {
+    -webkit-transform: translateX(-150px);
+    transform: translateX(-150px);
+  }
+
+  100% {
+    -webkit-transform: translateX(10px);
+    transform: translateX(10px);
+  }
 }
 
-.App-link {
-  color: #61dafb;
+@-webkit-keyframes slide-left {
+  0% {
+    -webkit-transform: translateX(100px);
+    transform: translateX(100px);
+  }
+
+  100% {
+    -webkit-transform: translateX(10px);
+    transform: translateX(10px);
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes slide-left {
+  0% {
+    -webkit-transform: translateX(100px);
+    transform: translateX(100px);
   }
-  to {
-    transform: rotate(360deg);
+
+  100% {
+    -webkit-transform: translateX(10px);
+    transform: translateX(10px);
   }
+}
+
+.slide-bottom {
+  -webkit-animation: slide-bottom 0.5s ease-in both;
+  animation: slide-bottom 0.5s ease-in both;
+}
+
+@-webkit-keyframes slide-bottom {
+  0% {
+    -webkit-transform: translateY(-200px);
+    transform: translateY(-200px);
+  }
+
+  100% {
+    -webkit-transform: translateY(50px);
+    transform: translateY(50px);
+  }
+}
+
+@keyframes slide-bottom {
+  0% {
+    -webkit-transform: translateY(-200px);
+    transform: translateY(-200px);
+  }
+
+  100% {
+    -webkit-transform: translateY(50px);
+    transform: translateY(50px);
+  }
+}
+
+.tracking-in-expand {
+  -webkit-animation: tracking-in-expand 0.5s ease-out both;
+  animation: tracking-in-expand 0.5s ease-out both;
+}
+
+@-webkit-keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 0.6;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 0.6;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.content-ani {
+  animation: appear linear;
+  animation-range: entry 0% entry 90%;
+  animation-timeline: view();
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer base {
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    --pad: clamp(1rem, 2vw, 5rem);
+    /* min-height: 300vh; */
+  }
+
+  section {
+    min-height: 85vh;
+    padding: var(--pad);
+    background: radial-gradient(circle at center, var(--spotColor, #0a1128) 20%, transparent calc(20% + 1px)), var(--bgColor, #0a1128);
+    background-size: 2rem 2rem;
+    background-position: center center;
+    background-repeat: round;
+  }
+
+  @media (min-width: 800px) {
+    section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+
+    section:nth-child(even) {
+      --bgColor: #0a1128;
+      --spotColor: #0a1128;
+
+      .content-ani {
+        grid-column: 2;
+      }
+    }
+  }
+
+  .content-ani {
+    /* max-width: 70ch; */
+    padding: var(--pad);
+    background: #0a1128;
+    border-radius: 0.3rem;
+    /* box-shadow: 0.05rem 0.05rem 0.35rem rgb(0 0 0 / 0.05), 0.15rem 0.15rem 0.75rem rgb(0 0 0 / 0.08); */
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: var(--body) !important;
+}
+
+body {
+  font-family: var(--body) !important;
+  color: var(--light-shades);
+}
+
+/* To ensure that the entire page is covered and there are no margins or padding around it. */
+html,
+body,
+#ttr_page,
+#ttr_content,
+#ttr_content_margin,
+.ttr_post,
+.item-page {
+  /* height: 100% !important;
+margin: 0 !important; */
+  background: var(--dark-shades) !important;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+textarea {
+  resize: none !important;
+  white-space: pre-wrap !important;
+  /* Any line breaks or multiple spaces that were entered in the textarea will be preserved and displayed */
+}
+
+.glassmorphism {
+  background: rgba(20, 33, 61, 0.15) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+  backdrop-filter: blur(0px) !important;
+  -webkit-backdrop-filter: blur(0px) !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+}
+
+.white-img {
+  filter: brightness(0) invert(1);
+}
+
+/* Colors */
+.dark-shades {
+  color: var(--dark-shades) !important;
+}
+
+.dark-accent {
+  color: var(--dark-accent) !important;
+}
+
+.main-brand {
+  color: var(--main-brand) !important;
+}
+
+.light-accent {
+  color: var(--light-accent) !important;
+}
+
+.light-accent-hv:hover {
+  color: var(--light-accent) !important;
+}
+
+.light-shades {
+  color: var(--light-shades) !important;
+}
+
+/* Contact Button Style */
+#contact-btn {
+  background: rgba( 20, 33, 61, 0.15 ) !important;
+  box-shadow: 0 5px 25px 0 rgba( 31, 38, 135, 0.37 ) !important;
+  backdrop-filter: blur( 0px ) !important;
+  -webkit-backdrop-filter: blur( 0px ) !important;
+  border: 1px solid rgba( 255, 255, 255, 0.18 ) !important;
+  /* background-image: var(--gradient-dark) !important;
+  box-shadow: 0 12px 30px 2px rgba( 31, 38, 135, 0.37 ) !important; */
+  border-radius: 40px !important;
+  box-sizing: border-box !important;
+  color: #fff !important;
+  display: block !important;
+  height: 50px !important;
+  padding: 4px !important;
+  position: relative !important;
+  text-decoration: none !important;
+  width: fit-content !important;
+  z-index: 2 !important;
+}
+
+#contact-btn:hover {
+  background-image: linear-gradient(to right, #0a1128 0%, #14213d 100%) !important;
+  box-shadow: 0 10px 34px 0 rgba( 31, 38, 135, 0.37 ) !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+#contact-btn .contact-btn-span{
+  align-items: center !important;
+  /* background: var(--gradient-dark) !important; */
+  border-radius: 40px !important;
+  display: flex !important;
+  justify-content: center !important;
+  height: 100% !important;
+  transition: background 0.5s ease !important;
+  width: 100% !important;
+}
+
+#contact-btn .contact-btn-span .btn-icon {
+  visibility: hidden !important;
+}
+
+#contact-btn:hover .contact-btn-span {
+  background: transparent !important;
+}
+
+#contact-btn:hover .contact-btn-span .btn-icon {
+  visibility: visible !important;
 }
