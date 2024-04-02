@@ -122,6 +122,138 @@ textarea {
   height: 110px;
 }
 
+.white-img {
+  filter: brightness(0) invert(1);
+}
+
+.glassmorphism {
+  background: rgba(20, 33, 61, 0.15) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+  backdrop-filter: blur(0px) !important;
+  -webkit-backdrop-filter: blur(0px) !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+}
+
+/* Colors */
+.dark-shades {
+  color: var(--dark-shades) !important;
+}
+
+.dark-accent {
+  color: var(--dark-accent) !important;
+}
+
+.main-brand {
+  color: var(--main-brand) !important;
+}
+
+.light-accent {
+  color: var(--light-accent) !important;
+}
+
+.light-accent-hv:hover {
+  color: var(--light-accent) !important;
+}
+
+.light-shades {
+  color: var(--light-shades) !important;
+}
+
+.remove-bg {
+  background: none !important;
+}
+
+/* Gradient */
+.gradient-hv {
+  font-size: 22px !important;
+  transition: font-size 0.3s !important;
+  /* Smooth transition effect for the font size */
+}
+
+/* When hovering, the link color will change to smooth transitions between the three specified colors */
+.gradient-hv:hover {
+  background: var(--gradient) !important;
+  /* Need to set that is a text you are removing the background / color or the gradient won't work */
+  -webkit-background-clip: text !important;
+  background-clip: none !important;
+  /* Text-fill needs to be transparent to show the gradient */
+  -webkit-text-fill-color: transparent !important;
+  font-size: 23px !important;
+}
+
+
+/* Button */
+.submit-btn {
+  background: rgba(20, 33, 61, 0.15) !important;
+  box-shadow: 0 5px 25px 0 rgba(31, 38, 135, 0.37) !important;
+  backdrop-filter: blur(0px) !important;
+  -webkit-backdrop-filter: blur(0px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  padding: 5px 15px !important;
+}
+
+.submit-btn:hover {
+  background: var(--light-shades) !important;
+  color: var(--dark-shades) !important;
+}
+
+.submit-btn,
+#contact-btn {
+  background: rgba(20, 33, 61, 0.15) !important;
+  box-shadow: 0 5px 25px 0 rgba(31, 38, 135, 0.37) !important;
+  backdrop-filter: blur(0px) !important;
+  -webkit-backdrop-filter: blur(0px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  width: fit-content !important;
+}
+
+#contact-btn {
+  border-radius: 40px !important;
+  padding: 4px !important;
+}
+
+#contact-btn:hover {
+  background-image: linear-gradient(to right, #0a1128 0%, #14213d 100%) !important;
+  box-shadow: 0 10px 34px 0 rgba(31, 38, 135, 0.37) !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+#contact-btn .contact-btn-span {
+  align-items: center !important;
+  /* background: var(--gradient-dark) !important; */
+  border-radius: 40px !important;
+  display: flex !important;
+  justify-content: center !important;
+  height: 100% !important;
+  transition: background 0.5s ease !important;
+  width: 100% !important;
+}
+
+#contact-btn .contact-btn-span .btn-icon {
+  visibility: hidden !important;
+}
+
+#contact-btn:hover .contact-btn-span {
+  background: transparent !important;
+}
+
+#contact-btn:hover .contact-btn-span .btn-icon {
+  visibility: visible !important;
+}
+
+#apply-btn {
+  background: var(--gradient-bg);
+  border: none;
+}
+
+#apply-btn:hover {
+  background: rgba(20, 33, 61, 0.15) !important;
+  box-shadow: 0 5px 25px 0 rgba(31, 38, 135, 0.438) !important;
+}
+
+/* Animation */
 .slide-right {
   -webkit-animation: slide-right 0.5s ease-in both;
   animation: slide-right 0.5s ease-in both;
@@ -168,25 +300,25 @@ textarea {
 
 @-webkit-keyframes slide-bottom {
   0% {
-    -webkit-transform: translateY(-210px);
-    transform: translateY(-210px);
+    -webkit-transform: translateY(-150px);
+    transform: translateY(-150px);
   }
 
   100% {
-    -webkit-transform: translateY(60px);
-    transform: translateY(60px);
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
   }
 }
 
 @keyframes slide-bottom {
   0% {
-    -webkit-transform: translateY(-210px);
-    transform: translateY(-210px);
+    -webkit-transform: translateY(-150px);
+    transform: translateY(-150px);
   }
 
   100% {
-    -webkit-transform: translateY(60px);
-    transform: translateY(60px);
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
   }
 }
 
@@ -225,122 +357,21 @@ textarea {
   }
 }
 
-
-
-.glassmorphism {
-  background: rgba(20, 33, 61, 0.15) !important;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
-  backdrop-filter: blur(0px) !important;
-  -webkit-backdrop-filter: blur(0px) !important;
-  border-radius: 10px !important;
-  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+.forward {
+  animation: moveForward 4s linear infinite !important;
 }
 
-.white-img {
-  filter: brightness(0) invert(1);
-}
+@keyframes moveForward {
+  0% {
+    transform: translateX(0);
+  }
 
-/* Colors */
-.dark-shades {
-  color: var(--dark-shades) !important;
-}
+  50% {
+    transform: translateX(50px);
+    /* Adjust the distance for your desired effect */
+  }
 
-.dark-accent {
-  color: var(--dark-accent) !important;
-}
-
-.main-brand {
-  color: var(--main-brand) !important;
-}
-
-.light-accent {
-  color: var(--light-accent) !important;
-}
-
-.light-accent-hv:hover {
-  color: var(--light-accent) !important;
-}
-
-.light-shades {
-  color: var(--light-shades) !important;
-}
-
-#apply-btn {
-  background: var(--gradient-bg);
-  border: none;
-}
-
-#apply-btn:hover {
-  background: rgba(20, 33, 61, 0.15) !important;
-  box-shadow: 0 5px 25px 0 rgba(31, 38, 135, 0.438) !important;
-}
-
-.remove-bg {
-  background: none !important;
-}
-
-/* Gradient */
-.gradient-hv {
-  font-size: 22px !important;
-  transition: font-size 0.3s !important;
-  /* Smooth transition effect for the font size */
-}
-
-/* When hovering, the link color will change to smooth transitions between the three specified colors */
-.gradient-hv:hover {
-  background: var(--gradient) !important;
-  /* Need to set that is a text you are removing the background / color or the gradient won't work */
-  -webkit-background-clip: text !important;
-  background-clip: none !important;
-  /* Text-fill needs to be transparent to show the gradient */
-  -webkit-text-fill-color: transparent !important;
-  font-size: 23px !important;
-}
-
-
-/* Contact Button Style */
-#contact-btn {
-  background: rgba(20, 33, 61, 0.15) !important;
-  box-shadow: 0 5px 25px 0 rgba(31, 38, 135, 0.37) !important;
-  backdrop-filter: blur(0px) !important;
-  -webkit-backdrop-filter: blur(0px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.18) !important;
-  /* background-image: var(--gradient-dark) !important;
-  box-shadow: 0 12px 30px 2px rgba( 31, 38, 135, 0.37 ) !important; */
-  border-radius: 40px !important;
-  box-sizing: border-box !important;
-  color: #fff !important;
-  padding: 4px !important;
-  text-decoration: none !important;
-  width: fit-content !important;
-}
-
-#contact-btn:hover {
-  background-image: linear-gradient(to right, #0a1128 0%, #14213d 100%) !important;
-  box-shadow: 0 10px 34px 0 rgba(31, 38, 135, 0.37) !important;
-  color: #fff !important;
-  border: none !important;
-}
-
-#contact-btn .contact-btn-span {
-  align-items: center !important;
-  /* background: var(--gradient-dark) !important; */
-  border-radius: 40px !important;
-  display: flex !important;
-  justify-content: center !important;
-  height: 100% !important;
-  transition: background 0.5s ease !important;
-  width: 100% !important;
-}
-
-#contact-btn .contact-btn-span .btn-icon {
-  visibility: hidden !important;
-}
-
-#contact-btn:hover .contact-btn-span {
-  background: transparent !important;
-}
-
-#contact-btn:hover .contact-btn-span .btn-icon {
-  visibility: visible !important;
+  100% {
+    transform: translateX(0);
+  }
 }

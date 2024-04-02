@@ -8,7 +8,7 @@ import overnight from '../assets/icons/overnight.png';
 import line from '../assets/icons/line.png';
 import forward from '../assets/icons/forward.png';
 import logo from '../assets/logo.png';
-
+import { FormCP } from '../components/Form';
 import { HelmetCP } from '../components/Helmet';
 
 export const Home = () => {
@@ -16,25 +16,25 @@ export const Home = () => {
         <>
             <HelmetCP pageTitle={'G Squared Funding, LLC | Factoring Services for Trucking Companies'} pageDescription={'Accelerate Your Cash Flow with Our Expert Factoring Services for Transportation and Trucking Companies. Unlock Working Capital and Fuel Your Business Growth Today!'} />
             {/* Hero */}
-            <Container fluid className="d-flex align-items-center justify-content-center my-5" style={{ minHeight: '75vh' }}>
-                <Row className="align-items-center justify-content-between">
-                    <Col lg={7} className='mx-auto'>
+            <Container fluid className="d-flex align-items-center justify-content-center my-5" style={{ minHeight: '77vh' }}>
+                <Row className='mx-2'>
+                    <Col md={7}>
                         <Row className="mb-1">
                             <h1 className="slide-right bordered-text">Your Trusted Factoring Partner in Transportation</h1>
                         </Row>
                         <Row className="my-4">
-                            <p className="light-shades slide-right-2 fs-19" style={{ lineHeight: '1.5', textAlign: 'justify' }}>At G Squared Funding, we understand the challenges that transportation companies face when it comes to managing cash flow and maintaining steady operations. That's why we're here to provide tailored factoring solutions designed specifically for you.</p>
+                            <p className="light-shades text-justify slide-right-2 fs-19" style={{ lineHeight: '1.5' }}>At G Squared Funding, we understand the challenges that transportation companies face when it comes to managing cash flow and maintaining steady operations. That's why we're here to provide tailored factoring solutions designed specifically for you.</p>
                         </Row>
                         <Row className="my-2 mt-4 mx-1">
                             <a id="contact-btn" className="my-3 slide-right-3" role="button" href="https://gsquaredfunding.com/index.php/contact-us">
-                                <span className="contact-btn-span px-3 py-1" style={{ fontSize: '24px' }}>
+                                <span className="contact-btn-span px-3 py-1 light-shades" style={{ fontSize: '24px' }}>
                                     Contact us today
                                     <Image className="img-fluid ml-1 px-2 white-img btn-icon" src={rightArrow} alt="right arrow icon" width="30" loading="lazy" />
                                 </span>
                             </a>
                         </Row>
                     </Col>
-                    <Col lg={4} className="slide-bottom" style={{ minHeight: '50vh' }}>
+                    <Col md={5} className="slide-bottom" >
                         <Container className="p-2 glassmorphism radius-20 w-80">
                             <Row className="d-flex justify-content-between align-items-center mx-1" style={{ borderBottom: '1px solid #f5f5f5' }}>
                                 <Col md={5} className="mr-auto d-flex align-items-center">
@@ -64,10 +64,10 @@ export const Home = () => {
                 </Row>
             </Container>
             {/* Call to Action */}
-            <Container fluid className="my-4 p-2 mx-4">
+            <Container fluid className="my-5 ms-3" style={{ minHeight: '80vh' }}>
                 <h2 className="font-weight-bold my-3 light-accent">Unlock Your Transportation Company's Financial Potential Today!</h2>
                 <h3 className="mb-4 light-shades">Explore Our Expert Factoring Services and Drive Your Business Forward.</h3>
-                <Row className="text-justify my-4">
+                <Row className="text-justify my-5">
                     <Col md={6} className="mb-3 mt-4">
                         <Container className="p-3 d-flex align-items-center">
                             <Image className="img-fluid white-img icon-80" src={fastFunding} alt="fast funding icon" loading="lazy" />
@@ -99,10 +99,10 @@ export const Home = () => {
                 </Row>
             </Container>
             {/* Call to Connect */}
-            <Container fluid className="my-4 p-2 mx-4">
-                <h3 className="font-weight-bold py-2 mb-2 light-accent">How can we tailor our factoring services to meet your unique needs?</h3>
-                <Row className="mt-2 my-2">
-                    <Col md={7} className="mt-2">
+            <Container fluid className="my-5 ms-3">
+                <h2 className="font-weight-bold py-2 mb-2 light-accent">How can we tailor our factoring services to meet your unique needs?</h2>
+                <Row className="my-3">
+                    <Col md={6} className="mt-2">
                         <Container className="d-flex p-2 align-center radius-20">
                             <Image className="img-fluid text-center mb-1 white-img" src={logo} width={100} alt="logo" loading="lazy" />
                             <p className="text-justify mt-4 mx-2 light-shades fs-18">With years of experience and expertise in the field, we have been helping businesses like yours thrive by offering fast and flexible financing options.</p>
@@ -134,9 +134,10 @@ export const Home = () => {
                             <Image className="img-fluid white-img forward mb-3" src={forward} alt="truck icon" width="60" height="60" loading="lazy" />
                         </Container>
                     </Col>
-                    <Container className="mb-5 text-justify d-flex align-center">
-                        {/* Add Form */}
-                    </Container>
+                    <Col md={1}></Col>
+                    <Col md={4} className=" my-2 text-justify">
+                        <FormCP />
+                    </Col>
                 </Row>
             </Container>
         </>
