@@ -61,6 +61,10 @@ textarea {
   text-shadow: 0px 7px 8px var(--main-brand);
 }
 
+h1 {
+  font-size: 50px !important;
+}
+
 .fs-30 {
   font-size: 30px;
 }
@@ -98,7 +102,7 @@ textarea {
 }
 
 .border-none {
-  border: none;
+  border: none !important;
 }
 
 .radius-20 {
@@ -185,11 +189,6 @@ textarea {
 
 /* Button */
 .submit-btn {
-  background: rgba(20, 33, 61, 0.15) !important;
-  box-shadow: 0 5px 25px 0 rgba(31, 38, 135, 0.37) !important;
-  backdrop-filter: blur(0px) !important;
-  -webkit-backdrop-filter: blur(0px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.18) !important;
   padding: 5px 15px !important;
 }
 
@@ -199,7 +198,7 @@ textarea {
 }
 
 .submit-btn,
-#contact-btn {
+.contact-btn {
   background: rgba(20, 33, 61, 0.15) !important;
   box-shadow: 0 5px 25px 0 rgba(31, 38, 135, 0.37) !important;
   backdrop-filter: blur(0px) !important;
@@ -208,47 +207,26 @@ textarea {
   width: fit-content !important;
 }
 
-#contact-btn {
-  border-radius: 40px !important;
-  padding: 4px !important;
-}
-
-#contact-btn:hover {
+.contact-btn:hover {
   background-image: linear-gradient(to right, #0a1128 0%, #14213d 100%) !important;
   box-shadow: 0 10px 34px 0 rgba(31, 38, 135, 0.37) !important;
-  color: #fff !important;
-  border: none !important;
+  color: var(--light-shades);
+  border: 1px solid var(--dark-shades) !important;
 }
 
-#contact-btn .contact-btn-span {
-  align-items: center !important;
-  /* background: var(--gradient-dark) !important; */
-  border-radius: 40px !important;
-  display: flex !important;
-  justify-content: center !important;
-  height: 100% !important;
-  transition: background 0.5s ease !important;
-  width: 100% !important;
+.contact-btn .contact-btn-span .btn-icon {
+  visibility: hidden;
 }
 
-#contact-btn .contact-btn-span .btn-icon {
-  visibility: hidden !important;
+.contact-btn:hover .contact-btn-span .btn-icon {
+  visibility: visible;
 }
 
-#contact-btn:hover .contact-btn-span {
-  background: transparent !important;
+.apply-btn {
+  background: var(--gradient-bg) !important;
 }
 
-#contact-btn:hover .contact-btn-span .btn-icon {
-  visibility: visible !important;
-}
-
-#apply-btn {
-  background: var(--gradient-bg);
-  border: none;
-}
-
-#apply-btn:hover {
+.apply-btn:hover {
   background: rgba(20, 33, 61, 0.15) !important;
   box-shadow: 0 5px 25px 0 rgba(31, 38, 135, 0.438) !important;
 }
@@ -375,3 +353,5 @@ textarea {
     transform: translateX(0);
   }
 }
+
+/* Media Queries */

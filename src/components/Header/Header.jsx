@@ -5,22 +5,20 @@ import { Link } from 'react-router-dom';
 export const Header = (props) => {
   return (
     <header className='mb-4'>
-      <Row className='mx-1 d-flex align-items-center'>
-        <Col xs={{span: 6, order: 'first'}} xl={{ span: 1 }}>
+      <Row className='d-flex align-items-center me-auto'>
+        <Col xs={{ span: 6, order: 'first' }} xl={{ span: 1 }}>
           <Link to='/'>
-            <div className='d-flex align-items-center my-1'> {/* Wrap image and text in a div */}
-              <Image
-                src={logo}
-                alt="logo"
-                width={100}
-                className='mt-2 img-fluid'
-                loading="lazy" // Lazy loading
-                rel="preload" // Preloading
-              />
-            </div>
+            <Image
+              src={logo}
+              alt="logo"
+              width={100}
+              className='my-2 ps-2 img-fluid'
+              loading="lazy" // Lazy loading
+              rel="preload" // Preloading
+            />
           </Link>
         </Col>
-        <Col xs={{span: 6, order: 'second'}} xl={{ span: 11 }} className='d-flex justify-content-end ml-1'>
+        <Col xs={{ span: 6, order: 'second' }} xl={{ span: 11 }} className='d-flex justify-content-end'>
           {props.children}
         </Col>
       </Row>

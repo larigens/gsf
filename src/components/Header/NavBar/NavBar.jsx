@@ -70,12 +70,12 @@ export const NavBar = () => {
         <Navbar expand="xl" data-bs-theme="dark" className='mt-3'>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="mr-auto" >
+                <Nav className="me-auto" >
                     {navlinks.map((link) => (
                         link.name === 'Apply Now' ?
-                            <Button id='apply-btn' key={link.id} onClick={() => window.location.href = link.href} className={classNames(
+                            <Button key={link.id} onClick={() => window.location.href = link.href} className={classNames(
                                 link.current ? 'light-accent remove-bg' : 'light-shades light-accent-hv',
-                                'py-1 px-2 fs-18 mx-2',
+                                'py-1 px-2 fs-18 apply-btn border-none',
                             )}
                             >
                                 {link.name}
@@ -87,7 +87,7 @@ export const NavBar = () => {
                                 to={link.href}
                                 className={classNames(
                                     link.current ? 'light-accent' : 'light-shades light-accent-hv',
-                                    'p-1 fs-18 mx-2',
+                                    'p-1 fs-18 me-2',
                                 )}
                             >
                                 {link.name}

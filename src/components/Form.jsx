@@ -51,7 +51,7 @@ export const FormCP = () => {
                 <Form.Label>Message</Form.Label>
                 <Form.Control required as="textarea" rows={3} />
             </Form.Group>
-            <Row className='d-flex justify-content-end mx-1'>
+            <Row className='d-flex justify-content-end me-1'>
                 <Button className='submit-btn radius-20' type="submit">
                     Submit
                 </Button>
