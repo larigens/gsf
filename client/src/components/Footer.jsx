@@ -8,7 +8,7 @@ import { Container, Image } from 'react-bootstrap';
 export const Footer = () => {
     const currentYear = new Date().getFullYear();
     return (
-        <footer className='d-flex flex-column justify-content-center align-items-center light-shades' style={{ minHeight: '18vh' }}>
+        <footer className='d-flex flex-column justify-content-center align-items-center main-color' style={{ minHeight: '18vh' }}>
             <Container className='d-flex align-items-center justify-content-center my-3'>
                 <a href="https://www.facebook.com/gsquaredfunding/" className='my-1 mx-3'>
                     <Image src={facebook} alt="footerfacebook" width={30} />
@@ -24,7 +24,7 @@ export const Footer = () => {
                 </a>
             </Container>
             <Container className='mt-2 text-center'>
-                <p className='light-shades fs-15'>
+                <p className='fs-15'>
                     Copyright ©{currentYear} G Squared Funding, LLC. All rights reserved.
                 </p>
             </Container>

@@ -4,13 +4,10 @@
   --dark-shades: #0a1128;
   --dark-accent: #14213d;
   --main-brand: #034078;
-  /* --light-accent: #67B6EF; */
   --light-accent: #5ea7db;
   --light-shades: #fefcfb;
-  --gradient-dark: linear-gradient(45deg, var(--dark-accent), var(--dark-shades), var(--dark-accent), var(--dark-shades));
-  --gradient-bg: linear-gradient(45deg, var(--light-accent), var(--main-brand), var(--light-accent));
-  --gradient: -webkit-linear-gradient(30deg, var(--light-accent), var(--light-shades), var(--light-accent));
-  --gradient-light: -webkit-linear-gradient(30deg, var(--light-shades), var(--light-accent), var(--light-shades));
+  --gradient-dark: -webkit-linear-gradient(45deg, var(--light-accent), var(--main-brand), var(--light-accent));
+  --gradient-light: -webkit-linear-gradient(45deg, var(--dark-accent), var(--main-brand), var(--dark-accent));
   --body: 'Poppins', sans-serif;
 }
 
@@ -20,15 +17,34 @@
   box-sizing: border-box;
 }
 
+.light-theme {
+  --background-color: var(--light-shades);
+  --text-main-color: var(var(--dark-shades));
+  --text-secondary-color: var(var(--light-accent));
+  --background-gradient: var(var(--gradient-light));
+  --box-shadow: 0 5px 25px 0 rgba(31, 38, 135, 0.438);
+  --icon-color: brightness(1) invert(0);
+  
+}
+
+.dark-theme {
+  --background-color: var(--dark-shades);
+  --text-main-color: var(var(--light-shades));
+  --text-secondary-color: var(var(--light-accent));
+  --background-gradient: var(var(--gradient-dark));
+  --box-shadow: 0 5px 25px 0 rgba(208, 210, 228, 0.925);
+  --icon-color: brightness(0) invert(1);
+}
+
 body {
   font-family: var(--body) !important;
-  color: var(--light-shades);
+  color: var(--text-main-color) !important;
 }
 
 /* To ensure that the entire page is covered and there are no margins or padding around it. */
 html,
 body {
-  background: var(--dark-shades) !important;
+  background-color: var(--background-color) !important;
   height: 100% !important;
   margin: 0 !important;
 }
@@ -55,12 +71,99 @@ textarea {
   /* Any line breaks or multiple spaces that were entered in the textarea will be preserved and displayed */
 }
 
-.bordered-text {
-  color: var(--light-shades) !important;
-  /* Make text color transparent */
-  text-shadow: 0px 7px 8px var(--main-brand);
+/* Colors */
+.main-color {
+  color: var(--text-main-color) !important;
 }
 
+.secondary-color,
+.hover-color:hover {
+  color: var(--text-secondary-color) !important;
+}
+
+.hover-gradient:hover {
+  /* When hovering, the link color will change to smooth transitions between the three specified colors */
+  background: var(--background-gradient) !important;
+  /* Need to set that is a text you are removing the background / color or the gradient won't work */
+  -webkit-background-clip: text !important;
+  background-clip: none !important;
+  /* Text-fill needs to be transparent to show the gradient */
+  -webkit-text-fill-color: transparent !important;
+}
+
+.bordered-text {
+  color: var(--text-main-color) !important;
+  /* Make text color transparent */
+  text-shadow: 0px 5px 6px var(--text-secondary-color);
+}
+
+/* Background */
+.background {
+  background: var(--background-color) !important;
+}
+
+.background-light {
+  background: var(--light-accent) !important;
+}
+
+.background-gradient {
+  background: var(--background-gradient) !important;
+}
+
+.bg-gradient-dark {
+  background: var(--gradient-dark);
+}
+
+.remove-bg {
+  background: none !important;
+}
+
+/* Switch color */
+#themeSwitch {
+  border-color: var(--background-color) !important;
+  background-color: none !important;
+}
+
+#themeSwitch:checked {
+  background-color: var(--light-accent) !important;
+}
+
+/* Buttons */
+.apply-btn {
+  color: var(--light-shades);
+}
+
+.apply-btn:hover {
+  box-shadow: var(--box-shadow) !important;
+}
+
+.submit-btn {
+  padding: 5px 15px !important;
+}
+
+.submit-btn:hover {
+  background: var(--background-color) !important;
+  color: var(--text-main-color) !important;
+}
+
+.submit-btn,
+.contact-btn {
+  background: var(--text-main-color) !important;
+  box-shadow: var(--box-shadow) !important;
+  color: var(--background-color) !important;
+  width: fit-content !important;
+}
+
+.contact-btn .contact-btn-span .btn-icon {
+  visibility: hidden;
+}
+
+.contact-btn:hover .contact-btn-span .btn-icon {
+  visibility: visible;
+  animation: slide-right 0.4s ease-in both;
+}
+
+/* Font Sizes */
 h1 {
   font-size: 50px !important;
 }
@@ -97,10 +200,17 @@ h1 {
   font-size: 15px;
 }
 
+/* Text Style */
 .text-justify {
   text-align: justify;
 }
 
+/* Shadow */
+.box-shadow {
+  box-shadow: var(--box-shadow);
+}
+
+/* Border */
 .border-none {
   border: none !important;
 }
@@ -109,6 +219,7 @@ h1 {
   border-radius: 20px;
 }
 
+/* Size */
 .w-80 {
   width: 80% !important;
 }
@@ -121,114 +232,27 @@ h1 {
   height: 20px;
 }
 
+/* Image & Icon */
 .icon-80 {
   width: 110px;
   height: 110px;
 }
 
-.white-img {
+.icon-color {
+  filter: var(--icon-color);
+}
+
+.white-icon {
   filter: brightness(0) invert(1);
 }
 
+/* Glassmorphism */
 .glassmorphism {
-  background: rgba(20, 33, 61, 0.15) !important;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
-  backdrop-filter: blur(0px) !important;
-  -webkit-backdrop-filter: blur(0px) !important;
-  border-radius: 10px !important;
-  border: 1px solid rgba(255, 255, 255, 0.18) !important;
-}
-
-/* Colors */
-.dark-shades {
-  color: var(--dark-shades) !important;
-}
-
-.dark-accent {
-  color: var(--dark-accent) !important;
-}
-
-.main-brand {
-  color: var(--main-brand) !important;
-}
-
-.light-accent {
-  color: var(--light-accent) !important;
-}
-
-.light-accent-hv:hover {
-  color: var(--light-accent) !important;
-}
-
-.light-shades {
-  color: var(--light-shades) !important;
-}
-
-.remove-bg {
-  background: none !important;
-}
-
-/* Gradient */
-.gradient-hv {
-  font-size: 22px !important;
-  transition: font-size 0.3s !important;
-  /* Smooth transition effect for the font size */
-}
-
-/* When hovering, the link color will change to smooth transitions between the three specified colors */
-.gradient-hv:hover {
-  background: var(--gradient) !important;
-  /* Need to set that is a text you are removing the background / color or the gradient won't work */
-  -webkit-background-clip: text !important;
-  background-clip: none !important;
-  /* Text-fill needs to be transparent to show the gradient */
-  -webkit-text-fill-color: transparent !important;
-  font-size: 23px !important;
-}
-
-
-/* Button */
-.submit-btn {
-  padding: 5px 15px !important;
-}
-
-.submit-btn:hover {
-  background: var(--light-shades) !important;
-  color: var(--dark-shades) !important;
-}
-
-.submit-btn,
-.contact-btn {
-  background: rgba(20, 33, 61, 0.15) !important;
-  box-shadow: 0 5px 25px 0 rgba(31, 38, 135, 0.37) !important;
+  background: var(--background-color) !important;
+  box-shadow: var(--box-shadow) !important;
   backdrop-filter: blur(0px) !important;
   -webkit-backdrop-filter: blur(0px) !important;
   border: 1px solid rgba(255, 255, 255, 0.18) !important;
-  width: fit-content !important;
-}
-
-.contact-btn:hover {
-  background-image: linear-gradient(to right, #0a1128 0%, #14213d 100%) !important;
-  box-shadow: 0 10px 34px 0 rgba(31, 38, 135, 0.37) !important;
-  color: var(--light-shades);
-  border: 1px solid var(--dark-shades) !important;
-}
-
-.contact-btn .contact-btn-span .btn-icon {
-  visibility: hidden;
-}
-
-.contact-btn:hover .contact-btn-span .btn-icon {
-  visibility: visible;
-}
-
-.apply-btn {
-  background: var(--gradient-bg) !important;
-}
-
-.apply-btn:hover {
-  background: rgba(20, 33, 61, 0.15) !important;
-  box-shadow: 0 5px 25px 0 rgba(31, 38, 135, 0.438) !important;
 }
 
 /* Animation */
@@ -353,5 +377,3 @@ h1 {
     transform: translateX(0);
   }
 }
-
-/* Media Queries */

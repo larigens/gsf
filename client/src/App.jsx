@@ -6,6 +6,7 @@ import { Home } from './pages/Home';
 import { Header } from './components/Header/Header';
 import { NavBar } from './components/Header/NavBar/NavBar';
 import { Footer } from './components/Footer';
+import { ModeSwitch } from './components/ModeSwitch';
 
 export const App = () => {
   return (
@@ -13,6 +14,7 @@ export const App = () => {
       <Header>
         <NavBar />
       </Header>
+      <ModeSwitch />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />

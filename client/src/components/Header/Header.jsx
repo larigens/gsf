@@ -6,7 +6,7 @@ export const Header = (props) => {
   return (
     <header className='mb-4'>
       <Row className='d-flex align-items-center me-auto'>
-        <Col xs={{ span: 6, order: 'first' }} xl={{ span: 1 }}>
+        <Col xs={{ span: 6, order: 'first' }} lg={{ span: 1 }}>
           <Link to='/'>
             <Image
               src={logo}
@@ -18,7 +18,7 @@ export const Header = (props) => {
             />
           </Link>
         </Col>
-        <Col xs={{ span: 6, order: 'second' }} xl={{ span: 11 }} className='d-flex justify-content-end'>
+        <Col xs={{ span: 6, order: 'second' }} lg={{ span: 11 }} className='d-flex justify-content-end'>
           {props.children}
         </Col>
       </Row>

@@ -42,12 +42,6 @@ export const NavBar = () => {
         },
         {
             id: 6,
-            name: 'Sectors We Serve',
-            href: '/services',
-            current: location.pathname === '/services'
-        },
-        {
-            id: 7,
             name: 'Resources',
             href: '/resources',
             current: location.pathname === '/resources'
@@ -67,15 +61,15 @@ export const NavBar = () => {
     ]
 
     return (
-        <Navbar expand="xl" data-bs-theme="dark" className='mt-3'>
+        <Navbar expand="lg" data-bs-theme="dark" className='mt-3'>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto" >
                     {navlinks.map((link) => (
                         link.name === 'Apply Now' ?
                             <Button key={link.id} onClick={() => window.location.href = link.href} className={classNames(
-                                link.current ? 'light-accent remove-bg' : 'light-shades light-accent-hv',
-                                'py-1 px-2 fs-18 apply-btn border-none',
+                                link.current ? 'secondary-color remove-bg' : '',
+                                'py-1 px-2 fs-18 bg-gradient-dark border-none apply-btn',
                             )}
                             >
                                 {link.name}
@@ -86,7 +80,7 @@ export const NavBar = () => {
                                 key={link.id}
                                 to={link.href}
                                 className={classNames(
-                                    link.current ? 'light-accent' : 'light-shades light-accent-hv',
+                                    link.current ? 'secondary-color' : 'main-color hover-color',
                                     'p-1 fs-18 me-2',
                                 )}
                             >

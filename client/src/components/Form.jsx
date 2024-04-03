@@ -76,7 +76,7 @@ export const FormCP = () => {
 
     return (
         <>
-            <Form ref={form} name="newMessage" method="post" action="newMessage" onSubmit={handleFormSubmit} className='glassmorphism light-shades p-4'>
+            <Form ref={form} name="newMessage" method="post" action="newMessage" onSubmit={handleFormSubmit} className='glassmorphism radius-20 main-color p-4'>
                 <h2>Connect with Us</h2>
                 <p className='fs-17'>Fill out this form, and one of our Business Development Officers will promptly contact you to provide personalized answers and assistance!</p>
                 <Row>
@@ -126,19 +126,19 @@ export const FormCP = () => {
                     <Form.Control required as="textarea" value={message} name='message' onChange={handleInputChange} rows={3} />
                 </Form.Group>
                 <Row className='d-flex justify-content-end me-1'>
-                    <Button className='submit-btn radius-20' type="submit">
+                    <Button className='submit-btn radius-20 border-none' type="submit">
                         Submit
                     </Button>
                 </Row>
             </Form>
             <Modal show={showModal} onHide={handleCloseModal} centered>
-                <Modal.Header closeButton className="bg-gray-900 text-ternary-light">
+                <Modal.Header closeButton className="background border-none secondary-color">
                     <Modal.Title>{modalTitle}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body className="bg-gray-900 text-gray-300">{modalBody}</Modal.Body>
-                <Modal.Footer className="bg-gray-900">
-                    <Button variant="primary" onClick={handleCloseModal}>
-                        Close
+                <Modal.Body className="background border-none main-color">{modalBody}</Modal.Body>
+                <Modal.Footer className="background border-none">
+                    <Button className='background-light border-none' onClick={handleCloseModal}>
+                        Ok
                     </Button>
                 </Modal.Footer>
             </Modal>
