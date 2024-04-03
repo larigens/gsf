@@ -13,8 +13,9 @@ export const ModeSwitch = () => {
         document.documentElement.style.setProperty('--background-gradient', '-webkit-linear-gradient(45deg, var(--dark-accent), var(--main-brand), var(--dark-accent))'); // Update background color
         document.documentElement.style.setProperty('--box-shadow', '0 5px 25px 0 rgba(31, 38, 135, 0.438)'); // Update box shadow color
         document.documentElement.style.setProperty('--icon-color', 'brightness(1) invert(0)'); // Update icon color
+        document.documentElement.style.setProperty('--arrow-icon', 'brightness(0) invert(1)'); // Update icon color
+        document.documentElement.style.setProperty('--border-bottom', '1px solid #0a1128;'); // Update border-bottom
     }
-
     const handleInputChange = (e) => {
         const { id, checked } = e.target;
         if (id === 'themeSwitch' && checked) {
@@ -24,6 +25,8 @@ export const ModeSwitch = () => {
             document.documentElement.style.setProperty('--background-gradient', '-webkit-linear-gradient(45deg, var(--dark-accent), var(--main-brand), var(--dark-accent))'); // Update background color
             document.documentElement.style.setProperty('--box-shadow', '0 5px 25px 0 rgba(31, 38, 135, 0.438)'); // Update box shadow color
             document.documentElement.style.setProperty('--icon-color', 'brightness(1) invert(0)'); // Update icon color
+            document.documentElement.style.setProperty('--arrow-icon', 'brightness(0) invert(1)'); // Update icon color
+            document.documentElement.style.setProperty('--border-bottom', '1px solid #0a1128;'); // Update border-bottom
             setTheme('Light Mode');
         } else {
             document.documentElement.style.setProperty('--background-color', '#0a1128'); // Update background color
@@ -32,6 +35,8 @@ export const ModeSwitch = () => {
             document.documentElement.style.setProperty('--background-gradient', '-webkit-linear-gradient(45deg, var(--light-accent), var(--main-brand), var(--light-accent))'); // Update background color
             document.documentElement.style.setProperty('--box-shadow', '0 5px 25px 0 rgba(208, 210, 228, 0.925)'); // Update box shadow color
             document.documentElement.style.setProperty('--icon-color', 'brightness(0) invert(1)'); // Update icon color
+            document.documentElement.style.setProperty('--arrow-icon', 'brightness(1) invert(0)'); // Update icon color
+            document.documentElement.style.setProperty('--border-bottom', '1px solid #fefcfb;'); // Update border-bottom
             setTheme('Dark Mode');
         }
     };

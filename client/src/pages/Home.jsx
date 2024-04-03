@@ -29,20 +29,20 @@ export const Home = () => {
                             <Button className="my-2 slide-right-3 contact-btn px-2 py-1 radius-20 border-none" role="button" href="https://gsquaredfunding.com/index.php/contact-us">
                                 <span className="contact-btn-span px-3 fs-24">
                                     Contact us today
-                                    <Image className="img-fluid ms-2 px-1 white-icon btn-icon" src={rightArrow} alt="right arrow icon" width="30" loading="lazy" />
+                                    <Image className="img-fluid ms-2 px-1 arrow-icon icon-color btn-icon" src={rightArrow} alt="right arrow icon" width="30" loading="lazy" />
                                 </span>
                             </Button>
                         </Row>
                     </Col>
                     <Col md={4} className="slide-bottom" >
                         <Container className="p-2 glassmorphism radius-20 w-80">
-                            <Row className="d-flex justify-content-between align-items-center mx-1" style={{ borderBottom: '1px solid #f5f5f5' }}>
+                            <Row className="d-flex justify-content-between align-items-center mx-1 border-bottom">
                                 <Col md={5} className="d-flex align-items-center">
                                     <Image className="img-fluid icon-color" src={wallet} alt="wallet" width="40px" height="40px" />
                                     <p className="ms-2 mt-4 fs-19">WALLET</p>
                                 </Col>
                                 <Col md={3} className="justify-content-end">
-                                    <p className="mt-4 fs-15" style={{ textAlign: 'right' }}>2 sec.</p>
+                                    <p className="mt-4 fs-15 text-end">2 sec.</p>
                                 </Col>
                             </Row>
                             <Row className="mt-3 px-1">
@@ -53,7 +53,7 @@ export const Home = () => {
                             </Row>
                         </Container>
                         <Container className="my-2 p-1 glassmorphism radius-20 w-80 text-center">
-                            <Row className="p-2 mx-1" style={{ borderBottom: '1px solid #f5f5f5' }}>
+                            <Row className="p-2 mx-1 border-bottom">
                                 <p className="m-1 mb-2 fs-20">Open</p>
                             </Row>
                             <Row className="p-2 mx-1">
