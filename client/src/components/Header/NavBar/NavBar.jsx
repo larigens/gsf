@@ -71,7 +71,7 @@ export const NavBar = () => {
     ]
 
     return (
-        <Navbar expand="lg" data-bs-theme={theme === 'Light Mode' ? "light" : "dark"} className='mt-3'>
+        <Navbar expand="lg" data-bs-theme={theme === 'Light Mode' ? "light" : "dark"} className='mt-3 background'>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto d-flex align-items-center" >
@@ -90,12 +90,9 @@ export const NavBar = () => {
                             ) : link.isDropdown ? (
                                 link.dropDownItems && Array.isArray(link.dropDownItems) ? (
                                     <NavDropdown
+                                        bsPrefix='custom-dropdown'
                                         title={link.name}
-                                        className={classNames(
-                                            link.current ? 'secondary-color' : 'main-color hover-color',
-                                            'p-1 fs-17 me-2',
-                                        )}
-                                    >
+                                        className='p-1 fs-17 me-2' >
                                         {link.dropDownItems.map(item => (
                                             <NavDropdown.Item key={item.id} href={item.href}>{item.name}</NavDropdown.Item>
                                         ))}

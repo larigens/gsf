@@ -64,6 +64,14 @@ footer {
   height: 5em !important;
 }
 
+section {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+
 a {
   text-decoration: none !important;
 }
@@ -133,6 +141,21 @@ textarea {
 
 #themeSwitch:checked {
   background-color: var(--light-accent) !important;
+}
+
+/* Dropdown */
+
+.custom-dropdown {
+  color: var(--text-main-color);
+}
+
+.custom-dropdown:hover,
+.custom-dropdown:focus {
+  color: var(--light-accent);
+}
+
+.custom-dropdown-item {
+  color: var(--text-main-color);
 }
 
 /* Buttons */
@@ -267,33 +290,6 @@ h1 {
 }
 
 /* Animation */
-.slide-right {
-  -webkit-animation: slide-right 0.5s ease-in both;
-  animation: slide-right 0.5s ease-in both;
-}
-
-.slide-right-2 {
-  -webkit-animation: slide-right 0.5s ease-in 0.1s both;
-  animation: slide-right 0.5s ease-in 0.1s both;
-}
-
-.slide-right-3 {
-  -webkit-animation: slide-right 0.5s ease-in 0.2s both;
-  animation: slide-right 0.5s ease-in 0.2s both;
-}
-
-@-webkit-keyframes slide-right {
-  0% {
-    -webkit-transform: translateX(-150px);
-    transform: translateX(-150px);
-  }
-
-  100% {
-    -webkit-transform: translateX(0px);
-    transform: translateX(0px);
-  }
-}
-
 @keyframes slide-right {
   0% {
     -webkit-transform: translateX(-150px);
@@ -306,53 +302,9 @@ h1 {
   }
 }
 
-.slide-bottom {
-  -webkit-animation: slide-bottom 0.5s ease-in both;
-  animation: slide-bottom 0.5s ease-in both;
-}
-
-@-webkit-keyframes slide-bottom {
-  0% {
-    -webkit-transform: translateY(-150px);
-    transform: translateY(-150px);
-  }
-
-  100% {
-    -webkit-transform: translateY(0px);
-    transform: translateY(0px);
-  }
-}
-
-@keyframes slide-bottom {
-  0% {
-    -webkit-transform: translateY(-150px);
-    transform: translateY(-150px);
-  }
-
-  100% {
-    -webkit-transform: translateY(0px);
-    transform: translateY(0px);
-  }
-}
-
 .tracking-in-expand {
   -webkit-animation: tracking-in-expand 0.5s ease-out both;
   animation: tracking-in-expand 0.5s ease-out both;
-}
-
-@-webkit-keyframes tracking-in-expand {
-  0% {
-    letter-spacing: -0.5em;
-    opacity: 0;
-  }
-
-  40% {
-    opacity: 0.6;
-  }
-
-  100% {
-    opacity: 1;
-  }
 }
 
 @keyframes tracking-in-expand {
@@ -381,7 +333,6 @@ h1 {
 
   50% {
     transform: translateX(50px);
-    /* Adjust the distance for your desired effect */
   }
 
   100% {
