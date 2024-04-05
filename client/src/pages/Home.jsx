@@ -10,13 +10,21 @@ import forward from '../assets/icons/forward.png';
 import logo from '../assets/logo.png';
 import { FormCP } from '../components/Form';
 import { HelmetCP } from '../components/Helmet';
+import { useTheme } from '../components/ThemeContext';
 
 export const Home = () => {
+    const { theme } = useTheme();
+
+    function classNames(...classes) {
+        return classes.filter(Boolean).join(' ')
+    }
+
+
     return (
         <>
             <HelmetCP pageTitle={'G Squared Funding, LLC | Factoring Services for Trucking Companies'} pageDescription={'Accelerate Your Cash Flow with Our Expert Factoring Services for Transportation and Trucking Companies. Unlock Working Capital and Fuel Your Business Growth Today!'} />
             {/* Hero */}
-            <Container fluid className="d-flex align-items-center my-5" style={{ minHeight: '77vh' }}>
+            <Container fluid className='d-flex align-items-center my-5' style={{ minHeight: '77vh' }}>
                 <Row>
                     <Col md={7} className='mx-auto'>
                         <Row className="mb-1">
@@ -64,7 +72,12 @@ export const Home = () => {
                 </Row>
             </Container>
             {/* Call to Action */}
-            <Container fluid className="my-5 ms-auto" style={{ minHeight: '77vh' }}>
+            <Container fluid
+                className={classNames(
+                    theme === 'Light Mode' ? 'secondary-bg' : '',
+                    'my-5 ms-auto pt-5',
+                )}
+                style={{ minHeight: '77vh' }}>
                 <h2 className="font-weight-bold my-3 secondary-color">Unlock Your Transportation Company's Financial Potential Today!</h2>
                 <h3 className="mb-4 fw-light">Explore Our Expert Factoring Services and Drive Your Business Forward.</h3>
                 <Row className="my-5">

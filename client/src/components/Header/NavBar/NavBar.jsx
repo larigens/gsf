@@ -1,4 +1,5 @@
-import { Button, Navbar, Nav } from 'react-bootstrap';
+import React from 'react';
+import { Button, Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom';
 import { useTheme } from '../../ThemeContext';
 
@@ -16,49 +17,56 @@ export const NavBar = () => {
             id: 1,
             name: 'What We Do',
             href: '/',
-            current: location.pathname === '/'
+            current: location.pathname === '/',
+            isDropdown: true,
+            dropDownItems: [
+                {
+                    id: '12',
+                    name: 'Who We Are',
+                    href: '/about-us'
+                },
+                {
+                    id: '13',
+                    name: 'Join Our Team',
+                    href: '/careers'
+                },
+            ]
+
         },
         {
             id: 2,
-            name: 'Who We Are',
-            href: '/about-us',
-            current: location.pathname === '/about-us'
+            name: 'Sectors We Serve',
+            href: '/services',
+            current: location.pathname === '/services',
+            isDropdown: false,
         },
         {
             id: 3,
-            name: 'Join Our Team',
-            href: '/careers',
-            current: location.pathname === '/careers'
+            name: 'Contact Us',
+            href: '/contact-us',
+            current: location.pathname === '/contact-us',
+            isDropdown: false,
         },
         {
             id: 4,
-            name: 'Sectors We Serve',
-            href: '/services',
-            current: location.pathname === '/services'
+            name: 'Resources',
+            href: '/resources',
+            current: location.pathname === '/resources',
+            isDropdown: false,
         },
         {
             id: 5,
-            name: 'Contact Us',
-            href: '/contact-us',
-            current: location.pathname === '/contact-us'
+            name: 'Client Login',
+            href: '/login',
+            current: location.pathname === '/login',
+            isDropdown: false,
         },
         {
             id: 6,
-            name: 'Resources',
-            href: '/resources',
-            current: location.pathname === '/resources'
-        },
-        {
-            id: 8,
-            name: 'Client Login',
-            href: '/login',
-            current: location.pathname === '/login'
-        },
-        {
-            id: 9,
             name: 'Apply Now',
             href: '/apply-now',
-            current: location.pathname === '/apply-now'
+            current: location.pathname === '/apply-now',
+            isDropdown: false,
         }
     ]
 
@@ -66,31 +74,58 @@ export const NavBar = () => {
         <Navbar expand="lg" data-bs-theme={theme === 'Light Mode' ? "light" : "dark"} className='mt-3'>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto" >
-                    {navlinks.map((link) => (
-                        link.name === 'Apply Now' ?
-                            <Button key={link.id} onClick={() => window.location.href = link.href} className={classNames(
-                                link.current ? 'secondary-color remove-bg' : '',
-                                'py-1 px-2 fs-18 bg-gradient-dark border-none apply-btn',
+                <Nav className="me-auto d-flex align-items-center" >
+                    {navlinks.map(link => (
+                        <React.Fragment key={link.id}>
+                            {link.name === 'Apply Now' ? (
+                                <Button
+                                    onClick={() => window.location.href = link.href}
+                                    className={classNames(
+                                        link.current ? 'secondary-color remove-bg' : '',
+                                        'py-1 px-2 fs-18 bg-gradient-dark border-none apply-btn',
+                                    )}
+                                >
+                                    {link.name}
+                                </Button>
+                            ) : link.isDropdown ? (
+                                link.dropDownItems && Array.isArray(link.dropDownItems) ? (
+                                    <NavDropdown
+                                        title={link.name}
+                                        className={classNames(
+                                            link.current ? 'secondary-color' : 'main-color hover-color',
+                                            'p-1 fs-17 me-2',
+                                        )}
+                                    >
+                                        {link.dropDownItems.map(item => (
+                                            <NavDropdown.Item key={item.id} href={item.href}>{item.name}</NavDropdown.Item>
+                                        ))}
+                                    </NavDropdown>
+                                ) : (
+                                    <Nav.Link
+                                        to={link.href}
+                                        className={classNames(
+                                            link.current ? 'secondary-color' : 'main-color hover-color',
+                                            'p-1 fs-18 me-2',
+                                        )}
+                                    >
+                                        {link.name}
+                                    </Nav.Link>
+                                )
+                            ) : (
+                                <Nav.Link
+                                    to={link.href}
+                                    className={classNames(
+                                        link.current ? 'secondary-color' : 'main-color hover-color',
+                                        'p-1 fs-18 me-2',
+                                    )}
+                                >
+                                    {link.name}
+                                </Nav.Link>
                             )}
-                            >
-                                {link.name}
-
-                            </Button>
-                            :
-                            <Nav.Link
-                                key={link.id}
-                                to={link.href}
-                                className={classNames(
-                                    link.current ? 'secondary-color' : 'main-color hover-color',
-                                    'p-1 fs-18 me-2',
-                                )}
-                            >
-                                {link.name}
-                            </Nav.Link>
+                        </React.Fragment>
                     ))}
                 </Nav>
             </Navbar.Collapse>
-        </Navbar >
+        </Navbar>
     );
 }
