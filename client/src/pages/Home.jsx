@@ -183,8 +183,13 @@ export const Home = () => {
                                 <p className="text-justify my-4 mx-3 fs-18 ">has earned us the trust of countless clients in the transportation sector. Whether you're a trucking company, freight broker, or staffing agency, we have the financial solutions to support your growth and success.</p>
                             </Container>
                             <Container className="d-flex align-items-center my-4 p-2">
-                                <p className="mx-auto  fs-28">Let's drive your business forward together!</p>
-                                <Image className="img-fluid icon-color forward mb-3" src={forward} alt="truck icon" width="60" height="60" loading="lazy" />
+                                <p className="me-2  fs-28">Let's drive your business forward together!</p>
+                                <motion.div
+                                    className="forward"
+                                    animate={{ x: [0, 100], transition: { duration: 2, ease: "linear", loop: Infinity } }}
+                                >
+                                    <Image className="img-fluid icon-color mb-3" src={forward} alt="truck icon" width="60" height="60" loading="lazy" />
+                                </motion.div>
                             </Container>
                         </Col>
                         <Col xs={12} sm={6} md={4} className="my-auto mx-auto">
