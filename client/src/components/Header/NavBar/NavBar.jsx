@@ -1,13 +1,15 @@
 import { Button, Navbar, Nav } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom';
-
+import { useTheme } from '../../ThemeContext';
 
 export const NavBar = () => {
     const location = useLocation();
+    const { theme } = useTheme();
 
     function classNames(...classes) {
         return classes.filter(Boolean).join(' ')
     }
+
 
     const navlinks = [
         {
@@ -61,7 +63,7 @@ export const NavBar = () => {
     ]
 
     return (
-        <Navbar expand="lg" data-bs-theme="dark" className='mt-3'>
+        <Navbar expand="lg" data-bs-theme={theme === 'Light Mode' ? "light" : "dark"} className='mt-3'>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto" >

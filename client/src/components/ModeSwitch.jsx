@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Form } from 'react-bootstrap';
+import { useTheme } from './ThemeContext'; // Import the useTheme hook
 
 export const ModeSwitch = () => {
-    const [theme, setTheme] = useState('Light Mode');
+    const { theme, setTheme } = useTheme(); // Use the useTheme hook to access the theme state and setter
 
     // To ensure that the properties of the light mode are displayed once the page loads.
     if (theme === 'Light Mode') {

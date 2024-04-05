@@ -7,20 +7,23 @@ import { Header } from './components/Header/Header';
 import { NavBar } from './components/Header/NavBar/NavBar';
 import { Footer } from './components/Footer';
 import { ModeSwitch } from './components/ModeSwitch';
+import { ThemeProvider } from './components/ThemeContext';
 
 export const App = () => {
   return (
     <Router>
-      <Header>
-        <NavBar />
-      </Header>
-      <ModeSwitch />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </main>
-      <Footer />
+      <ThemeProvider>
+        <Header>
+          <NavBar />
+        </Header>
+        <ModeSwitch />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </main>
+        <Footer />
+      </ThemeProvider>
     </Router>
   );
 }
