@@ -50,7 +50,7 @@ export const Home = () => {
             <HelmetCP pageTitle={'G Squared Funding, LLC | Factoring Services for Trucking Companies'} pageDescription={'Accelerate Your Cash Flow with Our Expert Factoring Services for Transportation and Trucking Companies. Unlock Working Capital and Fuel Your Business Growth Today!'} />
             {/* Hero */}
             <Section>
-                <Container fluid className='d-flex align-items-center my-5' style={{ minHeight: '77vh' }}>
+                <Container fluid className='d-flex align-items-center mb-5' style={{ minHeight: '77vh' }}>
                     <Row>
                         <Col md={7} className='mx-auto mb-2'>
                             <motion.div initial={{ x: -100 }} animate={{ x: 0 }} transition={{ ease: "easeOut", duration: 1 }}>

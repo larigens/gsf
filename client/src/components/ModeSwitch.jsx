@@ -1,9 +1,12 @@
 import React from 'react';
-import { Form } from 'react-bootstrap';
+// import { Form } from 'react-bootstrap';
 import { useTheme } from './ThemeContext'; // Import the useTheme hook
 
 export const ModeSwitch = () => {
     const { theme, setTheme } = useTheme(); // Use the useTheme hook to access the theme state and setter
+    function classNames(...classes) {
+        return classes.filter(Boolean).join(' ')
+    }
 
     // Function to handle theme change
     const handleInputChange = (e) => {
@@ -46,10 +49,24 @@ export const ModeSwitch = () => {
 
     return (
         <>
-            <Form.Group className="d-flex justify-content-end me-3">
-                <Form.Label htmlFor='themeSwitch' className='mx-2'>{theme}</Form.Label>
-                <Form.Check id='themeSwitch' checked={theme === 'Light Mode'} onChange={handleInputChange} type="switch" className='mb-2' />
-            </Form.Group>
+            <div className='d-flex justify-content-end me-4'>
+                <div className="toggle-switch">
+                    <label className={classNames(
+                        theme === 'Light Mode' ? 'border-dark' : 'border-light',
+                        'switch-label',
+                    )} >
+                        <input
+                            id='themeSwitch'
+                            checked={theme === 'Light Mode'}
+                            onChange={handleInputChange}
+                            type="checkbox"
+                            className='checkbox'
+                        />
+                        <span className="slider"></span>
+                    </label >
+                </div>
+            </div>
+            <p className='d-flex justify-content-end fs-14 me-4 pe-1 mt-3'>{theme}</p>
         </>
     )
 }
