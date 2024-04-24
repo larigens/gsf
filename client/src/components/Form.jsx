@@ -1,6 +1,8 @@
 import { Form, Button, Row, Col, Modal } from 'react-bootstrap';
 import React, { useState, useRef } from 'react';
 // import emailjs from '@emailjs/browser'; 
+import { MdArrowDropDown } from "react-icons/md";
+import { GetAllBrokers } from '../utils/helper.jsx';
 
 export const FormCP = () => {
     const [firstName, setFirstName] = useState('');
@@ -74,6 +76,8 @@ export const FormCP = () => {
         }
     };
 
+    const brokers = GetAllBrokers();
+
     return (
         <>
             <Form ref={form} name="newMessage" method="post" action="newMessage" onSubmit={handleFormSubmit} className='glassmorphism radius-20 main-color p-4'>
@@ -117,7 +121,17 @@ export const FormCP = () => {
                     <Col>
                         <Form.Group className="mb-3" controlId="referral">
                             <Form.Label>Who referred you to us?</Form.Label>
-                            <Form.Control value={referral} name='referral' onChange={handleInputChange} type="text" />
+                            <div style={{ position: "relative" }}>
+                                <MdArrowDropDown style={{ position: "absolute", right: "8%", top: "50%", transform: "translateY(-50%)" }} />
+                                <Form.Control as="select" value={referral} name='referral' onChange={handleInputChange}>
+                                    <option value="">Select an option</option>
+                                    {brokers.map(broker => (
+                                        <option key={broker._id} value={broker.name}>
+                                            {broker.name}
+                                        </option>
+                                    ))}
+                                </Form.Control>
+                            </div>
                         </Form.Group>
                     </Col>
                 </Row>

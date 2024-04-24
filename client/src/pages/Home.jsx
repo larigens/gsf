@@ -22,10 +22,6 @@ export const Home = () => {
         return classes.filter(Boolean).join(' ')
     }
 
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true });
-    console.log(isInView);
-
     function Section({ children }) {
         const ref = useRef(null);
         const isInView = useInView(ref, { once: true });
