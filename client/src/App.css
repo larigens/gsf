@@ -26,6 +26,7 @@
   --icon-color: brightness(1) invert(0);
   --arrow-icon: brightness(0) invert(1);
   --border-bottom: 1px solid var(var(--dark-shades));
+  --hover-link-color: var(var(--main-brand));
 }
 
 .dark-theme {
@@ -37,6 +38,7 @@
   --icon-color: brightness(0) invert(1);
   --arrow-icon: brightness(1) invert(0);
   --border-bottom: 1px solid var(var(--light-shades));
+  --hover-link-color: #c1e1f8;
 }
 
 body {
@@ -87,8 +89,13 @@ textarea {
   color: var(--text-main-color) !important;
 }
 
+.hover-link-color:hover {
+  color: var(--hover-link-color) !important;
+}
+
 .secondary-color,
-.hover-color:hover {
+.hover-color:hover,
+.link-color {
   color: var(--text-secondary-color) !important;
 }
 
@@ -255,6 +262,10 @@ textarea {
 /* Font Sizes */
 h1 {
   font-size: 50px !important;
+}
+
+.fs-36 {
+  font-size: 36px;
 }
 
 .fs-30 {

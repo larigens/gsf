@@ -15,6 +15,7 @@ import { NavBar } from './components/Header/NavBar/NavBar';
 import { Footer } from './components/Footer';
 import { ModeSwitch } from './components/ModeSwitch';
 import { ThemeProvider } from './components/ThemeContext';
+import { ApplyNow } from './pages/ApplyNow';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -49,6 +50,7 @@ export const App = () => {
           <main>
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/apply-now" element={<ApplyNow />} />
             </Routes>
           </main>
           <Footer />

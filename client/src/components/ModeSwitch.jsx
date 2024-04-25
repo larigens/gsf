@@ -30,6 +30,7 @@ export const ModeSwitch = () => {
             document.documentElement.style.setProperty('--icon-color', 'brightness(1) invert(0)'); // Update icon color
             document.documentElement.style.setProperty('--arrow-icon', 'brightness(0) invert(1)'); // Update icon color
             document.documentElement.style.setProperty('--border-bottom', '1px solid #0a1128;'); // Update border-bottom
+            document.documentElement.style.setProperty('--hover-link-color', '#034078;'); // Update link hover color
         } else {
             document.documentElement.style.setProperty('--background-color', '#0a1128'); // Update background color
             document.documentElement.style.setProperty('--text-main-color', '#fefcfb'); // Update text color
@@ -39,6 +40,7 @@ export const ModeSwitch = () => {
             document.documentElement.style.setProperty('--icon-color', 'brightness(0) invert(1)'); // Update icon color
             document.documentElement.style.setProperty('--arrow-icon', 'brightness(1) invert(0)'); // Update icon color
             document.documentElement.style.setProperty('--border-bottom', '1px solid #fefcfb;'); // Update border-bottom
+            document.documentElement.style.setProperty('--hover-link-color', '#c1e1f8;'); // Update link hover color
         }
     };
 
