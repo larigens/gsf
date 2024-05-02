@@ -125,7 +125,7 @@ textarea {
 }
 
 .secondary-bg {
-  background: #f7f7f7 !important;
+  background: #eaeaeb !important;
 }
 
 .background-gradient {
@@ -264,6 +264,10 @@ h1 {
   font-size: 50px !important;
 }
 
+.fs-40 {
+  font-size: 40px;
+}
+
 .fs-36 {
   font-size: 36px;
 }
@@ -323,12 +327,23 @@ h1 {
   border-bottom: var(--border-bottom) !important;
 }
 
+.border-total {
+  border: 2px solid #034078;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 .radius-10 {
   border-radius: 10px;
 }
 
 .radius-20 {
   border-radius: 20px;
+}
+
+/* Line Height */
+.line-30 {
+  line-height: 30px;
 }
 
 /* Size */
@@ -345,6 +360,11 @@ h1 {
 }
 
 /* Image & Icon */
+.icon-20 {
+  width: 20px;
+  height: 20px;
+}
+
 .icon-80 {
   width: 110px;
   height: 110px;

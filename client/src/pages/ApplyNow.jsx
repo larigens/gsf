@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom';
 
 export const ApplyNow = () => {
     return (
-        <Container fluid className="mb-4 p-5">
-            <p className="fw-bold text-justify my-3 fs-36">Get Approved</p>
-            <p className="text-justify mt-3 mb-4 fs-24 pe-4">You can
+        <Container fluid className="mb-4 p-4">
+            <p className="fw-bold text-justify mb-3 fs-40">Get Approved</p>
+            <p className="text-justify mt-3 mb-5 fs-24 pe-4">You can
                 <Link to='/contact-us' className='fs-24 link-color hover-link-color me-1 pe-1'> contact us
                 </Link>
                 or take the initiative and get ahead! Simply fill out and submit your application to us, and we will respond to you as soon as possible!</p>

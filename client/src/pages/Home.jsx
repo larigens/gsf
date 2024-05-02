@@ -106,7 +106,7 @@ export const Home = () => {
                         theme === 'Light Mode' ? 'secondary-bg' : '',
                         'my-5 ms-auto pt-5',
                     )}
-                    style={{ minHeight: '77vh' }}>
+                    style={{ minHeight: '77vh', width: '106%' }}>
                     <h2 className="font-weight-bold my-3 secondary-color">Unlock Your Transportation Company's Financial Potential Today!</h2>
                     <h3 className="mb-4 fw-light">Explore Our Expert Factoring Services and Drive Your Business Forward.</h3>
                     <Row className="my-5">
@@ -144,7 +144,7 @@ export const Home = () => {
 
             {/* Call to Connect */}
             <Section>
-                <Container fluid className="my-5 mx-auto">
+                <Container fluid className="my-5 mx-auto pt-5">
                     <h2 className="font-weight-bold py-2 mb-2 secondary-color">How can we tailor our factoring services to meet your unique needs?</h2>
                     <Row className="my-3 mx-auto">
                         <Col xs={12} sm={6} md={6} className="mt-2">
