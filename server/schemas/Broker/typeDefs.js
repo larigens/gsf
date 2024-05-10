@@ -14,10 +14,11 @@ const typeDefs = gql`
     referralID: String!
     email: String!
     phoneNumber: String!
+    referral: [Referral]
   }
 
   type Query {
-    broker(referralID: String!): Broker
+    broker(brokerId: ID!): Broker
     brokers: [Broker]
   }
 `;

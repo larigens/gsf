@@ -33,7 +33,13 @@ const brokerSchema = new Schema({
             },
             message: props => `${props.value} is not a valid phone number!`
         }
-    }
+    },
+    referral: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Referral'
+        }
+    ],
 },
     {
         timestamps: true,

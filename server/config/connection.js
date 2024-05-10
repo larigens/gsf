@@ -1,9 +1,8 @@
-const mongoose = require('mongoose'); // To connect to the MongoDB.
-require("dotenv").config(); // To use environment variables.
+const mongoose = require('mongoose');
+require("dotenv").config(); // Ensure dotenv is correctly configured to load environment variables
 
 mongoose.set('strictQuery', false);
 
-// Wrap Mongoose around local connection to MongoDB.
 mongoose.connect(process.env.MONGODB_URI).then(
   () => {
     console.log("Connected");
@@ -13,5 +12,4 @@ mongoose.connect(process.env.MONGODB_URI).then(
   }
 );
 
-// Export connection 
 module.exports = mongoose.connection;

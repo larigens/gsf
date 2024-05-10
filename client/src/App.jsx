@@ -17,6 +17,7 @@ import { ModeSwitch } from './components/ModeSwitch';
 import { ThemeProvider } from './components/ThemeContext';
 import { ApplyNow } from './pages/ApplyNow';
 import {AboutUs} from './pages/AboutUs';
+import {Referral} from './pages/Referral';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -53,6 +54,7 @@ export const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/apply-now" element={<ApplyNow />} />
+              <Route path="/referrals/:id" element={<Referral />} />
             </Routes>
           </main>
           <Footer />

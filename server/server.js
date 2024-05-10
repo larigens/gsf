@@ -8,6 +8,7 @@ const path = require('path');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 const express = require('express');
+require("dotenv").config(); // Ensure dotenv is correctly configured to load environment variables
 
 const PORT = process.env.PORT || 3001;
 const app = express();
