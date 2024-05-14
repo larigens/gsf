@@ -1,5 +1,5 @@
 import { Container, Row, Col, Image } from 'react-bootstrap';
-import entry from '../assets/entry.png';
+import entry from '../assets/about.png';
 import clientCentric from '../assets/icons/client_centric.png';
 import reliability from '../assets/icons/reliability.png';
 import innovation from '../assets/icons/innovation.png';
@@ -24,7 +24,7 @@ export const AboutUs = () => {
                 pageKeywords={'Transportation company history; Trucking industry expertise; Our mission in transportation; About us trucking; Our team in logistics; Company values in transportation; Commitment to excellence trucking; Trucking industry innovation; Our story in transportation; Serving clients in logistics; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'} />
             <Container fluid className="mb-4 p-4">
                 <p className="fw-bold text-justify mb-3 fs-40">About Us</p>
-                <Row className="mt-4">
+                <Row className="mt-4 mb-2">
                     <Col md={7} className="me-auto">
                         <p className="fw-bold text-justify mb-2 fs-28">Our Company's History</p>
                         <p className="text-justify mb-2 fs-24 secondary-color">Founded in 2010</p>
@@ -33,8 +33,8 @@ export const AboutUs = () => {
                         <p className="fw-bold text-justify mb-2 fs-28">Our Mission</p>
                         <p className="text-justify mb-2 fs-20 line-30">We are dedicated to fostering growth and prosperity within the transportation industry. We take pride in offering immediate, cost-effective business factoring services that simplify your financial journey. Your satisfaction and success are our top priorities, and our ultimate goal is to meet your needs while providing an effortless and satisfying experience.</p>
                     </Col>
-                    <Col md={3}>
-                        <Image className="img-fluid radius-20 mt-1" src={entry} alt="gsf office" loading="lazy" />
+                    <Col md={4}>
+                        <Image className="img-fluid radius-20 my-1" src={entry} alt="gsf office" loading="lazy" />
                     </Col>
                 </Row>
                 {/* Values section */}

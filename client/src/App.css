@@ -272,6 +272,10 @@ h1 {
   font-size: 36px;
 }
 
+.fs-32 {
+  font-size: 32px;
+}
+
 .fs-30 {
   font-size: 30px;
 }
@@ -304,6 +308,10 @@ h1 {
   font-size: 18px;
 }
 
+.fs-17 {
+  font-size: 17px;
+}
+
 .fs-15 {
   font-size: 15px;
 }
@@ -331,6 +339,10 @@ h1 {
   border-bottom: var(--border-bottom) !important;
 }
 
+.border-top {
+  border-top: var(--border-bottom) !important;
+}
+
 .border-total {
   border: 2px solid #034078;
   backdrop-filter: blur(10px);
@@ -350,9 +362,17 @@ h1 {
   line-height: 30px;
 }
 
+.line-25 {
+  line-height: 25px;
+}
+
 /* Size */
 .w-80 {
   width: 80% !important;
+}
+
+.w-60 {
+  width: 60% !important;
 }
 
 .w-20 {
@@ -425,5 +445,11 @@ h1 {
 
   100% {
     opacity: 1;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .w-60 {
+    width: 100% !important;
   }
 }

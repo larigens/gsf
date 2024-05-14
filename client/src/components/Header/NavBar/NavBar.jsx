@@ -3,6 +3,7 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom';
 import { useTheme } from '../../ThemeContext';
 import { motion } from "framer-motion";
+import { Link } from 'react-router-dom';
 
 export const NavBar = () => {
     const location = useLocation();
@@ -100,7 +101,7 @@ export const NavBar = () => {
                                         ))}
                                     </NavDropdown>
                                 ) : (
-                                    <Nav.Link
+                                    <Link
                                         to={link.href}
                                         className={classNames(
                                             link.current ? 'secondary-color' : 'main-color hover-color',
@@ -108,10 +109,10 @@ export const NavBar = () => {
                                         )}
                                     >
                                         {link.name}
-                                    </Nav.Link>
+                                    </Link>
                                 )
                             ) : (
-                                <Nav.Link
+                                <Link
                                     to={link.href}
                                     className={classNames(
                                         link.current ? 'secondary-color' : 'main-color hover-color',
@@ -119,7 +120,7 @@ export const NavBar = () => {
                                     )}
                                 >
                                     {link.name}
-                                </Nav.Link>
+                                </Link>
                             )}
                         </React.Fragment>
                     ))}
