@@ -2,9 +2,9 @@ import { Form, Button, Row, Col, Modal } from 'react-bootstrap';
 import React, { useState, useRef } from 'react';
 // import emailjs from '@emailjs/browser'; 
 import { MdArrowDropDown } from "react-icons/md";
-import { GetAllBrokers } from '../utils/helper.jsx';
+import { GetAllBrokers, GetAllReferrals } from '../utils/helper.jsx';
 
-export const FormCP = () => {
+export const FormCP = ({ referralLink, referralName }) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -77,6 +77,7 @@ export const FormCP = () => {
     };
 
     const brokers = GetAllBrokers();
+    const referrals = GetAllReferrals();
 
     return (
         <>
@@ -123,14 +124,30 @@ export const FormCP = () => {
                             <Form.Label>Who referred you to us?</Form.Label>
                             <div style={{ position: "relative" }}>
                                 <MdArrowDropDown style={{ position: "absolute", right: "8%", top: "50%", transform: "translateY(-50%)" }} />
-                                <Form.Control as="select" value={referral} name='referral' onChange={handleInputChange}>
-                                    <option value="">Select an option</option>
-                                    {brokers.map(broker => (
-                                        <option key={broker._id} value={broker.name}>
-                                            {broker.name}
+                                {referralLink ?
+                                    <Form.Control as="select" disabled value={referral} name='referral' onChange={handleInputChange}>
+                                        <option value={referralName}>
+                                            {referralName}
                                         </option>
-                                    ))}
-                                </Form.Control>
+                                    </Form.Control>
+                                    :
+                                    <Form.Control as="select" value={referral} name='referral' onChange={handleInputChange}>
+                                        <option value="">Select an option</option>
+                                        {brokers.map(broker => (
+                                            <option key={broker._id} value={broker.name}>
+                                                {broker.name}
+                                            </option>
+                                        ))}
+                                        {referrals.map(referral => (
+                                            <option key={referral._id} value={referral.company}>
+                                                {referral.company}
+                                            </option>
+                                        ))}
+                                        <option value='Other'>
+                                            Other
+                                        </option>
+                                    </Form.Control>
+                                }
                             </div>
                         </Form.Group>
                     </Col>

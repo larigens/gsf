@@ -5,12 +5,13 @@ export const GET_BROKER = gql`
     broker(brokerId: $brokerId) {
       _id
       name
-      referralID
+      brokerID
       email
       phoneNumber
       referrals {
         _id
         company
+        linkID
         logo
         application
       }
@@ -23,7 +24,7 @@ export const GET_ALL_BROKERS = gql`
     brokers {
       _id
       name
-      referralID
+      brokerID
       email
       phoneNumber
     }
@@ -35,13 +36,14 @@ export const GET_ALL_REFERRALS_BROKERS = gql`
     referrals {
       _id
       company
+      linkID
       logo
       application
     }
     brokers {
       _id
       name
-      referralID
+      brokerID
       email
       phoneNumber
     }
@@ -53,6 +55,19 @@ export const GET_REFERRAL = gql`
     referral(referralId: $referralId) {
       _id
       company
+      linkID
+      logo
+      application
+    }
+  }
+`;
+
+export const GET_REFERRAL_BY_LINKID = gql`
+  query GetReferralbyLinkID($link: String!) {
+    referralbyLinkID(link: $link) {
+      _id
+      company
+      linkID
       logo
       application
     }
@@ -60,11 +75,13 @@ export const GET_REFERRAL = gql`
 `;
 
 
+
 export const GET_ALL_REFERRALS = gql`
   query GetAllReferrals {
     referrals {
       _id
       company
+      linkID
       logo
       application
     }

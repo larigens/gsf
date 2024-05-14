@@ -8,7 +8,7 @@ const brokerSchema = new Schema({
         unique: true,
         trim: true
     },
-    referralID: {
+    brokerID: {
         type: String,
         required: true,
         unique: true,

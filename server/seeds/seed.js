@@ -26,11 +26,12 @@ async function main() {
         const brokersData = [
             {
                 name: 'Benjamin Davidson',
-                referralID: 'bdavidson',
+                brokerID: 'bdavidson',
                 email: 'bdavidson@gsquaredfunding.com',
                 phoneNumber: '(678)987-4386',
                 referral: [{
                     company: 'All For You Productions, Inc.',
+                    linkID: 'allforyouprod',
                     logo: 'allforyouprod.jpg',
                     application: 'AllForYouProductions',
                     broker: [
@@ -41,6 +42,7 @@ async function main() {
                 },
                 {
                     company: 'Bond It Logistics',
+                    linkID: 'bonditlog',
                     logo: 'bonditlogistics.jpg',
                     application: 'BondItLogistics',
                     broker: [
@@ -53,60 +55,61 @@ async function main() {
             },
             {
                 name: 'David Brownlee',
-                referralID: 'dbrownlee',
+                brokerID: 'dbrownlee',
                 email: 'dbrownlee@gsquaredfunding.com',
                 phoneNumber: '(678)916-5954',
                 referral: []
             },
             {
                 name: 'Elizabeth Murphy',
-                referralID: 'emurphy',
+                brokerID: 'emurphy',
                 email: 'emurphy@gsquaredfunding.com',
                 phoneNumber: '(678)987-4397',
                 referral: []
             },
             {
                 name: 'Haley Bramble',
-                referralID: 'hbramble',
+                brokerID: 'hbramble',
                 email: 'hbramble@gsquaredfunding.com',
                 phoneNumber: '(678)916-6941',
                 referral: []
             },
             {
                 name: 'Jason Beldick',
-                referralID: 'jbeldick',
+                brokerID: 'jbeldick',
                 email: 'jbeldick@gsquaredfunding.com',
                 phoneNumber: '(678)352-2427',
                 referral: []
             },
             {
                 name: 'Luis Salazar',
-                referralID: 'lsalazar',
+                brokerID: 'lsalazar',
                 email: 'lsalazar@gsquaredfunding.com',
                 phoneNumber: '(678)916-7522',
                 referral: []
             },
             {
                 name: 'Nathan Raczkowski',
-                referralID: 'nraczkowski',
+                brokerID: 'nraczkowski',
                 email: 'nathanr@gsquaredfunding.com',
                 phoneNumber: '(678)352-2424',
                 referral: []
             },
             {
                 name: 'Paul Clark',
-                referralID: 'pclark',
+                brokerID: 'pclark',
                 email: 'pclark@gsquaredfunding.com',
                 phoneNumber: '(678)987-4393',
                 referral: []
             },
             {
                 name: 'Stephen Kleinrichert',
-                referralID: 'skleinrichert',
+                brokerID: 'skleinrichert',
                 email: 'skleinrichert@gsquaredfunding.com',
                 phoneNumber: '(678)987-4383',
                 referral: [{
                     company: 'Karen&King',
+                    linkID: 'karenking',
                     logo: 'karen-king-logo.png',
                     application: 'KarenKing',
                     broker: [
@@ -117,6 +120,7 @@ async function main() {
                 },
                 {
                     company: '360 Freight Systems',
+                    linkID: '360freightsys',
                     logo: '360freightsys.png',
                     application: 'FreightSystems',
                     broker: [
@@ -127,6 +131,7 @@ async function main() {
                 },
                 {
                     company: 'Low Cost Tristate Insurance',
+                    linkID: 'lowcosttri',
                     logo: 'lowcost.jpg',
                     application: 'LowCostTristate',
                     broker: [
@@ -139,7 +144,7 @@ async function main() {
             },
             {
                 name: 'Todd Waller',
-                referralID: 'twaller',
+                brokerID: 'twaller',
                 email: 'twaller@gsquaredfunding.com',
                 phoneNumber: '(678)352-2439',
                 referral: []
@@ -149,6 +154,7 @@ async function main() {
         const referralsData = [
             {
                 company: 'All For You Productions, Inc.',
+                linkID: 'allforyouprod',
                 logo: 'allforyouprod.jpg',
                 application: 'AllForYouProductions',
                 broker: [
@@ -159,6 +165,7 @@ async function main() {
             },
             {
                 company: 'Bond It Logistics',
+                linkID: 'bonditlog',
                 logo: 'bonditlogistics.jpg',
                 application: 'BondItLogistics',
                 broker: [
@@ -169,6 +176,7 @@ async function main() {
             },
             {
                 company: 'Karen&King',
+                linkID: 'karenking',
                 logo: 'karen-king-logo.png',
                 application: 'KarenKing',
                 broker: [
@@ -179,6 +187,7 @@ async function main() {
             },
             {
                 company: '360 Freight Systems',
+                linkID: '360freightsys',
                 logo: '360freightsys.png',
                 application: 'FreightSystems',
                 broker: [
@@ -189,6 +198,7 @@ async function main() {
             },
             {
                 company: 'Low Cost Tristate Insurance',
+                linkID: 'lowcosttri',
                 logo: 'lowcost.jpg',
                 application: 'LowCostTristate',
                 broker: [

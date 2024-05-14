@@ -7,6 +7,12 @@ const referralSchema = new Schema({
         unique: true,
         trim: true,
     },
+    linkID: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true
+    },
     logo: {
         data: Buffer,
         contentType: String

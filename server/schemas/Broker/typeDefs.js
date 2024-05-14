@@ -3,7 +3,7 @@ const { gql } = require('graphql-tag');
 const typeDefs = gql`
   input BrokerInput {
     name: String!
-    referralID: String!
+    brokerID: String!
     email: String!
     phoneNumber: String!
   }
@@ -11,7 +11,7 @@ const typeDefs = gql`
   type Broker {
     _id: ID!
     name: String!
-    referralID: String!
+    brokerID: String!
     email: String!
     phoneNumber: String!
     referral: [Referral]
