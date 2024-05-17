@@ -1,7 +1,7 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import { HiOutlineDocumentDownload } from "react-icons/hi";
 import { MdOutlineAttachEmail } from "react-icons/md";
-import { FormCP } from '../components/Form';
+import { ContactForm } from '../components/ContactForm';
 import { Link } from 'react-router-dom';
 import * as React from 'react'
 import { useParams } from 'react-router-dom'
@@ -48,7 +48,7 @@ export const Referral = () => {
                 <p className="text-justify mb-5 mt-1 fs-24">Or simply fill out and submit your application to us, and we will respond to you as soon as possible!</p>
                 <Row>
                     <Col md={4} className="mb-2 me-3">
-                        <FormCP referralLink={true} referralName={referralbyLinkID.company} />
+                        <ContactForm referralLink={true} referralName={referralbyLinkID.company} />
                     </Col>
                     <Col md={7}>
                         <div className="ml-3 pl-4">

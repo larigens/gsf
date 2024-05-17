@@ -4,7 +4,7 @@ import React, { useState, useRef } from 'react';
 import { MdArrowDropDown } from "react-icons/md";
 import { GetAllBrokers, GetAllReferrals } from '../utils/helper.jsx';
 
-export const FormCP = ({ referralLink, referralName }) => {
+export const ContactForm = ({ referralLink, referralName }) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');

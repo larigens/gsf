@@ -8,7 +8,7 @@ import overnight from '../assets/icons/overnight.png';
 import line from '../assets/icons/line.png';
 import forward from '../assets/icons/forward.png';
 import logo from '../assets/logo.png';
-import { FormCP } from '../components/Form';
+import { ContactForm } from '../components/ContactForm';
 import { HelmetCP } from '../components/Helmet';
 import { useTheme } from '../components/ThemeContext';
 import { motion } from "framer-motion";
@@ -190,7 +190,7 @@ export const Home = () => {
                             </Container>
                         </Col>
                         <Col xs={12} sm={6} md={4} className="my-auto mx-auto">
-                            <FormCP />
+                            <ContactForm />
                         </Col>
                     </Row>
                 </Container>

@@ -1,7 +1,7 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import { HiOutlineDocumentDownload } from "react-icons/hi";
 import { MdOutlineAttachEmail } from "react-icons/md";
-import { FormCP } from '../components/Form';
+import { ContactForm } from '../components/ContactForm';
 import application from '../assets/transportation_application.pdf'
 import { Link } from 'react-router-dom';
 import { HelmetCP } from '../components/Helmet';
@@ -18,7 +18,7 @@ export const ApplyNow = () => {
                     or take the initiative and get ahead! Simply fill out and submit your application to us, and we will respond to you as soon as possible!</p>
                 <Row>
                     <Col md={4} className="mb-2 me-3">
-                        <FormCP />
+                        <ContactForm />
                     </Col>
                     <Col md={7}>
                         <div className="ml-3 pl-4">

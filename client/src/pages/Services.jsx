@@ -10,7 +10,7 @@ import broker from '../assets/icons/broker.png';
 import carrier from '../assets/icons/carrier.png';
 import staff from '../assets/icons/staff.png';
 import roadmap from '../assets/roadmap.png';
-import { FormCP } from '../components/Form';
+import { ContactForm } from '../components/ContactForm';
 import { Link } from 'react-router-dom';
 
 export const Services = () => {
@@ -150,7 +150,7 @@ export const Services = () => {
                 <Row>
                     <h2 className="fw-bold secondary-color fs-32 my-4">Ready to get started?</h2>
                     <Col md={4} className="mt-2 mb-4 me-2">
-                        <FormCP />
+                        <ContactForm />
                     </Col>
                     <Col md={7} className="ms-2">
                         <h2 className="secondary-color mb-4 fs-32">Industries Served</h2>
