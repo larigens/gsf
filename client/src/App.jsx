@@ -19,7 +19,7 @@ import { ApplyNow } from './pages/ApplyNow';
 import {AboutUs} from './pages/AboutUs';
 import {Referral} from './pages/Referral';
 import { Services } from './pages/Services';
-import { FindDOTForm } from './pages/FMCSA';
+import { FMCSA } from './pages/FMCSA';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -57,7 +57,7 @@ export const App = () => {
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/services" element={<Services />} />
               <Route path="/apply-now" element={<ApplyNow />} />
-              <Route path="/find-dot" element={<FindDOTForm />} />
+              <Route path="/find-dot" element={<FMCSA />} />
               <Route path="/referrals/:id" element={<Referral />} />
             </Routes>
           </main>
