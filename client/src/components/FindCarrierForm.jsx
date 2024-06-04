@@ -9,7 +9,12 @@ export const FindCarrierForm = ({ submittedCarrierInfo, setSubmittedCarrierInfo,
     const form = useRef();
 
     const handleInputChange = (e) => {
-        setCarrierInfo(e.target.value);
+        const { name, value } = e.target;
+        if (name === 'name') {
+            setCarrierInfo(value.toLowerCase().replace(/\s+/g, '%20'));
+        } else {
+            setCarrierInfo(e.target.value);
+        }
     };
 
     const handleSelectChange = (e) => {

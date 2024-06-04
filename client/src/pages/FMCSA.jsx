@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Container, Card, Image } from 'react-bootstrap';
+import { Row, Col, Container, Card, Image, Button } from 'react-bootstrap';
 import household from '../assets/icons/household.png';
 import passenger from '../assets/icons/passenger.png';
 import property from '../assets/icons/property.png';
@@ -26,6 +26,8 @@ export const FMCSA = () => {
     const [authorityStatus, setAuthorityStatus] = useState(null);
     const [MCNumber, setMCNumber] = useState(null);
     const [authority, setAuthority] = useState(null);
+    const [carrierList, setCarrierList] = useState(null);
+
 
     useEffect(() => {
         if (submittedCarrierInfo) {
@@ -46,8 +48,8 @@ export const FMCSA = () => {
                     else {
                         const response = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/name/${submittedCarrierInfo}?webKey=${process.env.REACT_APP_WEBKEY}`);
                         const json = await response.json();
-                        setCarrierData(json.content.carrier);
-                        setDotNumber(json.content);
+                        setCarrierList(json.content);
+                        // setDotNumber(json);
                     }
                 } catch (error) {
                     console.error('Error fetching carrier data:', error);
@@ -94,10 +96,13 @@ export const FMCSA = () => {
     useEffect(() => {
         if (carrierData) {
             const splitEIN = () => {
-                const einString = carrierData.ein.toString();
-                const firstPart = einString.substring(0, 2);
-                const secondPart = einString.substring(2);
-                setCarrierEIN(`${firstPart}-${secondPart}`);
+                if (carrierData.ein) {
+                    const einString = carrierData.ein.toString();
+                    const firstPart = einString.substring(0, 2);
+                    const secondPart = einString.substring(2);
+                    setCarrierEIN(`${firstPart}-${secondPart}`);
+                }
+                else { setCarrierEIN('N/A') }
             };
             splitEIN();
 
@@ -368,9 +373,21 @@ export const FMCSA = () => {
                                     : null}
                             </Card.Body>
                         </Card>
-                    ) : (
-                        <p>Loading...</p>
-                    )
+                    ) :
+                        (carrierList ?
+                            carrierList.map(carrier => (
+                                <Card key={carrier.carrier.dotNumber} className="glassmorphism radius-20 main-color p-4 my-3">
+                                    <Card.Body>
+                                        {/* add link to check more details - grab dot number */}
+                                        <Card.Text className="fw-bold mb-3 fs-5">{carrier.carrier.legalName}</Card.Text>
+                                        <Card.Text className="mb-3 fs-5 ">USDOT: {carrier.carrier.dotNumber}</Card.Text>
+                                        <Button onClick={() => {
+                                            setCarrierData(carrier.carrier);
+                                            setDotNumber(carrier.carrier.dotNumber);
+                                        }}> View Details </Button>
+                                    </Card.Body>
+                                </Card>
+                            )) : <p>Loading...</p>)
                     }
                 </Container>
             }
