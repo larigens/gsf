@@ -2,7 +2,7 @@ import { Form, Button, Row, Col, Modal } from 'react-bootstrap';
 import React, { useState, useRef } from 'react';
 // import emailjs from '@emailjs/browser'; 
 import { MdArrowDropDown } from "react-icons/md";
-import { GetAllBrokers, GetAllReferrals } from '../utils/helper.jsx';
+import { GetAllBrokers, GetAllReferrals } from '../../utils/helper.jsx';
 
 export const ContactForm = ({ referralLink, referralName }) => {
     const [firstName, setFirstName] = useState('');

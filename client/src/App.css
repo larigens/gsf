@@ -99,6 +99,7 @@ textarea {
   color: var(--text-secondary-color) !important;
 }
 
+.gradient-text,
 .hover-gradient:hover {
   /* When hovering, the link color will change to smooth transitions between the three specified colors */
   background: var(--background-gradient) !important;
@@ -297,7 +298,7 @@ h1 {
 }
 
 .fs-20 {
-  font-size: 20px;
+  font-size: 20px !important;
 }
 
 .fs-19 {

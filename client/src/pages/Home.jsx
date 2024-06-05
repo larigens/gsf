@@ -8,7 +8,7 @@ import overnight from '../assets/icons/overnight.png';
 import line from '../assets/icons/line.png';
 import forward from '../assets/icons/forward.png';
 import logo from '../assets/logo.png';
-import { ContactForm } from '../components/ContactForm';
+import { ContactForm } from '../components/Forms/ContactForm';
 import { HelmetCP } from '../components/Helmet';
 import { useTheme } from '../components/ThemeContext';
 import { motion } from "framer-motion";

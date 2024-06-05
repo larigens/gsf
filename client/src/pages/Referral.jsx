@@ -1,7 +1,7 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import { HiOutlineDocumentDownload } from "react-icons/hi";
 import { MdOutlineAttachEmail } from "react-icons/md";
-import { ContactForm } from '../components/ContactForm';
+import { ContactForm } from '../components/Forms/ContactForm';
 import { Link } from 'react-router-dom';
 import * as React from 'react'
 import { useParams } from 'react-router-dom'

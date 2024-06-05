@@ -1,7 +1,7 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import { HiOutlineDocumentDownload } from "react-icons/hi";
 import { MdOutlineAttachEmail } from "react-icons/md";
-import { ContactForm } from '../components/ContactForm';
+import { ContactForm } from '../components/Forms/ContactForm';
 import application from '../assets/transportation_application.pdf'
 import { Link } from 'react-router-dom';
 import { HelmetCP } from '../components/Helmet';

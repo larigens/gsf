@@ -44,7 +44,7 @@ export const FindCarrierForm = ({ submittedCarrierInfo, setSubmittedCarrierInfo,
                         </Form.Group>
                     </Col>
                     <Col>
-                        <Form.Group className="mb-3" controlId="dotNumber">
+                        <Form.Group className="mb-3" controlId="carrierInfo">
                             <Form.Label>{selectedOption === 'dotNumber' ? 'DOT Number' : selectedOption === 'name' ? 'Name' : 'MC Number'}</Form.Label>
                             <Form.Control
                                 required

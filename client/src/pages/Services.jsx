@@ -10,7 +10,7 @@ import broker from '../assets/icons/broker.png';
 import carrier from '../assets/icons/carrier.png';
 import staff from '../assets/icons/staff.png';
 import roadmap from '../assets/roadmap.png';
-import { ContactForm } from '../components/ContactForm';
+import { ContactForm } from '../components/Forms/ContactForm';
 import { Link } from 'react-router-dom';
 
 export const Services = () => {

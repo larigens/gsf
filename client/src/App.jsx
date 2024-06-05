@@ -16,10 +16,11 @@ import { Footer } from './components/Footer';
 import { ModeSwitch } from './components/ModeSwitch';
 import { ThemeProvider } from './components/ThemeContext';
 import { ApplyNow } from './pages/ApplyNow';
-import {AboutUs} from './pages/AboutUs';
-import {Referral} from './pages/Referral';
+import { AboutUs } from './pages/AboutUs';
+import { Referral } from './pages/Referral';
 import { Services } from './pages/Services';
 import { FMCSA } from './pages/FMCSA';
+import { Careers } from './pages/Careers';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -55,6 +56,7 @@ export const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about-us" element={<AboutUs />} />
+              <Route path="/careers" element={<Careers />} />
               <Route path="/services" element={<Services />} />
               <Route path="/apply-now" element={<ApplyNow />} />
               <Route path="/find-dot" element={<FMCSA />} />
