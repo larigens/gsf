@@ -12,8 +12,51 @@ import staff from '../assets/icons/staff.png';
 import roadmap from '../assets/roadmap.png';
 import { ContactForm } from '../components/Forms/ContactForm';
 import { Link } from 'react-router-dom';
+import { Cards } from '../components/Cards';
 
 export const Services = () => {
+    const services = [
+        'Swift Same-Day or 24 to 48-Hour Funding',
+        'No Minimum Volume Requirements',
+        'Complimentary Credit Review for Your Accounts',
+        'Administrative Support and Comprehensive Billing Services',
+        'User-Friendly Online Account Management',
+        'Comprehensive Collections Service',
+        'Exclusive FedEx Overnight Discount Program',
+        'Secure Wire and ACH Transfers for All Accounts',
+        'EFS Transfers',
+        'Attractive Referral Fees',
+        'Flexible Open and Short-Term Contract Options',
+        'Specialized Transportation Freight Bill Factoring Services',
+        'Expert Broker Factoring Services',
+        'Tailored Financing and Payroll Funding for Staffing Companies',
+        'Accessible Business Lines of Credit for All Industries'
+    ];
+
+    const servicesInfo = [
+        {
+            title: 'Non-Recourse Factoring',
+            image: 'nonRecourse',
+            description: `Experience the ease and simplicity of Non-Recourse Factoring. Say goodbye to concerns about reserve accounts or buybacks; once you've entrusted us with your invoice, it becomes our responsibility, offering peace of mind.`
+        },
+        {
+            title: 'Recourse Factoring',
+            image: 'recourse',
+            description: `Enjoy lower rates with Recourse Factoring while shouldering the credit risk. We establish a reserve account, and buybacks may apply. This option is ideal for businesses with fast-paying accounts.`
+        },
+        {
+            title: 'Free Customer Credit Reports',
+            image: 'creditScore',
+            description: `In today's uncertain economy, securing timely payments is challenging. We offer free credit checks to all our factoring clients, enabling you to assess customer creditworthiness and make informed business decisions.`
+        },
+        {
+            title: 'Beyond Factoring',
+            image: 'collection',
+            description: `Why handle the hassle of invoices? Leave the administrative work to us, allowing you to concentrate on business growth and your well-being. We manage all the invoicing and paperwork, ensuring your success.`
+        }
+    ]
+
+
     return (
         <>
             <HelmetCP pageTitle={'Services | Factoring Solutions'}
@@ -25,94 +68,19 @@ export const Services = () => {
                 <Row className="justify-content-between">
                     <Col md={6}>
                         <ul className="list-unstyled fs-18">
-                            <li className="d-flex align-items-center mb-2">
-                                <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
-                                <p className="mb-1 fs-18">Swift Same-Day or 24 to 48-Hour Funding</p>
-                            </li>
-                            <li className="d-flex align-items-center mb-2">
-                                <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
-                                <p className="mb-1 fs-18">No Minimum Volume Requirements</p>
-                            </li>
-                            <li className="d-flex align-items-center mb-2">
-                                <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
-                                <p className="mb-1 fs-18">Complimentary Credit Review for Your Accounts</p>
-                            </li>
-                            <li className="d-flex align-items-center mb-2">
-                                <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
-                                <p className="mb-1 fs-18">Administrative Support and Comprehensive Billing Services</p>
-                            </li>
-                            <li className="d-flex align-items-center mb-2">
-                                <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
-                                <p className="mb-1 fs-18">User-Friendly Online Account Management</p>
-                            </li>
-                            <li className="d-flex align-items-center mb-2">
-                                <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
-                                <p className="mb-1 fs-18">Comprehensive Collections Service</p>
-                            </li>
-                            <li className="d-flex align-items-center mb-2">
-                                <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
-                                <p className="mb-1 fs-18">Exclusive FedEx Overnight Discount Program</p>
-                            </li>
-                            <li className="d-flex align-items-center mb-2">
-                                <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
-                                <p className="mb-1 fs-18">Secure Wire and ACH Transfers for All Accounts</p>
-                            </li>
-                            <li className="d-flex align-items-center mb-2">
-                                <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
-                                <p className="mb-1 fs-18">EFS Transfers</p>
-                            </li>
-                            <li className="d-flex align-items-center mb-2">
-                                <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
-                                <p className="mb-1 fs-18">Attractive Referral Fees</p>
-                            </li>
-                            <li className="d-flex align-items-center mb-2">
-                                <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
-                                <p className="mb-1 fs-18">Flexible Open and Short-Term Contract Options</p>
-                            </li>
-                            <li className="d-flex align-items-center mb-2">
-                                <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
-                                <p className="mb-1 fs-18">Specialized Transportation Freight Bill Factoring Services</p>
-                            </li>
-                            <li className="d-flex align-items-center mb-2">
-                                <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
-                                <p className="mb-1 fs-18">Expert Broker Factoring Services</p>
-                            </li>
-                            <li className="d-flex align-items-center mb-2">
-                                <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
-                                <p className="mb-1 fs-18">Tailored Financing and Payroll Funding for Staffing Companies</p>
-                            </li>
-                            <li className="d-flex align-items-center mb-2">
-                                <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
-                                <p className="mb-1 fs-18">Accessible Business Lines of Credit for All Industries</p>
-                            </li>
+                            {services.map((service, index) => (
+                                <li key={index} className="d-flex align-items-center mb-2">
+                                    <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
+                                    <p className="mb-1 fs-18">{service}</p>
+                                </li>
+                            ))}
                         </ul>
                     </Col>
                     <Col md={6} className="mt-3 mx-auto">
                         <Image src={potential} alt="financial services" className="img-fluid align-items-center radius-20" />
                     </Col>
                 </Row>
-                <Row className="my-5 justify-content-center">
-                    <Col md={5} className="text-center m-3 p-3 glassmorphism">
-                        <Image className="img-fluid my-2 icon-color icon-80" src={nonRecourse} alt="non-recourse icon" />
-                        <p className="mb-3 text-center secondary-color fs-22">Non-Recourse Factoring</p>
-                        <p className="text-justify fs-17">Experience the ease and simplicity of Non-Recourse Factoring. Say goodbye to concerns about reserve accounts or buybacks; once you've entrusted us with your invoice, it becomes our responsibility, offering peace of mind.</p>
-                    </Col>
-                    <Col md={5} className="text-center m-3 p-3 glassmorphism">
-                        <Image className="img-fluid my-2 icon-color icon-80" src={recourse} alt="recourse icon" />
-                        <p className="mb-3 text-center secondary-color fs-22">Recourse Factoring</p>
-                        <p className="text-justify fs-17">Enjoy lower rates with Recourse Factoring while shouldering the credit risk. We establish a reserve account, and buybacks may apply. This option is ideal for businesses with fast-paying accounts.</p>
-                    </Col>
-                    <Col md={5} className="text-center m-3 p-3 glassmorphism">
-                        <Image className="img-fluid my-2 icon-color icon-80" src={creditScore} alt="credit score icon" />
-                        <p className="mb-3 text-center secondary-color fs-22" >Free Customer Credit Reports</p>
-                        <p className="text-justify fs-17" >In today's uncertain economy, securing timely payments is challenging. We offer free credit checks to all our factoring clients, enabling you to assess customer creditworthiness and make informed business decisions.</p>
-                    </Col>
-                    <Col md={5} className="text-center m-3 p-3 glassmorphism">
-                        <Image className="img-fluid my-2 icon-color icon-80" src={collection} alt="collection icon" />
-                        <p className="mb-3 text-center secondary-color fs-22">Beyond Factoring</p>
-                        <p className="text-justify fs-17" >Why handle the hassle of invoices? Leave the administrative work to us, allowing you to concentrate on business growth and your well-being. We manage all the invoicing and paperwork, ensuring your success.</p>
-                    </Col>
-                </Row>
+                <Cards cardInfo={servicesInfo} />
                 {/* Fixing */}
                 <Row className="p-1 me-3 my-4">
                     <h2 className="fw-bold secondary-color mb-3 fs-32">Unlocking Your Cash Flow: How Factoring Works</h2>

@@ -49,7 +49,6 @@ export const FMCSA = () => {
                         const response = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/name/${submittedCarrierInfo}?webKey=${process.env.REACT_APP_WEBKEY}`);
                         const json = await response.json();
                         setCarrierList(json.content);
-                        // setDotNumber(json);
                     }
                 } catch (error) {
                     console.error('Error fetching carrier data:', error);
@@ -140,21 +139,6 @@ export const FMCSA = () => {
             };
 
             const findAuthority = () => {
-                // if (carrierData.censusTypeId) {
-                //     if (carrierData.censusTypeId.censusTypeDesc === 'CARRIER') {
-                //         getAuthorityStatus(carrierData.commonAuthorityStatus);
-                //         setAuthority('Common');
-                //     }
-                //     else if (carrierData.censusTypeId.censusTypeDesc === 'CONTRACT') {
-                //         getAuthorityStatus(carrierData.contractAuthorityStatus);
-                //         setAuthority('Contract');
-                //     }
-                //     else if (carrierData.censusTypeId.censusTypeDesc === 'BROKER') {
-                //         getAuthorityStatus(carrierData.brokerAuthorityStatus);
-                //         setAuthority('Broker');
-                //     }
-                // }
-                // else {
                 if (carrierData.brokerAuthorityStatus !== 'N' && carrierData.contractAuthorityStatus === 'N' && carrierData.commonAuthorityStatus === 'N') {
                     getAuthorityStatus(carrierData.brokerAuthorityStatus);
                     setAuthority('Broker');
@@ -378,7 +362,6 @@ export const FMCSA = () => {
                             carrierList.map(carrier => (
                                 <Card key={carrier.carrier.dotNumber} className="glassmorphism radius-20 main-color p-4 my-3">
                                     <Card.Body>
-                                        {/* add link to check more details - grab dot number */}
                                         <Card.Text className="fw-bold mb-3 fs-5">{carrier.carrier.legalName}</Card.Text>
                                         <Card.Text className="mb-3 fs-5 ">USDOT: {carrier.carrier.dotNumber}</Card.Text>
                                         <Button onClick={() => {

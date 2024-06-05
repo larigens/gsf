@@ -1,14 +1,12 @@
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import entry from '../assets/about.png';
-import clientCentric from '../assets/icons/client_centric.png';
-import reliability from '../assets/icons/reliability.png';
-import innovation from '../assets/icons/innovation.png';
-import flexibility from '../assets/icons/flexibility.png';
+
 import apply from '../assets/icons/apply.png';
 import line from '../assets/icons/line.png';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../components/ThemeContext.jsx';
 import { HelmetCP } from '../components/Helmet';
+import { Cards } from '../components/Cards';
 
 export const AboutUs = () => {
     const { theme } = useTheme();
@@ -16,6 +14,30 @@ export const AboutUs = () => {
     function classNames(...classes) {
         return classes.filter(Boolean).join(' ')
     }
+
+    const aboutInfo = [
+        {
+            title: 'Client-Centric',
+            image: 'clientCentric',
+            description: `We prioritize companies that find delight in our invoice factoring process. Your satisfaction is paramount, and we are committed to earning and maintaining your trust through exceptional service.`
+        },
+        {
+            title: 'Integrity & Reliability',
+            image: 'reliability',
+            description: `Our unwavering commitment to integrity and transparency ensures a relationship built on trust and reliability. You can count on us as a steadfast financial partner, providing consistent and dependable factoring services that promote your business's stability and growth.`
+        },
+        {
+            title: 'Innovation',
+            image: 'innovation',
+            description: `In an ever-evolving industry, we stay at the forefront by embracing innovation and leveraging cutting-edge technology to simplify your factoring experience.`
+        },
+        {
+            title: 'Flexibility',
+            image: 'flexibility',
+            description: `Recognizing the uniqueness of every transportation company, we offer flexible factoring solutions that seamlessly adapt to your specific requirements.`
+        }
+    ]
+
 
     return (
         <>
@@ -41,28 +63,7 @@ export const AboutUs = () => {
                 <Row>
                     <p className="fw-bold text-justify mb-2 fs-28">Our Values</p>
                     <Row className="mt-3">
-                        <Row className="my-2 justify-content-center">
-                            <Col md={5} className="text-center m-3 p-3 glassmorphism">
-                                <Image className="img-fluid my-2 icon-color icon-80" src={clientCentric} alt="client centric icon" loading="lazy" />
-                                <p className="mb-3 text-center secondary-color fs-22">Client-Centric</p>
-                                <p className="text-justify fs-18">We prioritize companies that find delight in our invoice factoring process. Your satisfaction is paramount, and we are committed to earning and maintaining your trust through exceptional service.</p>
-                            </Col>
-                            <Col md={5} className="text-center m-3 p-3 glassmorphism">
-                                <Image className="img-fluid my-2 icon-color icon-80" src={reliability} alt="reliability icon" loading="lazy" />
-                                <p className="mb-3 text-center secondary-color fs-22">Integrity & Reliability</p>
-                                <p className="text-justify fs-18">Our unwavering commitment to integrity and transparency ensures a relationship built on trust and reliability. You can count on us as a steadfast financial partner, providing consistent and dependable factoring services that promote your business's stability and growth.</p>
-                            </Col>
-                            <Col md={5} className="text-center m-3 p-3 glassmorphism">
-                                <Image className="img-fluid my-2 icon-color icon-80" src={innovation} alt="innovation icon" loading="lazy" />
-                                <p className="mb-3 text-center secondary-color fs-22">Innovation</p>
-                                <p className="text-justify fs-18">In an ever-evolving industry, we stay at the forefront by embracing innovation and leveraging cutting-edge technology to simplify your factoring experience.</p>
-                            </Col>
-                            <Col md={5} className="text-center m-3 p-3 glassmorphism">
-                                <Image className="img-fluid my-2 icon-color icon-80" src={flexibility} alt="flexibility icon" loading="lazy" />
-                                <p className="mb-3 text-center secondary-color fs-22">Flexibility</p>
-                                <p className="text-justify fs-18">Recognizing the uniqueness of every transportation company, we offer flexible factoring solutions that seamlessly adapt to your specific requirements.</p>
-                            </Col>
-                        </Row>
+                        <Cards cardInfo={aboutInfo} />
                     </Row>
                 </Row>
                 {/* Why Choose section */}
