@@ -1,12 +1,12 @@
 import { Row, Col, Image } from 'react-bootstrap';
-import collection from '../assets/icons/collection.png';
-import creditScore from '../assets/icons/credit-score.png';
-import recourse from '../assets/icons/recourse.png';
-import nonRecourse from '../assets/icons/non-recourse.png';
-import clientCentric from '../assets/icons/client_centric.png';
-import reliability from '../assets/icons/reliability.png';
-import innovation from '../assets/icons/innovation.png';
-import flexibility from '../assets/icons/flexibility.png';
+import collection from '../../assets/icons/collection.png';
+import creditScore from '../../assets/icons/credit-score.png';
+import recourse from '../../assets/icons/recourse.png';
+import nonRecourse from '../../assets/icons/non-recourse.png';
+import clientCentric from '../../assets/icons/client_centric.png';
+import reliability from '../../assets/icons/reliability.png';
+import innovation from '../../assets/icons/innovation.png';
+import flexibility from '../../assets/icons/flexibility.png';
 import { useEffect, useState } from 'react';
 
 export const Cards = ({ cardInfo }) => {

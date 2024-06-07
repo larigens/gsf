@@ -18,9 +18,10 @@ import { ThemeProvider } from './components/ThemeContext';
 import { ApplyNow } from './pages/ApplyNow';
 import { AboutUs } from './pages/AboutUs';
 import { Referral } from './pages/Referral';
-import { Services } from './pages/Services';
+import { Services } from './pages/Services/Services';
 import { FMCSA } from './pages/FMCSA';
 import { Careers } from './pages/Careers';
+import { CareerForm } from './components/Forms/CareerForm';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -57,6 +58,7 @@ export const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/careers" element={<Careers />} />
+              <Route path="/careers/application" element={<CareerForm />} />
               <Route path="/services" element={<Services />} />
               <Route path="/apply-now" element={<ApplyNow />} />
               <Route path="/find-dot" element={<FMCSA />} />

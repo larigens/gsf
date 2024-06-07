@@ -58,7 +58,7 @@ export const Home = () => {
                                     <p className="text-justify fs-19" style={{ lineHeight: '1.7' }}>At G Squared Funding, we understand the challenges that transportation companies face when it comes to managing cash flow and maintaining steady operations. That's why we're here to provide tailored factoring solutions designed specifically for you.</p>
                                 </Row>
                                 <Row className="ms-1 mb-4">
-                                    <Button className="my-2 contact-btn px-2 py-1 radius-20 border-none" role="button" href="https://gsquaredfunding.com/index.php/contact-us">
+                                    <Button className="my-2 contact-btn px-2 py-1 radius-20 border-none" role="button" href="/contact-us">
                                         <span className="contact-btn-span px-3 fs-24">
                                             Contact us today
                                             <Image className="img-fluid ms-2 px-1 arrow-icon icon-color btn-icon" src={rightArrow} alt="right arrow icon" width="30" loading="lazy" />

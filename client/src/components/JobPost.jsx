@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 import line from '../assets/icons/line.png';
 import { CareerForm } from '../components/Forms/CareerForm';
+import { useTheme } from '../components/ThemeContext.jsx';
 
 export const JobPost = ({ jobPosition }) => {
     const [title, setTitle] = useState('');
@@ -10,7 +11,13 @@ export const JobPost = ({ jobPosition }) => {
     const [qualifications, setQualifications] = useState([]);
     const [benefits, setBenefits] = useState([]);
     const [formVisibility, setFormVisibility] = useState(false);
-    const [position, setPosition] = useState('');
+    const [jobTitle, setJobTitle] = useState(jobPosition);
+
+    const { theme } = useTheme();
+
+    function classNames(...classes) {
+        return classes.filter(Boolean).join(' ')
+    }
 
     useEffect(() => {
         if (jobPosition === 'CRM') {
@@ -84,58 +91,62 @@ export const JobPost = ({ jobPosition }) => {
     return (
         <>
             {jobPosition ? (
-                <Container className="p-1 pr-3">
-                    <Row>
-                        <Col>
-                            <p className="fw-bold secondary-color mt-4 fs-26">{title}</p>
-                            {description.map((item, index) => (
-                                <p key={index} className="text-justify my-3 fs-18">
-                                    {item}
-                                </p>
-                            ))}
+                <>
+                    <Container className={classNames(
+                        theme === 'Light Mode' ? 'secondary-bg' : 'border-light',
+                        'p-2 mb-4',
+                    )}>
+                        <Row className='p-3'>
+                            <Col>
+                                <p className="fw-bold secondary-color mt-4 fs-28">{title}</p>
+                                {description.map((item, index) => (
+                                    <p key={index} className="text-justify my-3 fs-18">
+                                        {item}
+                                    </p>
+                                ))}
 
-                            <p className="fw-bold secondary-color text-justify my-2 fs-19">Responsibilities:</p>
-                            <ul className="list-unstyled">
-                                {responsibilities.map((responsibility, index) => (
-                                    <li key={index} className="d-flex align-items-center mb-2 text-justify fs-18">
-                                        <Image className="img-fluid me-2" src={line} alt="lines" width="20" height="20" />
-                                        {responsibility}
-                                    </li>
-                                ))}
-                            </ul>
-                            <p className="fw-bold secondary-color text-justify my-2 fs-19">Qualifications:</p>
-                            <ul className="list-unstyled">
-                                {qualifications.map((qualification, index) => (
-                                    <li key={index} className="d-flex align-items-center mb-2 text-justify fs-18">
-                                        <Image className="img-fluid me-2" src={line} alt="lines" width="20" height="20" />
-                                        {qualification}
-                                    </li>
-                                ))}
-                            </ul>
-                            <p className="fw-bold secondary-color text-justify my-2 fs-19">Salary/Benefit Package:</p>
-                            <ul className="list-unstyled">
-                                {benefits.map((benefit, index) => (
-                                    <li key={index} className="d-flex align-items-center mb-2 text-justify fs-18">
-                                        <Image className="img-fluid me-2" src={line} alt="lines" width="20" height="20" />
-                                        {benefit}
-                                    </li>
-                                ))}
-                            </ul>
-                            <p className="text-justify my-3 fs-19">
-                                We provide comprehensive training to ensure your success in your role.
-                            </p>
-                            <p className="text-justify mb-4">
-                                <span className='fs-20 fw-bold'>Don't miss this opportunity –</span>
-                                <Button className='text-end remove-bg bordered-text border-none hover-color fs-20 mb-2' onClick={() => { setFormVisibility(true); setPosition(title) }}>Apply Now</Button>
-                            </p>
-                        </Col>
-                    </Row>
-                    {formVisibility && position ?
-                        <Row>
-                            <CareerForm position={title} />
+                                <p className="fw-bold secondary-color text-justify my-2 fs-22">Responsibilities:</p>
+                                <ul className="list-unstyled">
+                                    {responsibilities.map((responsibility, index) => (
+                                        <li key={index} className="d-flex align-items-center mb-2 text-justify fs-18">
+                                            <Image className="img-fluid me-2" src={line} alt="lines" width="20" height="20" />
+                                            {responsibility}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <p className="fw-bold secondary-color text-justify my-2 fs-22">Qualifications:</p>
+                                <ul className="list-unstyled">
+                                    {qualifications.map((qualification, index) => (
+                                        <li key={index} className="d-flex align-items-center mb-2 text-justify fs-18">
+                                            <Image className="img-fluid me-2" src={line} alt="lines" width="20" height="20" />
+                                            {qualification}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <p className="fw-bold secondary-color text-justify my-2 fs-22">Salary/Benefit Package:</p>
+                                <ul className="list-unstyled">
+                                    {benefits.map((benefit, index) => (
+                                        <li key={index} className="d-flex align-items-center mb-2 text-justify fs-18">
+                                            <Image className="img-fluid me-2" src={line} alt="lines" width="20" height="20" />
+                                            {benefit}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <p className="text-justify my-3 fs-19">
+                                    We provide comprehensive training to ensure your success in your role.
+                                </p>
+                                <p className="text-justify mb-4">
+                                    <span className='fs-20 fw-bold'>Don't miss this opportunity –</span>
+                                    <Button className='text-end remove-bg bordered-text border-none hover-color fs-20 mb-2' onClick={() => { setFormVisibility(true); setJobTitle(title) }}>Apply Now</Button>
+                                </p>
+                            </Col>
                         </Row>
+                    </Container>
+
+                    {formVisibility && jobTitle ?
+                        <CareerForm jobTitle={title} />
                         : null}
-                </Container>
+                </>
             ) : null}
         </>
     );

@@ -1,18 +1,11 @@
 import { Container, Row, Col, Image } from 'react-bootstrap';
-import { HelmetCP } from '../components/Helmet';
-import line from '../assets/icons/line.png';
-import potential from '../assets/potential.png';
-import collection from '../assets/icons/collection.png';
-import creditScore from '../assets/icons/credit-score.png';
-import recourse from '../assets/icons/recourse.png';
-import nonRecourse from '../assets/icons/non-recourse.png';
-import broker from '../assets/icons/broker.png';
-import carrier from '../assets/icons/carrier.png';
-import staff from '../assets/icons/staff.png';
-import roadmap from '../assets/roadmap.png';
-import { ContactForm } from '../components/Forms/ContactForm';
-import { Link } from 'react-router-dom';
-import { Cards } from '../components/Cards';
+import { HelmetCP } from '../../components/Helmet';
+import line from '../../assets/icons/line.png';
+import potential from '../../assets/potential.png';
+import roadmap from '../../assets/roadmap.png';
+import { ContactForm } from '../../components/Forms/ContactForm';
+import { Cards } from '../../components/Cards/Cards';
+import { FlipCards } from '../../components/Cards/FlipCards';
 
 export const Services = () => {
     const services = [
@@ -56,6 +49,43 @@ export const Services = () => {
         }
     ]
 
+    const items = [
+        {
+            title: "Improved Cash Flow",
+            text: "Instant access to funds ensures that you have the liquidity needed to cover operating expenses, purchase inventory, and expand your business."
+        },
+        {
+            title: "Debt-Free Financing",
+            text: "Factoring is not a loan, so you won't incur debt or interest payments. You're simply leveraging your existing assets—your outstanding invoices."
+        },
+        {
+            title: "Credit Protection",
+            text: "Factoring companies often provide credit checks on your customers, reducing the risk of non-payment and bad debt."
+        },
+        {
+            title: "Simplified Accounting",
+            text: "Factoring simplifies your financial record-keeping, as you're essentially converting accounts receivable into cash."
+        },
+        {
+            title: "Flexible Solution",
+            text: "Factoring can be tailored to your business needs, whether you need occasional support during busy seasons or ongoing assistance with your receivables."
+        }
+    ];
+
+    const industries = [
+        {
+            title: 'Transportation Factoring',
+            subtitle: 'Trucking Companies and Freight Brokers',
+            image: ['carrier', 'broker'],
+            link: '/services/transportation'
+        },
+        {
+            title: 'Staffing Factoring',
+            subtitle: 'Capital for your Staffing Agency',
+            image: 'staff',
+            link: '/services/staffing'
+        }
+    ]
 
     return (
         <>
@@ -81,7 +111,6 @@ export const Services = () => {
                     </Col>
                 </Row>
                 <Cards cardInfo={servicesInfo} />
-                {/* Fixing */}
                 <Row className="p-1 me-3 my-4">
                     <h2 className="fw-bold secondary-color mb-3 fs-32">Unlocking Your Cash Flow: How Factoring Works</h2>
                     <p className=" mb-4 text-justify fs-22">Running a business comes with its fair share of challenges, and managing cash flow can often be a daunting task. That's where factoring steps in as a powerful financial solution.</p>
@@ -91,30 +120,17 @@ export const Services = () => {
                     <Image className="img-fluid align-items-center radius-20 w-60" src={roadmap} alt="factoring process diagram" />
                     <h3 className="secondary-color mb-3 mt-5 fs-22 fw-bold">The Benefits of Factoring:</h3>
                     <ul className="list-unstyled">
-                        <li className="d-flex align-items-center mb-3">
-                            <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
-                            <p className="mb-0 text-justify fs-18"><span className='fw-bold'>Improved Cash Flow:</span> Instant access to funds ensures that you have the liquidity needed to cover operating expenses, purchase inventory, and expand your business.</p>
-                        </li>
-                        <li class="d-flex align-items-center mb-3">
-                            <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
-                            <p className="mb-0 text-justify fs-18"><span className='fw-bold'>Debt-Free Financing:</span> Factoring is not a loan, so you won't incur debt or interest payments. You're simply leveraging your existing assets—your outstanding invoices.</p>
-                        </li>
-                        <li className="d-flex align-items-center mb-3">
-                            <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
-                            <p className="mb-0 text-justify fs-18"><span className='fw-bold'>Credit Protection:</span> Factoring companies often provide credit checks on your customers, reducing the risk of non-payment and bad debt.</p>
-                        </li>
-                        <li className="d-flex align-items-center mb-3">
-                            <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
-                            <p className="mb-0 text-justify fs-18"><span className='fw-bold'>Simplified Accounting:</span> Factoring simplifies your financial record-keeping, as you're essentially converting accounts receivable into cash.</p>
-                        </li>
-                        <li className="d-flex align-items-center mb-3">
-                            <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
-                            <p className="mb-0 text-justify fs-18"><span className='fw-bold'>Flexible Solution:</span> Factoring can be tailored to your business needs, whether you need occasional support during busy seasons or ongoing assistance with your receivables.</p>
-                        </li>
+                        {items.map((item, index) => (
+                            <li key={index} className="d-flex align-items-center mb-3">
+                                <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
+                                <p className="mb-0 text-justify fs-18">
+                                    <span className='fw-bold'>{item.title}:</span> {item.text}
+                                </p>
+                            </li>
+                        ))}
                     </ul>
                     <p className="mb-3 text-justify fs-18 line-25 me-2">At G Squared Funding, we specialize in providing factoring solutions tailored to your unique requirements. Our goal is to help you unlock your business's full potential by providing the working capital you need when you need it. Explore the benefits of factoring with us and experience the financial freedom that can take your business to new heights.</p>
                 </Row>
-                {/* Fixing below */}
                 <Row>
                     <h2 className="fw-bold secondary-color fs-32 my-4">Ready to get started?</h2>
                     <Col md={4} className="mt-2 mb-4 me-2">
@@ -123,29 +139,11 @@ export const Services = () => {
                     <Col md={7} className="ms-2">
                         <h2 className="secondary-color mb-4 fs-32">Industries Served</h2>
                         <Row>
-                            <Col md={5} className="mb-3">
-                                <Container className="glassmorphism p-3 text-center radius-20">
-                                    <Image className="img-fluid mb-1 me-3 icon-color icon-80" src={carrier} alt="carrier icon" />
-                                    <Image className="img-fluid mb-1 icon-color icon-80" src={broker} alt="broker icon" />
-                                    <Row className="border-top my-2"></Row>
-                                    <h5 className="secondary-color mt-4 mb-2 text-center fs-22">Transportation Factoring</h5>
-                                    <p className="mb-3 text-center fs-18">Trucking Companies and Freight Brokers</p>
-                                    <Row className="d-flex justify-content-between mt-1">
-                                        <Link className="secondary-color text-end fs-18" to="/services/transportation">Learn more</Link>
-                                    </Row>
-                                </Container>
-                            </Col>
-                            <Col md={5} className="mb-3">
-                                <Container className="glassmorphism p-3 text-center radius-20">
-                                    <Image className="img-fluid mb-1 icon-color icon-80" src={staff} alt="staffing icon" />
-                                    <Row className="border-top my-2"></Row>
-                                    <h5 className="secondary-color mt-4 mb-2 text-center fs-22">Staffing Factoring</h5>
-                                    <p className="mb-3 text-center fs-18">Capital for your Staffing Agency</p>
-                                    <Row className="d-flex justify-content-between mt-1">
-                                        <Link className="secondary-color text-end fs-18" to="/services/staffing">Learn more</Link>
-                                    </Row>
-                                </Container>
-                            </Col>
+                            {industries.map((industry, index) => (
+                                <Col key={index} md={5} className="mb-3">
+                                    <FlipCards title={industry.title} subtitle={industry.subtitle} image={industry.image} link={industry.link} />
+                                </Col>
+                            ))}
                         </Row>
                     </Col>
                 </Row>

@@ -6,7 +6,7 @@ import line from '../assets/icons/line.png';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../components/ThemeContext.jsx';
 import { HelmetCP } from '../components/Helmet';
-import { Cards } from '../components/Cards';
+import { Cards } from '../components/Cards/Cards';
 
 export const AboutUs = () => {
     const { theme } = useTheme();

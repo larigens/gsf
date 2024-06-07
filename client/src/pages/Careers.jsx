@@ -19,50 +19,52 @@ export const Careers = () => {
                 <p className="fw-bold text-justify mb-3 fs-40">Careers</p>
                 <Row className="me-2 mb-4">
                     <p className="fs-26">To excel in our industry, we actively seek dynamic, driven individuals to join our team.</p>
-                    <p className="text-justify my-3 fs-18">As a rapidly expanding Asset Based Lending (ABL)/Factoring firm in Atlanta, we specialize in the transportation sector, offering financial solutions to transportation and staffing companies.</p>
-                    <p className="text-justify my-2 fs-18">Our services are designed to provide swift financial access for both emerging and established businesses, aiding their day-to-day operations. We're not just about setting high standards; we're about surpassing them. Our workplace is vibrant and engaging, fostering an environment where great careers are built.</p>
-                    <p className="text-justify my-3 fs-18">We embrace team members from all backgrounds and levels of experience.</p>
+                    <p className="text-justify my-3 fs-20">As a rapidly expanding Asset Based Lending (ABL)/Factoring firm in Atlanta, we specialize in the transportation sector, offering financial solutions to transportation and staffing companies.</p>
+                    <p className="text-justify my-2 fs-20">Our services are designed to provide swift financial access for both emerging and established businesses, aiding their day-to-day operations. We're not just about setting high standards; we're about surpassing them. Our workplace is vibrant and engaging, fostering an environment where great careers are built.</p>
+                    <p className="text-justify my-3 fs-20">We embrace team members from all backgrounds and levels of experience.</p>
                 </Row>
-                <Container fluid className='d-flex align-items-center text-justify'>
-                    <BsArrow90DegDown className='icon-color icon-80' />
-                    <p className="text-justify my-5 gradient-text fs-24">Step into our team today and help us transform the factoring experience into a seamless, stress-free journey!</p>
-                </Container>
                 {cardsVisibility ?
-                    <Row className="ms-2 my-5 justify-content-center">
-                        <Col md={6}>
-                            <Card className='glassmorphism'>
-                                <Card.Body className='p-4'>
-                                    <Card.Title className='secondary-color fs-20 my-2'>Client Relations Manager</Card.Title>
-                                    <Card.Subtitle className='fs-17 mt-2 mb-4 main-color'>This is an entry-level position</Card.Subtitle>
-                                    <Card.Text className='main-color text-justify'>
-                                        As a Client Relations Manager, your role is pivotal in managing the financial interactions for G Squared Funding's diverse clientele. You will be at the forefront of overseeing both accounts payable and receivable, ensuring an efficient and effective cash flow cycle. Your key responsibilities include acting as a vital link and facilitator among various stakeholders such as carriers, brokers, shippers, and other parties, with a focus on smoothing out business transactions and promptly resolving any issues that arise.
-                                    </Card.Text>
-                                    <Row className='me-1'>
-                                        <Button className='text-end remove-bg bordered-text border-none hover-color' onClick={() => { setJobPosition('CRM'); setCardsVisibility(false); setBackIconVisibility(true) }}>Read More</Button>
-                                    </Row>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col md={6}>
-                            <Card className='glassmorphism'>
-                                <Card.Body className='p-4'>
-                                    <Card.Title className='secondary-color fs-20 my-2'>Business Development Officer</Card.Title>
-                                    <Card.Subtitle className='fs-17 mt-2 mb-4 main-color'>All levels of experience</Card.Subtitle>
-                                    <Card.Text className='text-justify main-color'>
-                                        We are seeking a highly motivated and results-driven Business Development Officer to join our team. The Business Development Officer will play a critical role in identifying and acquiring new clients, developing and maintaining strong relationships, and promoting our factoring services to businesses in need of working capital solutions.
-                                    </Card.Text>
-                                    <Row className='mt-4 pt-3 me-1'>
-                                        <Button className='text-end remove-bg bordered-text border-none hover-color' onClick={() => { setJobPosition('BDO'); setCardsVisibility(false); setBackIconVisibility(true) }}>Read More</Button>
-                                    </Row>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    </Row>
-                    : null
+                    <>
+                        <Container fluid className='d-flex align-items-center text-justify'>
+                            <BsArrow90DegDown className='icon-color icon-80' />
+                            <p className="text-justify my-5 gradient-text fs-26">Step into our team today and help us transform the factoring experience into a seamless, stress-free journey!</p>
+                        </Container>
+
+                        <Row className="ms-2 my-5 justify-content-center">
+                            <Col md={6}>
+                                <Card className='glassmorphism'>
+                                    <Card.Body className='p-4'>
+                                        <Card.Title className='secondary-color fs-22 fw-bold my-2'>Client Relations Manager</Card.Title>
+                                        <Card.Subtitle className='fs-18 mt-2 mb-4 main-color'>This is an entry-level position</Card.Subtitle>
+                                        <Card.Text className='main-color text-justify'>
+                                            As a Client Relations Manager, your role is pivotal in managing the financial interactions for G Squared Funding's diverse clientele. You will be at the forefront of overseeing both accounts payable and receivable, ensuring an efficient and effective cash flow cycle. Your key responsibilities include acting as a vital link and facilitator among various stakeholders such as carriers, brokers, shippers, and other parties, with a focus on smoothing out business transactions and promptly resolving any issues that arise.
+                                        </Card.Text>
+                                        <Row className='me-1'>
+                                            <Button className='text-end remove-bg bordered-text border-none hover-color fs-18' onClick={() => { setJobPosition('CRM'); setCardsVisibility(false); setBackIconVisibility(true) }}>Read More</Button>
+                                        </Row>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                            <Col md={6}>
+                                <Card className='glassmorphism'>
+                                    <Card.Body className='p-4'>
+                                        <Card.Title className='secondary-color fw-bold fs-22 my-2'>Business Development Officer</Card.Title>
+                                        <Card.Subtitle className='fs-18 mt-2 mb-4 main-color'>All levels of experience</Card.Subtitle>
+                                        <Card.Text className='text-justify main-color'>
+                                            We are seeking a highly motivated and results-driven Business Development Officer to join our team. The Business Development Officer will play a critical role in identifying and acquiring new clients, developing and maintaining strong relationships, and promoting our factoring services to businesses in need of working capital solutions.
+                                        </Card.Text>
+                                        <Row className='mt-4 pt-3 me-1'>
+                                            <Button className='text-end remove-bg bordered-text border-none hover-color fs-18' onClick={() => { setJobPosition('BDO'); setCardsVisibility(false); setBackIconVisibility(true) }}>Read More</Button>
+                                        </Row>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        </Row>
+                    </> : null
                 }
                 {backIconVisibility ?
                     <>
-                        <Button className='text-end remove-bg border-none' onClick={() => { setJobPosition(''); setCardsVisibility(true); setBackIconVisibility(false) }}>
+                        <Button className='text-end remove-bg border-none main-color ms-4 fs-18' onClick={() => { setJobPosition(''); setCardsVisibility(true); setBackIconVisibility(false) }}>
                             <IoArrowBack className='icon-color icon-20' /> Go Back
                         </Button>
                         <JobPost jobPosition={jobPosition} backIconVisibility={backIconVisibility} />
