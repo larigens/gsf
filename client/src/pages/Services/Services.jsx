@@ -5,7 +5,7 @@ import potential from '../../assets/potential.png';
 import roadmap from '../../assets/roadmap.png';
 import { ContactForm } from '../../components/Forms/ContactForm';
 import { Cards } from '../../components/Cards/Cards';
-import { FlipCards } from '../../components/Cards/FlipCards';
+import { LinkCards } from '../../components/Cards/LinkCards';
 
 export const Services = () => {
     const services = [
@@ -141,7 +141,7 @@ export const Services = () => {
                         <Row>
                             {industries.map((industry, index) => (
                                 <Col key={index} md={5} className="mb-3">
-                                    <FlipCards title={industry.title} subtitle={industry.subtitle} image={industry.image} link={industry.link} />
+                                    <LinkCards title={industry.title} subtitle={industry.subtitle} image={industry.image} link={industry.link} />
                                 </Col>
                             ))}
                         </Row>
