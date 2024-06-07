@@ -12,6 +12,8 @@ export const ContactForm = ({ referralLink, referralName }) => {
     const [mcNumber, setMcNumber] = useState('');
     const [referral, setReferral] = useState('');
     const [message, setMessage] = useState('');
+    const [agree, setAgree] = useState(false);
+
     const form = useRef();
 
     const handleInputChange = (e) => {
@@ -73,6 +75,7 @@ export const ContactForm = ({ referralLink, referralName }) => {
             setMcNumber('');
             setReferral('');
             setMessage('');
+            setAgree(false);
         }
     };
 
@@ -123,7 +126,7 @@ export const ContactForm = ({ referralLink, referralName }) => {
                         <Form.Group className="mb-3" controlId="referral">
                             <Form.Label>Who referred you to us?</Form.Label>
                             <div style={{ position: "relative" }}>
-                                <MdArrowDropDown style={{ position: "absolute", right: "8%", top: "50%", transform: "translateY(-50%)" }} />
+                                <MdArrowDropDown className='dark-color' style={{ position: "absolute", right: "8%", top: "50%", transform: "translateY(-50%)" }} />
                                 {referralLink ?
                                     <Form.Control as="select" disabled value={referral} name='referral' onChange={handleInputChange}>
                                         <option value={referralName}>
@@ -156,8 +159,20 @@ export const ContactForm = ({ referralLink, referralName }) => {
                     <Form.Label>Message</Form.Label>
                     <Form.Control required as="textarea" value={message} name='message' onChange={handleInputChange} rows={3} />
                 </Form.Group>
-                <Row className='d-flex justify-content-end me-1'>
-                    <Button className='submit-btn radius-20 border-none' type="submit">
+
+                <Form.Group className="my-3" controlId="agree">
+                    <Form.Check
+                        type="checkbox"
+                        label={`By checking this box you agree to receive recurring messages from G Squared Funding, LLC. Reply STOP to Opt out. Reply HELP for help. Message frequency varies. Message and data rates may apply. Carriers are not liable for delayed or undelivered messages.`}
+                        checked={agree}
+                        onChange={() => setAgree(true)}
+                        className='me-2 fs-15 text-justify'
+                        required
+                    />
+                </Form.Group>
+
+                <Row className='d-flex justify-content-end me-1 my-2'>
+                    <Button className='submit-btn radius-20 border-none mt-2' type="submit">
                         Submit
                     </Button>
                 </Row>

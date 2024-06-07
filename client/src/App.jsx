@@ -24,6 +24,7 @@ import { Careers } from './pages/Careers';
 import { CareerForm } from './components/Forms/CareerForm';
 import { Transportation } from './pages/Services/Transportation';
 import { Staffing } from './pages/Services/Staffing';
+import { Contact } from './pages/Contact';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -64,6 +65,7 @@ export const App = () => {
               <Route path="/services" element={<Services />} />
               <Route path="/services/transportation" element={<Transportation />} />
               <Route path="/services/staffing" element={<Staffing />} />
+              <Route path="/contact-us" element={<Contact />} />
               <Route path="/apply-now" element={<ApplyNow />} />
               <Route path="/find-dot" element={<FMCSA />} />
               <Route path="/referrals/:id" element={<Referral />} />

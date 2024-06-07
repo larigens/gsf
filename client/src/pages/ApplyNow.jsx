@@ -21,7 +21,7 @@ export const ApplyNow = () => {
                         <ContactForm />
                     </Col>
                     <Col md={7}>
-                        <div className="ml-3 pl-4">
+                        <Container className="ms-3 ps-4">
                             <h1 className="text-justify fw-bold">OR</h1>
                             <p className="mt-4 fs-24 fw-semibold">1. Download and Fill out the application</p>
 
@@ -36,7 +36,7 @@ export const ApplyNow = () => {
                                 <MdOutlineAttachEmail className='ms-4 icon-80 img-fluid' />
                                 <p className="fs-22 mx-3">Submit</p>
                             </Link>
-                        </div>
+                        </Container>
                     </Col>
                 </Row>
             </Container>
