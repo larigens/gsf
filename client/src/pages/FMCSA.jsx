@@ -34,19 +34,19 @@ export const FMCSA = () => {
             const fetchCarrierData = async () => {
                 try {
                     if (typeOfCarrierInfo === 'dotNumber') {
-                        const response = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/${submittedCarrierInfo}?webKey=${process.env.REACT_APP_WEBKEY}`);
+                        const response = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/${submittedCarrierInfo}?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`);
                         const json = await response.json();
                         setCarrierData(json.content.carrier);
                         setDotNumber(json.content.carrier.dotNumber);
                     }
                     else if (typeOfCarrierInfo === 'mcNumber') {
-                        const response = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/docket-number/${submittedCarrierInfo}?webKey=${process.env.REACT_APP_WEBKEY}`);
+                        const response = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/docket-number/${submittedCarrierInfo}?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`);
                         const json = await response.json();
                         setCarrierData(json.content[0].carrier);
                         setDotNumber(json.content[0].carrier.dotNumber)
                     }
                     else {
-                        const response = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/name/${submittedCarrierInfo}?webKey=${process.env.REACT_APP_WEBKEY}`);
+                        const response = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/name/${submittedCarrierInfo}?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`);
                         const json = await response.json();
                         setCarrierList(json.content);
                     }
@@ -64,23 +64,23 @@ export const FMCSA = () => {
             const fetchMoreCarrierData = async () => {
                 try {
                     // Basics - 4
-                    const responseBasics = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/${dotNumber}/basics?webKey=${process.env.REACT_APP_WEBKEY}`);
+                    const responseBasics = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/${dotNumber}/basics?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`);
                     const jsonBasics = await responseBasics.json();
                     setCarrierBasicsData(jsonBasics.content)
                     // Cargo Carried
-                    const responseCargoCarried = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/${dotNumber}/cargo-carried?webKey=${process.env.REACT_APP_WEBKEY}`);
+                    const responseCargoCarried = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/${dotNumber}/cargo-carried?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`);
                     const jsonCargoCarried = await responseCargoCarried.json();
                     setCargoCarriedData(jsonCargoCarried.content);
                     // Carrier Active-For-Hire Authority
-                    const responseCarrierActive = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/${dotNumber}/authority?webKey=${process.env.REACT_APP_WEBKEY}`);
+                    const responseCarrierActive = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/${dotNumber}/authority?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`);
                     const jsonCarrierActive = await responseCarrierActive.json();
                     setCarrierAuthData(jsonCarrierActive.content)
                     // Docket Numbers
-                    const responseDocketNumbers = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/${dotNumber}/docket-numbers?webKey=${process.env.REACT_APP_WEBKEY}`);
+                    const responseDocketNumbers = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/${dotNumber}/docket-numbers?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`);
                     const jsonDocketNumbers = await responseDocketNumbers.json();
                     setCarrierMcData(jsonDocketNumbers.content)
                     // Operation Classification
-                    const responseOperation = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/${dotNumber}/operation-classification?webKey=${process.env.REACT_APP_WEBKEY}`);
+                    const responseOperation = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/${dotNumber}/operation-classification?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`);
                     const jsonOperation = await responseOperation.json();
                     setCarrierOperationData(jsonOperation.content)
                 } catch (error) {

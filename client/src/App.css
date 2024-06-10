@@ -74,7 +74,7 @@ section {
 }
 
 
-a{
+a {
   text-decoration: none !important;
 }
 
@@ -263,6 +263,10 @@ textarea {
   animation: slide-right 0.4s ease-in both;
 }
 
+.nowrap-text {
+  white-space: nowrap;
+}
+
 /* Font Sizes */
 h1 {
   font-size: 50px !important;
@@ -405,9 +409,19 @@ h1 {
   height: 20px;
 }
 
+.icon-40 {
+  width: 40px;
+  height: 40px;
+}
+
 .icon-80 {
   width: 110px;
   height: 110px;
+}
+
+.icon-150 {
+  width: 150px;
+  height: auto;
 }
 
 .icon-color {
