@@ -7,7 +7,7 @@ import insurance from '../assets/icons/insurance.png';
 import truckinfo from '../assets/icons/truckinfo.png';
 import location from '../assets/icons/location.png';
 
-import { FindCarrierForm } from '../components/Forms/FindCarrierForm.jsx';
+import { FindCompanyForm } from '../components/Forms/FindCompanyForm.jsx';
 
 export const FMCSA = () => {
     const [carrierData, setCarrierData] = useState(null);
@@ -19,8 +19,8 @@ export const FMCSA = () => {
     const [carrierEIN, setCarrierEIN] = useState('');
     const [insuranceOnFile, setInsuranceOnFile] = useState('');
     const [insuranceCode, setInsuranceCode] = useState('');
-    const [submittedCarrierInfo, setSubmittedCarrierInfo] = useState(null);
-    const [typeOfCarrierInfo, setTypeOfCarrierInfo] = useState(null);
+    const [submittedCompanyInfo, setSubmittedCompanyInfo] = useState(null);
+    const [typeOfCompanyInfo, setTypeOfCompanyInfo] = useState(null);
     const [dotNumber, setDotNumber] = useState(null);
 
     const [authorityStatus, setAuthorityStatus] = useState(null);
@@ -30,23 +30,23 @@ export const FMCSA = () => {
 
 
     useEffect(() => {
-        if (submittedCarrierInfo) {
+        if (submittedCompanyInfo) {
             const fetchCarrierData = async () => {
                 try {
-                    if (typeOfCarrierInfo === 'dotNumber') {
-                        const response = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/${submittedCarrierInfo}?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`);
+                    if (typeOfCompanyInfo === 'dotNumber') {
+                        const response = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/${submittedCompanyInfo}?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`);
                         const json = await response.json();
                         setCarrierData(json.content.carrier);
                         setDotNumber(json.content.carrier.dotNumber);
                     }
-                    else if (typeOfCarrierInfo === 'mcNumber') {
-                        const response = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/docket-number/${submittedCarrierInfo}?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`);
+                    else if (typeOfCompanyInfo === 'mcNumber') {
+                        const response = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/docket-number/${submittedCompanyInfo}?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`);
                         const json = await response.json();
                         setCarrierData(json.content[0].carrier);
                         setDotNumber(json.content[0].carrier.dotNumber)
                     }
                     else {
-                        const response = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/name/${submittedCarrierInfo}?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`);
+                        const response = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/name/${submittedCompanyInfo}?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`);
                         const json = await response.json();
                         setCarrierList(json.content);
                     }
@@ -57,7 +57,7 @@ export const FMCSA = () => {
             fetchCarrierData();
         }
 
-    }, [submittedCarrierInfo, typeOfCarrierInfo]);
+    }, [submittedCompanyInfo, typeOfCompanyInfo]);
 
     useEffect(() => {
         if (dotNumber) {
@@ -183,12 +183,12 @@ export const FMCSA = () => {
     }, [carrierMcData]);
 
     console.log(carrierData);
-    console.log(typeOfCarrierInfo);
+    console.log(typeOfCompanyInfo);
 
     return (
         <>
-            <FindCarrierForm submittedCarrierInfo={submittedCarrierInfo} setSubmittedCarrierInfo={setSubmittedCarrierInfo} typeOfCarrierInfo={typeOfCarrierInfo} setTypeOfCarrierInfo={setTypeOfCarrierInfo} />
-            {submittedCarrierInfo &&
+            <FindCompanyForm submittedCompanyInfo={submittedCompanyInfo} setSubmittedCompanyInfo={setSubmittedCompanyInfo} typeOfCompanyInfo={typeOfCompanyInfo} setTypeOfCompanyInfo={setTypeOfCompanyInfo} />
+            {submittedCompanyInfo &&
                 <Container fluid className="mb-4 p-4">
                     {carrierData ? (
                         <Card className="glassmorphism radius-20 main-color p-4 my-3">

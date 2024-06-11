@@ -8,6 +8,10 @@ import { BsFillFuelPumpDieselFill } from "react-icons/bs";
 import afi from '../../assets/AFIEagle.png';
 import cw from '../../assets/cw.png';
 import forward from '../../assets/icons/forward.png';
+import { FMCSA } from '../FMCSA.jsx';
+import { HiOutlineDocumentDownload } from "react-icons/hi";
+import { FaReadme } from "react-icons/fa";
+import instructions from '../../assets/instructions.pdf'
 
 export const Resources = () => {
     const [fuelData, setFuelData] = useState([]);
@@ -32,7 +36,7 @@ export const Resources = () => {
             link: 'http://li-public.fmcsa.dot.gov/LIVIEW/pkg_carrquery.prc_carrlist'
         },
         {
-            name: 'SAFER - Safety &amp; Fitness Electronic Records System',
+            name: 'SAFER - Safety & Fitness Electronic Records System',
             link: 'http://safer.fmcsa.dot.gov/companysnapshot.aspx'
         },
         {
@@ -200,7 +204,32 @@ export const Resources = () => {
                 </Row>
 
                 <Row className='my-5'>
-                    <p className="fs-26 mb-2">Phone Apps</p>
+                    <p className="fs-26 mb-2">Working with GSF</p>
+                    <p className="secondary-color fs-22 fw-bold">Need assistance with the factoring process?</p>
+                    <Row className="ms-3 ps-4 d-flex align-items-center">
+                        <Col md={4}>
+                            <p className="mt-4 fs-24 fw-semibold">1. Download our instructions</p>
+                            {/* Add updated pdf of the instructions */}
+                            <a href={instructions} download='gsf_instructions.pdf' className="d-flex align-items-center mt-3 link-color hover-link-color">
+                                <HiOutlineDocumentDownload className='ms-3 icon-80 img-fluid' />
+                                <p className="fs-22 mx-3">Download</p>
+                            </a>
+                        </Col>
+                        <Col md={2}>
+                            <h1 className="text-justify fw-bold">OR</h1>
+                        </Col>
+                        <Col md={6}>
+                            <p className="mt-4 fs-24 fw-semibold">2. Read it online</p>
+                            <Link to="/resources/working-gsf" className="d-flex align-items-center mt-3 link-color hover-link-color">
+                                <FaReadme className='ms-4 icon-80 img-fluid' />
+                                <p className="fs-22 mx-3">Click Here</p>
+                            </Link>
+                        </Col>
+                    </Row>
+                </Row>
+
+                <Row className='my-5'>
+                    <p id='phone-apps' className="fs-26 mb-2">Phone Apps</p>
                     <p className="mb-4 fs-18">
                         If you are out on the road and don’t have access to a fax or scanner to send documents, we recommend Adobe Scan, DriveAxle App or CamScanner App. These are free apps and easy to use!
                     </p>
@@ -242,6 +271,13 @@ export const Resources = () => {
                     </Row>
                 </Row>
 
+                <Row className='my-5'>
+                    <p className="fs-26 mb-2">FMCSA</p>
+                    <Row className="mx-1 mt-3 mb-4">
+                        <FMCSA />
+                    </Row>
+                </Row>
+
                 <p className="fw-bold text-justify mb-3 fs-22">Other Links</p>
                 <ul className="list-unstyled fs-18">
                     {otherLinks.map((item, index) => (
@@ -251,7 +287,7 @@ export const Resources = () => {
                         </li>
                     ))}
                 </ul>
-            </Container>
+            </Container >
         </>
     )
 }

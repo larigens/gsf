@@ -25,10 +25,10 @@ export const ApplyNow = () => {
                             <h1 className="text-justify fw-bold">OR</h1>
                             <p className="mt-4 fs-24 fw-semibold">1. Download and Fill out the application</p>
 
-                            <Link to={application} download={application} className="d-flex align-items-center mt-3 link-color hover-link-color">
+                            <a href={application} download='gsf_application.pdf' className="d-flex align-items-center mt-3 link-color hover-link-color">
                                 <HiOutlineDocumentDownload className='ms-3 icon-80 img-fluid' />
                                 <p className="fs-22 mx-3">Download</p>
-                            </Link>
+                            </a>
 
                             <p className="mt-4 fs-24 fw-semibold">2. Submit your application</p>
 

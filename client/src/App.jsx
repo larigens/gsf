@@ -19,13 +19,13 @@ import { ApplyNow } from './pages/ApplyNow';
 import { AboutUs } from './pages/AboutUs';
 import { Referral } from './pages/Referral';
 import { Services } from './pages/Services/Services';
-import { FMCSA } from './pages/FMCSA';
 import { Careers } from './pages/Careers';
 import { CareerForm } from './components/Forms/CareerForm';
 import { Transportation } from './pages/Services/Transportation';
 import { Staffing } from './pages/Services/Staffing';
 import { Contact } from './pages/Contact';
 import { Resources } from './pages/Resources/Resources';
+import { WorkingGSF } from './pages/Resources/WorkingGSF';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -68,8 +68,8 @@ export const App = () => {
               <Route path="/services/staffing" element={<Staffing />} />
               <Route path="/contact-us" element={<Contact />} />
               <Route path="/resources" element={<Resources />} />
+              <Route path="/resources/working-gsf" element={<WorkingGSF />} />
               <Route path="/apply-now" element={<ApplyNow />} />
-              <Route path="/find-dot" element={<FMCSA />} />
               <Route path="/referrals/:id" element={<Referral />} />
             </Routes>
           </main>
