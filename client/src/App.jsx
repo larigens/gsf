@@ -9,18 +9,20 @@ import {
   createHttpLink
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { Home } from './pages/Home';
+
 import { Header } from './components/Header/Header';
 import { NavBar } from './components/Header/NavBar/NavBar';
 import { Footer } from './components/Footer';
 import { ModeSwitch } from './components/ModeSwitch';
 import { ThemeProvider } from './components/ThemeContext';
+import { CareerForm } from './components/Forms/CareerForm';
+
+import { Home } from './pages/Home';
 import { ApplyNow } from './pages/ApplyNow';
 import { AboutUs } from './pages/AboutUs';
 import { Referral } from './pages/Referral';
 import { Services } from './pages/Services/Services';
 import { Careers } from './pages/Careers';
-import { CareerForm } from './components/Forms/CareerForm';
 import { Transportation } from './pages/Services/Transportation';
 import { Staffing } from './pages/Services/Staffing';
 import { Contact } from './pages/Contact';

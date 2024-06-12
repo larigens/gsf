@@ -17,7 +17,7 @@ export const NavBar = () => {
     const navlinks = [
         {
             id: 1,
-            name: 'What We Do',
+            name: 'About GSF',
             href: '/',
             current: location.pathname === '/',
             isDropdown: true,
@@ -29,7 +29,7 @@ export const NavBar = () => {
                 },
                 {
                     id: '13',
-                    name: 'Join Our Team',
+                    name: 'Careers at GSF',
                     href: '/careers'
                 },
             ]
