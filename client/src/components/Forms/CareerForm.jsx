@@ -110,7 +110,7 @@ export const CareerForm = ({ jobTitle }) => {
             {location.pathname === '/careers/application' ?
                 <p className="text-justify my-5 gradient-text fs-26">Step into our team today and help us transform the factoring experience into a seamless, stress-free journey!</p>
                 : null}
-            <Form ref={form} name="newMessage" method="post" action="newMessage" onSubmit={handleFormSubmit} className='glassmorphism radius-20 main-color p-4'>
+            <Form ref={form} name="newMessage" method="post" action="newMessage" onSubmit={handleFormSubmit} className='glassmorphism radius-20 main-color p-3'>
                 <h2>Personal Information</h2>
                 <Row className='border-top mt-2 mx-1'>
                     <Col>

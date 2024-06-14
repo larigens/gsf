@@ -11,7 +11,7 @@ export const Credit = () => {
 
     const classNames = (...classes) => classes.filter(Boolean).join(' ');
 
-    
+
     return (
         <>
             <HelmetCP pageTitle={'Credit Services'}
@@ -38,7 +38,7 @@ export const Credit = () => {
                             </Button>
                         </Row>
                         <Container className="text-end mt-5">
-                            <p className="my-3 fs-18">For questions on how to use this service, please call <span className="secondary-color">+1-888-942-7253.</span></p>
+                            <p className="my-3 fs-18">For questions on how to use this service, please call <Link className="link-color hover-link-color fs-19" to="tel:+18889427253">+1-888-942-7253.</Link></p>
                             <p className="my-3 fs-18">Need access to check credit? <Link className="link-color hover-link-color fs-19" href="mailto:dramirez@gsquaredfunding.com?subject=Login%20Request%20for%20Factor%E2%80%99s%20Network">Request Login for Credit Check</Link></p>
                             <p className="mt-1 fs-15">* Please include your company's name, MC number and email address.</p>
                         </Container>

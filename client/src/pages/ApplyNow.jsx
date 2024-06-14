@@ -17,7 +17,7 @@ export const ApplyNow = () => {
                     </Link>
                     or take the initiative and get ahead! Simply fill out and submit your application to us, and we will respond to you as soon as possible!</p>
                 <Row>
-                    <Col md={4} className="mb-2 me-3">
+                    <Col md={4} className="mb-4 me-3">
                         <ContactForm />
                     </Col>
                     <Col md={7}>

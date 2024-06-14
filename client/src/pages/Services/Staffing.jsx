@@ -77,7 +77,7 @@ export const Staffing = () => {
                             A major benefit of factoring staffing invoices is that you gain access to cash without incurring any debt. Loans may be available to generate cash flow, as well, but that option comes with a cost. Using bank loans to pay your receivables may prevent you from getting other loans to for your business. Or, you may have credit issues that limit your ability to qualify for bank loans at all. At G Squared Funding we may allow you to benefit from nonrecourse factoring in which we focus on the credit profile of your customers, not your own credit which is a major benefit of staffing factoring and staffing funding.                            </p>
                     </Container>
                     <Row className='mt-4'>
-                        <Col md={8}>
+                        <Col sm={12} md={8}>
                             {staffingItems.map((item, index) => (
                                 <>
                                     <h3 key={index} className="secondary-color fs-24 mb-3 mt-5">{item.title}</h3>
@@ -92,7 +92,7 @@ export const Staffing = () => {
                                 </>
                             ))}
                         </Col>
-                        <Col md={4} className="my-3">
+                        <Col sm={12} md={4} className="my-3">
                             <ContactForm />
                         </Col>
                     </Row>

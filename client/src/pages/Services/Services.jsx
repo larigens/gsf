@@ -133,11 +133,11 @@ export const Services = () => {
                 </Row>
                 <Row>
                     <h2 className="fw-bold secondary-color fs-32 my-4">Ready to get started?</h2>
-                    <Col md={4} className="mt-2 mb-4 me-2">
+                    <Col md={4} className="mt-2 mb-5 me-2">
                         <ContactForm />
                     </Col>
                     <Col md={7} className="ms-2">
-                        <h2 className="secondary-color mb-4 fs-32">Industries Served</h2>
+                        <h2 className="secondary-color mb-4 mt-1 fs-32">Industries Served</h2>
                         <Row>
                             {industries.map((industry, index) => (
                                 <Col key={index} md={5} className="mb-3">

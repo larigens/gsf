@@ -1,8 +1,9 @@
-import { Form, Button, Row, Col, Modal } from 'react-bootstrap';
+import { Form, Button, Row, Col } from 'react-bootstrap';
 import React, { useState, useRef } from 'react';
 // import emailjs from '@emailjs/browser'; 
 import { MdArrowDropDown } from "react-icons/md";
 import { GetAllBrokers, GetAllReferrals } from '../../utils/helper.jsx';
+import { Modals } from '../Modals';
 
 export const ContactForm = ({ referralLink, referralName }) => {
     const [firstName, setFirstName] = useState('');
@@ -39,8 +40,6 @@ export const ContactForm = ({ referralLink, referralName }) => {
     const [showModal, setShowModal] = useState(false);
     const [modalTitle, setModalTitle] = useState('');
     const [modalBody, setModalBody] = useState('');
-
-    const handleCloseModal = () => setShowModal(false);
 
     const handleShowModal = (title, body) => {
         setModalTitle(title);
@@ -177,17 +176,7 @@ export const ContactForm = ({ referralLink, referralName }) => {
                     </Button>
                 </Row>
             </Form>
-            <Modal show={showModal} onHide={handleCloseModal} centered>
-                <Modal.Header closeButton className="background border-none secondary-color">
-                    <Modal.Title>{modalTitle}</Modal.Title>
-                </Modal.Header>
-                <Modal.Body className="background border-none main-color">{modalBody}</Modal.Body>
-                <Modal.Footer className="background border-none">
-                    <Button className='background-light border-none' onClick={handleCloseModal}>
-                        Ok
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+            <Modals title={modalTitle} body={modalBody} showModal={showModal} setShowModal={setShowModal} />
         </>
     )
 }

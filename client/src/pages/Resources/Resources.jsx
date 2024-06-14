@@ -128,45 +128,25 @@ export const Resources = () => {
                         <FuelForm setFuelInfo={setFuelInfo} setAreaInfo={setAreaInfo} />
                     </Col>
                     <Col md={5} >
-                        <div className='radius-20 mb-1' style={{ position: 'relative', width: '100%', height: '560px' }}>
+                        <div className='iframe-container radius-20 mb-1'>
                             <iframe
                                 id="diesel-price-per-gallon"
                                 title="diesel-price-per-gallon"
-                                style={{ width: '100%', height: '100%' }}
                                 src='https://www.eia.gov/petroleum/gasdiesel/images/gasoline_prices_map.png'
                                 scrolling='no'
-                                className='radius-20 text-center'
                             ></iframe>
                             <Link
                                 to="https://www.eia.gov/petroleum/gasdiesel/gas_geographies.php#statesmap"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                style={{
-                                    position: 'absolute',
-                                    top: 0,
-                                    left: 0,
-                                    width: '100%',
-                                    height: '100%',
-                                    zIndex: 10,
-                                    backgroundColor: 'transparent'
-                                }}
                             >
-                                <span style={{
-                                    position: 'absolute',
-                                    width: '1px',
-                                    height: '1px',
-                                    margin: '-1px',
-                                    padding: 0,
-                                    overflow: 'hidden',
-                                    clip: 'rect(0, 0, 0, 0)',
-                                    border: 0
-                                }}>Go to diesel price per gallon page</span>
+                                <span>Go to diesel price per gallon page</span>
                             </Link>
                         </div>
                     </Col>
                     {fuelInfo && fuelData ?
                         <Container fluid className='p-3'>
-                            <Row className='mt-3 ms-2'>
+                            <Row className='m-3'>
                                 <p className="fw-bold text-justify m-3 fs-22">{areaInfo}</p>
                             </Row>
                             <Row className='p-4 mx-2'>
@@ -227,20 +207,17 @@ export const Resources = () => {
                 <Row className='my-5'>
                     <p className="fs-26 mb-2">Working with GSF</p>
                     <p className="secondary-color fs-22 fw-bold">Need assistance with the factoring process?</p>
-                    <Row className="ms-3 ps-4 d-flex align-items-center">
-                        <Col md={4}>
-                            <p className="mt-4 fs-24 fw-semibold">1. Download our instructions</p>
+                    <Row className="ms-2 ps-2 d-flex align-items-center justify-content-center">
+                        <Col md={6}>
+                            <p className="mt-4 fs-24 fw-semibold">Download our instructions</p>
                             {/* Add updated pdf of the instructions */}
                             <a href={instructions} download='gsf_instructions.pdf' className="d-flex align-items-center mt-3 link-color hover-link-color">
                                 <HiOutlineDocumentDownload className='ms-3 icon-80 img-fluid' />
                                 <p className="fs-22 mx-3">Download</p>
                             </a>
                         </Col>
-                        <Col md={2}>
-                            <h1 className="text-justify fw-bold">OR</h1>
-                        </Col>
                         <Col md={6}>
-                            <p className="mt-4 fs-24 fw-semibold">2. Read it online</p>
+                            <p className="mt-4 fs-24 fw-semibold">Read it online</p>
                             <Link to="/resources/working-gsf" className="d-flex align-items-center mt-3 link-color hover-link-color">
                                 <FaReadme className='ms-4 icon-80 img-fluid' />
                                 <p className="fs-22 mx-3">Click Here</p>

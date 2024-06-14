@@ -26,14 +26,14 @@ export const Careers = () => {
                 {cardsVisibility ?
                     <>
                         <Container fluid className='d-flex align-items-center text-justify'>
-                            <BsArrow90DegDown className='icon-color icon-80' />
+                            <BsArrow90DegDown className='icon-color icon-80 icon-desktop-only' />
                             <p className="text-justify my-5 gradient-text fs-26">Step into our team today and help us transform the factoring experience into a seamless, stress-free journey!</p>
                         </Container>
 
                         <Row className="ms-2 my-5 justify-content-center">
-                            <Col md={6}>
+                            <Col md={6} className='my-2'>
                                 <Card className='glassmorphism'>
-                                    <Card.Body className='p-4'>
+                                    <Card.Body className='p-3'>
                                         <Card.Title className='secondary-color fs-22 fw-bold my-2'>Client Relations Manager</Card.Title>
                                         <Card.Subtitle className='fs-18 mt-2 mb-4 main-color'>This is an entry-level position</Card.Subtitle>
                                         <Card.Text className='main-color text-justify'>
@@ -45,9 +45,9 @@ export const Careers = () => {
                                     </Card.Body>
                                 </Card>
                             </Col>
-                            <Col md={6}>
+                            <Col md={6} className='my-2'>
                                 <Card className='glassmorphism'>
-                                    <Card.Body className='p-4'>
+                                    <Card.Body className='p-3'>
                                         <Card.Title className='secondary-color fw-bold fs-22 my-2'>Business Development Officer</Card.Title>
                                         <Card.Subtitle className='fs-18 mt-2 mb-4 main-color'>All levels of experience</Card.Subtitle>
                                         <Card.Text className='text-justify main-color'>
@@ -64,7 +64,7 @@ export const Careers = () => {
                 }
                 {backIconVisibility ?
                     <>
-                        <Button className='text-end remove-bg border-none main-color ms-4 fs-18' onClick={() => { setJobPosition(''); setCardsVisibility(true); setBackIconVisibility(false) }}>
+                        <Button className='text-end remove-bg border-none main-color m-1 fs-18' onClick={() => { setJobPosition(''); setCardsVisibility(true); setBackIconVisibility(false) }}>
                             <IoArrowBack className='icon-color icon-20' /> Go Back
                         </Button>
                         <JobPost jobPosition={jobPosition} backIconVisibility={backIconVisibility} />

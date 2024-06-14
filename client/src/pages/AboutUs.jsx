@@ -60,11 +60,9 @@ export const AboutUs = () => {
                     </Col>
                 </Row>
                 {/* Values section */}
-                <Row>
+                <Row className="mt-4 mb-2">
                     <p className="fw-bold text-justify mb-2 fs-28">Our Values</p>
-                    <Row className="mt-3">
                         <Cards cardInfo={aboutInfo} />
-                    </Row>
                 </Row>
                 {/* Why Choose section */}
                 <Row className="mt-5 text-justify">
@@ -73,8 +71,8 @@ export const AboutUs = () => {
                             theme === 'Light Mode' ? 'secondary-bg' : '',
                             'ms-auto pb-2 ms-2',
                         )}>
-                        <Row className="mt-5 text-justify">
-                            <p className="fw-bold text-justify mb-3 fs-28">Why Choose G Squared Funding?</p>
+                        <Row className="mt-5">
+                            <p className="fw-bold mb-3 fs-28">Why Choose G Squared Funding?</p>
                         </Row>
                         <Container fluid className="d-flex align-items-center mb-2">
                             <Image className="me-2 icon-20" src={line} alt="trucks" loading="lazy" />
@@ -99,7 +97,7 @@ export const AboutUs = () => {
                     </Container>
                 </Row>
                 {/* Apply Now section */}
-                <Row className="my-2 justify-content-center align-items-center my-5 border-total p-1">
+                <Row className="my-2 justify-content-center align-items-center my-5 border-total p-2">
                     <Col md={3} className="text-center">
                         <Link to='/apply-now' className="mt-2">
                             <Image className='icon-color icon-80' src={apply} alt="apply now icon" loading="lazy" />

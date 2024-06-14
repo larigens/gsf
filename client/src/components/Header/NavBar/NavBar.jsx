@@ -13,6 +13,8 @@ export const NavBar = () => {
         return classes.filter(Boolean).join(' ')
     }
 
+    // Function to detect if the device is mobile or desktop
+    const isMobile = () => window.innerWidth <= 768;
 
     const navlinks = [
         {
@@ -59,7 +61,7 @@ export const NavBar = () => {
         {
             id: 5,
             name: 'Client Login',
-            href: '/login',
+            href: isMobile() ? 'https://m.gsquared.winfactor.com/login/' : 'https://gsquared.winfactor.com/login/',
             current: location.pathname === '/login',
             isDropdown: false,
         },

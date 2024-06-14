@@ -95,7 +95,7 @@ export const Home = () => {
               </Col>
             ))}
           </Row>
-          <Row className="my-5 ms-auto">
+          <Row className="ms-auto">
             <p className="mb-3 fs-24">Join the ranks of satisfied clients who have experienced the benefits of partnering with us.</p>
             <a className="hover-gradient secondary-color fs-22" href="/services">Discover More Now!</a>
           </Row>

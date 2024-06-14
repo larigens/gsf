@@ -68,14 +68,14 @@ export const Contact = () => {
                 </Container>
 
                 <Row className='my-5'>
-                    <Col md={4} className="mb-2 me-3">
+                    <Col md={4} className="my-2 me-3">
                         <ContactForm />
                     </Col>
-                    <Col md={7}>
+                    <Col md={7} className='mt-2'>
                         <Container fluid
                             className={classNames(
-                                theme === 'Light Mode' ? 'secondary-bg' : '',
-                                'ms-3 p-4',
+                                theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent',
+                                'ms-2 p-4 radius-20',
                             )}>
                             <p className="fw-bold text-justify mb-3 fs-32 secondary-color">Our Location</p>
                             <p className="fw-bold text-justify mb-2 fs-20">G Squared Funding, LLC</p>
