@@ -12,6 +12,8 @@ import { FMCSA } from '../FMCSA.jsx';
 import { HiOutlineDocumentDownload } from "react-icons/hi";
 import { FaReadme } from "react-icons/fa";
 import instructions from '../../assets/instructions.pdf'
+import { FaUser } from "react-icons/fa";
+import { MdOutlinePriceCheck } from "react-icons/md";
 
 export const Resources = () => {
     const [fuelData, setFuelData] = useState([]);
@@ -185,9 +187,28 @@ export const Resources = () => {
 
 
                 <Row className='my-5'>
-                    <p className="fs-26 mb-2">Login Access</p>
+                    <p className="fs-26 mb-2">Client Tools</p>
                     <p className="secondary-color fs-22 fw-bold">Need access to check credit or view your account online?</p>
-                    <ul className="list-unstyled">
+                    <Col md={2} className='my-2'>
+                        <Link to='/resources/client-portal' className='link-color hover-link-color'>
+                            <Container className='glassmorphism p-3 text-center radius-20'>
+                                <FaUser className='img-fluid text-center mb-1 icon-80' />
+                                <Row className="border-top m-2"></Row>
+                                <h5 className="mt-4 mb-2 text-center fs-22">Client Portal</h5>
+                            </Container>
+                        </Link>
+                    </Col>
+                    <Col md={2} className='my-2'>
+                        <Link to='/resources/credit-services' className='link-color hover-link-color'>
+                            <Container className='glassmorphism p-3 text-center radius-20'>
+                                <MdOutlinePriceCheck className='img-fluid text-center mb-1 icon-80' />
+                                <Row className="border-top m-2"></Row>
+                                <h5 className="mt-4 mb-2 text-center fs-22">Credit Services</h5>
+                            </Container>
+                        </Link>
+                    </Col>
+
+                    {/* <ul className="list-unstyled">
                         <li className="d-flex align-items-center mb-3">
                             <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
                             <p className="mb-0 text-justify fs-18">
@@ -200,7 +221,7 @@ export const Resources = () => {
                                 Request Login for <Link to='mailto:dramirez@gsquaredfunding.com?subject=Login%20Request%20for%20Factors%20Network%20-%20MC%23' className='link-color hover-link-color'>Credit Checks</Link> – Include your company name, MC Number and business email address for setup.
                             </p>
                         </li>
-                    </ul>
+                    </ul> */}
                 </Row>
 
                 <Row className='my-5'>

@@ -28,6 +28,8 @@ import { Staffing } from './pages/Services/Staffing';
 import { Contact } from './pages/Contact';
 import { Resources } from './pages/Resources/Resources';
 import { WorkingGSF } from './pages/Resources/WorkingGSF';
+import { Credit } from './pages/Resources/Credit';
+import { Portal } from './pages/Resources/Portal';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -71,6 +73,8 @@ export const App = () => {
               <Route path="/contact-us" element={<Contact />} />
               <Route path="/resources" element={<Resources />} />
               <Route path="/resources/working-gsf" element={<WorkingGSF />} />
+              <Route path="/resources/credit-services" element={<Credit />} />
+              <Route path="/resources/client-portal" element={<Portal />} />
               <Route path="/apply-now" element={<ApplyNow />} />
               <Route path="/referrals/:id" element={<Referral />} />
             </Routes>
