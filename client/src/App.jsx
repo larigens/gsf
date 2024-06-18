@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
@@ -16,16 +17,17 @@ import { Footer } from './components/Footer';
 import { ModeSwitch } from './components/ModeSwitch';
 import { ThemeProvider } from './components/ThemeContext';
 import { CareerForm } from './components/Forms/CareerForm';
+import { FullScreenForm } from './components/Forms/FullScreenForm';
 
-import { Home } from './pages/Home';
-import { ApplyNow } from './pages/ApplyNow';
-import { AboutUs } from './pages/AboutUs';
-import { Referral } from './pages/Referral';
-import { Services } from './pages/Services/Services';
-import { Careers } from './pages/Careers';
-import { Transportation } from './pages/Services/Transportation';
-import { Staffing } from './pages/Services/Staffing';
-import { Contact } from './pages/Contact';
+import Home from './pages/Home';
+import ApplyNow from './pages/ApplyNow';
+import AboutUs from './pages/AboutUs';
+import Referral from './pages/Referral';
+import Services from './pages/Services/Services';
+import Careers from './pages/Careers';
+import Transportation from './pages/Services/Transportation';
+import Staffing from './pages/Services/Staffing';
+import Contact from './pages/Contact';
 import { Resources } from './pages/Resources/Resources';
 import { WorkingGSF } from './pages/Resources/WorkingGSF';
 import { Credit } from './pages/Resources/Credit';
@@ -76,6 +78,7 @@ export const App = () => {
               <Route path="/resources/credit-services" element={<Credit />} />
               <Route path="/resources/client-portal" element={<Portal />} />
               <Route path="/apply-now" element={<ApplyNow />} />
+              <Route path="/application" element={<FullScreenForm />} />
               <Route path="/referrals/:id" element={<Referral />} />
             </Routes>
           </main>

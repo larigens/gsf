@@ -29,68 +29,73 @@ export const FMCSA = () => {
     const [carrierList, setCarrierList] = useState(null);
 
 
+
     useEffect(() => {
-        if (submittedCompanyInfo) {
-            const fetchCarrierData = async () => {
-                try {
-                    if (typeOfCompanyInfo === 'dotNumber') {
-                        const response = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/${submittedCompanyInfo}?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`);
-                        const json = await response.json();
-                        setCarrierData(json.content.carrier);
-                        setDotNumber(json.content.carrier.dotNumber);
-                    }
-                    else if (typeOfCompanyInfo === 'mcNumber') {
-                        const response = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/docket-number/${submittedCompanyInfo}?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`);
-                        const json = await response.json();
-                        setCarrierData(json.content[0].carrier);
-                        setDotNumber(json.content[0].carrier.dotNumber)
-                    }
-                    else {
-                        const response = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/name/${submittedCompanyInfo}?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`);
-                        const json = await response.json();
-                        setCarrierList(json.content);
-                    }
-                } catch (error) {
-                    console.error('Error fetching carrier data:', error);
+        const fetchCarrierData = async () => {
+            if (!submittedCompanyInfo) return;
+
+            const getTypeOfCompanyUrl = () => {
+                const baseApiUrl = 'https://mobile.fmcsa.dot.gov/qc/services/carriers/';
+                switch (typeOfCompanyInfo) {
+                    case 'dotNumber':
+                        return `${baseApiUrl}${submittedCompanyInfo}?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`;
+                    case 'mcNumber':
+                        return `${baseApiUrl}docket-number/${submittedCompanyInfo}?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`;
+                    default:
+                        return `${baseApiUrl}name/${submittedCompanyInfo}?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`;
                 }
             };
-            fetchCarrierData();
-        }
 
+            const url = getTypeOfCompanyUrl();
+
+            try {
+                const response = await fetch(url);
+                const json = await response.json();
+
+                if (typeOfCompanyInfo === 'dotNumber' || typeOfCompanyInfo === 'mcNumber') {
+                    setCarrierData(typeOfCompanyInfo === 'dotNumber' ? json.content.carrier : json.content[0].carrier);
+                    setDotNumber(json.content.carrier.dotNumber);
+                } else {
+                    setCarrierList(json.content);
+                }
+            } catch (error) {
+                console.error('Error fetching carrier data:', error);
+            }
+        };
+        fetchCarrierData();
     }, [submittedCompanyInfo, typeOfCompanyInfo]);
 
+
     useEffect(() => {
-        if (dotNumber) {
-            const fetchMoreCarrierData = async () => {
+        const fetchMoreCarrierData = async () => {
+            if (!dotNumber) return;
+            const fetchCarrierDetails = async (endpoint, setter) => {
                 try {
-                    // Basics - 4
-                    const responseBasics = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/${dotNumber}/basics?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`);
-                    const jsonBasics = await responseBasics.json();
-                    setCarrierBasicsData(jsonBasics.content)
-                    // Cargo Carried
-                    const responseCargoCarried = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/${dotNumber}/cargo-carried?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`);
-                    const jsonCargoCarried = await responseCargoCarried.json();
-                    setCargoCarriedData(jsonCargoCarried.content);
-                    // Carrier Active-For-Hire Authority
-                    const responseCarrierActive = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/${dotNumber}/authority?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`);
-                    const jsonCarrierActive = await responseCarrierActive.json();
-                    setCarrierAuthData(jsonCarrierActive.content)
-                    // Docket Numbers
-                    const responseDocketNumbers = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/${dotNumber}/docket-numbers?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`);
-                    const jsonDocketNumbers = await responseDocketNumbers.json();
-                    setCarrierMcData(jsonDocketNumbers.content)
-                    // Operation Classification
-                    const responseOperation = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/${dotNumber}/operation-classification?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`);
-                    const jsonOperation = await responseOperation.json();
-                    setCarrierOperationData(jsonOperation.content)
+                    const response = await fetch(`https://mobile.fmcsa.dot.gov/qc/services/carriers/${dotNumber}/${endpoint}?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`);
+                    const json = await response.json();
+                    setter(json.content);
                 } catch (error) {
-                    console.error('Error fetching carrier data:', error);
+                    console.error(`Error fetching ${endpoint} data:`, error);
                 }
             };
-            fetchMoreCarrierData();
-        }
+            try {
+                const promises = [
+                    fetchCarrierDetails(`basics`, setCarrierBasicsData),
+                    fetchCarrierDetails(`cargo-carried`, setCargoCarriedData),
+                    fetchCarrierDetails(`authority`, setCarrierAuthData),
+                    fetchCarrierDetails(`docket-numbers`, setCarrierMcData),
+                    fetchCarrierDetails(`operation-classification`, setCarrierOperationData)
+                ];
 
+                await Promise.all(promises);
+            } catch (error) {
+                console.error('Error fetching more carrier data:', error);
+            }
+        };
+
+        fetchMoreCarrierData();
     }, [dotNumber]);
+
 
     useEffect(() => {
         if (carrierData) {
@@ -100,41 +105,21 @@ export const FMCSA = () => {
                     const firstPart = einString.substring(0, 2);
                     const secondPart = einString.substring(2);
                     setCarrierEIN(`${firstPart}-${secondPart}`);
+                } else {
+                    setCarrierEIN('N/A');
                 }
-                else { setCarrierEIN('N/A') }
             };
-            splitEIN();
 
             const getInsuranceInfo = () => {
                 if (carrierData.commonAuthorityStatus !== 'N') {
                     setInsuranceCode('BIPD');
-                    if (carrierData.bipdRequiredAmount === carrierData.bipdInsuranceOnFile) {
-                        setInsuranceOnFile('Y');
-                    } else {
-                        setInsuranceOnFile('N');
-                    }
+                    setInsuranceOnFile(carrierData.bipdRequiredAmount === carrierData.bipdInsuranceOnFile ? 'Yes' : 'No');
                 } else if (carrierData.brokerAuthorityStatus !== 'N') {
                     setInsuranceCode('BOND');
-                    setInsuranceOnFile(carrierData.bondInsuranceOnFile);
+                    setInsuranceOnFile(carrierData.bondInsuranceOnFile ? 'Yes' : 'No');
                 } else {
                     setInsuranceCode('CARGO');
-                    setInsuranceOnFile(carrierData.cargoInsuranceRequired);
-                }
-            };
-            getInsuranceInfo();
-
-            const getAuthorityStatus = (authorityStatus) => {
-                if (authorityStatus === 'A') {
-                    setAuthorityStatus('Active')
-                }
-                else if (authorityStatus === 'I') {
-                    setAuthorityStatus('Inactive')
-                }
-                else if (authorityStatus === 'MULTIPLE') {
-                    setAuthorityStatus('Multiple - please check Operation Classification section for more details.')
-                }
-                else {
-                    setAuthorityStatus('Pending')
+                    setInsuranceOnFile(carrierData.cargoInsuranceRequired ? 'Yes' : 'No');
                 }
             };
 
@@ -142,63 +127,75 @@ export const FMCSA = () => {
                 if (carrierData.brokerAuthorityStatus !== 'N' && carrierData.contractAuthorityStatus === 'N' && carrierData.commonAuthorityStatus === 'N') {
                     getAuthorityStatus(carrierData.brokerAuthorityStatus);
                     setAuthority('Broker');
-                }
-                else if (carrierData.contractAuthorityStatus !== 'N' && carrierData.brokerAuthorityStatus === 'N' && carrierData.commonAuthorityStatus === 'N') {
+                } else if (carrierData.contractAuthorityStatus !== 'N' && carrierData.brokerAuthorityStatus === 'N' && carrierData.commonAuthorityStatus === 'N') {
                     getAuthorityStatus(carrierData.contractAuthorityStatus);
                     setAuthority('Contract');
-                }
-                else if (carrierData.commonAuthorityStatus !== 'N' && carrierData.brokerAuthorityStatus === 'N' && carrierData.contractAuthorityStatus === 'N') {
+                } else if (carrierData.commonAuthorityStatus !== 'N' && carrierData.brokerAuthorityStatus === 'N' && carrierData.contractAuthorityStatus === 'N') {
                     getAuthorityStatus(carrierData.commonAuthorityStatus);
                     setAuthority('Common');
-                }
-                else if (carrierData.commonAuthorityStatus !== 'N' && carrierData.brokerAuthorityStatus !== 'N' && carrierData.contractAuthorityStatus === 'N') {
+                } else if (carrierData.commonAuthorityStatus !== 'N' && carrierData.brokerAuthorityStatus !== 'N' && carrierData.contractAuthorityStatus === 'N') {
                     getAuthorityStatus('MULTIPLE');
                     setAuthority('Common & Broker');
-                }
-                else if (carrierData.commonAuthorityStatus !== 'N' && carrierData.brokerAuthorityStatus === 'N' && carrierData.contractAuthorityStatus !== 'N') {
+                } else if (carrierData.commonAuthorityStatus !== 'N' && carrierData.brokerAuthorityStatus === 'N' && carrierData.contractAuthorityStatus !== 'N') {
                     getAuthorityStatus('MULTIPLE');
                     setAuthority('Common & Contract');
-                }
-                else if (carrierData.commonAuthorityStatus === 'N' && carrierData.brokerAuthorityStatus !== 'N' && carrierData.contractAuthorityStatus !== 'N') {
+                } else if (carrierData.commonAuthorityStatus === 'N' && carrierData.brokerAuthorityStatus !== 'N' && carrierData.contractAuthorityStatus !== 'N') {
                     getAuthorityStatus('MULTIPLE');
                     setAuthority('Broker & Contract');
                 }
-                // }
-            }
+            };
+
+            splitEIN();
+            getInsuranceInfo();
             findAuthority();
         }
     }, [carrierData]);
 
     useEffect(() => {
         if (carrierMcData) {
-            const getDocketNumbers = () => {
-                carrierMcData.map(mcNumber => (
-                    setMCNumber(`MC Number: ${mcNumber.docketNumberId}`)
-                ))
-            }
-            getDocketNumbers();
+            setMCNumber(carrierMcData.map(mcNumber => `MC Number: ${mcNumber.docketNumberId}`).join(', ') || 'DOT Only');
         } else {
             setMCNumber('DOT Only');
         }
     }, [carrierMcData]);
+
+    const getAuthorityStatus = (authorityStatus) => {
+        if (authorityStatus === 'A') {
+            setAuthorityStatus('Active')
+        }
+        else if (authorityStatus === 'I') {
+            setAuthorityStatus('Inactive')
+        }
+        else if (authorityStatus === 'MULTIPLE') {
+            setAuthorityStatus('Multiple - please check Operation Classification section for more details.')
+        }
+        else {
+            setAuthorityStatus('Pending')
+        }
+    };
 
     console.log(carrierData);
     console.log(typeOfCompanyInfo);
 
     return (
         <>
-            <FindCompanyForm submittedCompanyInfo={submittedCompanyInfo} setSubmittedCompanyInfo={setSubmittedCompanyInfo} typeOfCompanyInfo={typeOfCompanyInfo} setTypeOfCompanyInfo={setTypeOfCompanyInfo} />
-            {submittedCompanyInfo &&
+            <FindCompanyForm
+                submittedCompanyInfo={submittedCompanyInfo}
+                setSubmittedCompanyInfo={setSubmittedCompanyInfo}
+                typeOfCompanyInfo={typeOfCompanyInfo}
+                setTypeOfCompanyInfo={setTypeOfCompanyInfo}
+            />
+            {submittedCompanyInfo && (
                 <Container fluid className="mb-4 p-4">
                     {carrierData ? (
                         <Card className="glassmorphism radius-20 main-color p-4 my-3">
                             <Card.Body>
                                 <Card.Title className="fw-bold text-center mb-4 fs-2">{carrierData.legalName}</Card.Title>
-                                <Card.Subtitle className="fw-bold text-center mb-3 fs-5">DBA: {carrierData.dbaName ? carrierData.dbaName : 'N/A'}</Card.Subtitle>
+                                <Card.Subtitle className="fw-bold text-center mb-3 fs-5">DBA: {carrierData.dbaName || 'N/A'}</Card.Subtitle>
                                 <Card.Subtitle className="fw-bold text-center mb-3 fs-5">EIN: {carrierEIN}</Card.Subtitle>
 
                                 <Card.Text className="fw-bold mt-5 mb-3 fs-4 text-center">Authority Details</Card.Text>
-                                <Row className='d-flex align-center my-2'>
+                                <Row className="d-flex align-center my-2">
                                     <Col md={4}>
                                         <Card.Text className="mb-3 fs-5">USDOT Number: {carrierData.dotNumber}</Card.Text>
                                         <Card.Text className="mb-3 fs-5">{MCNumber}</Card.Text>
@@ -206,24 +203,23 @@ export const FMCSA = () => {
                                     <Col md={4}>
                                         <Card.Text className="mb-3 fs-5">Entity Type: {authority}</Card.Text>
                                         <Card.Text className="mb-3 fs-5">USDOT Status: {carrierData.allowedToOperate === 'Y' ? 'Active' : 'Inactive'}</Card.Text>
-                                        {carrierData.censusTypeId ?
+                                        {carrierData.censusTypeId ? (
                                             <Card.Text className="mb-3 fs-5">Authority Status: {authorityStatus}</Card.Text>
-                                            : null
-                                        }
-
+                                        ) : null}
                                     </Col>
                                     <Col md={4}>
                                         {(authority === 'Common' || (authority === 'Contract' && (
                                             <Card.Text className="mb-3 fs-5">Carrier Operation: {carrierData.carrierOperation.carrierOperationDesc}</Card.Text>
                                         )))}
-                                        < Card.Text className="mb-3 fs-5">Out of Service Date: {carrierData.oosDate ? carrierData.oosDate : 'N/A'}</Card.Text>
+                                        <Card.Text className="mb-3 fs-5">Out of Service Date: {carrierData.oosDate || 'N/A'}</Card.Text>
                                         <Card.Text className="mb-3 fs-5">MCS-150 Outdated: {carrierData.mcs150Outdated}</Card.Text>
                                     </Col>
                                 </Row>
+
                                 <Card.Text className="fw-bold my-3 fs-4 text-center">Company Information</Card.Text>
-                                <Row className='d-flex align-center my-2'>
+                                <Row className="d-flex align-center my-2">
                                     <Col md={4}>
-                                        <Container fluid className='d-flex align-items-baseline ps-0'>
+                                        <Container fluid className="d-flex align-items-baseline ps-0">
                                             <Card.Text className="fw-bold mb-3 fs-5">Business Address</Card.Text>
                                             <Image className="img-fluid ms-2 icon-color icon-20" src={location} alt="location icon" loading="lazy" />
                                         </Container>
@@ -232,7 +228,7 @@ export const FMCSA = () => {
                                     </Col>
 
                                     <Col md={4}>
-                                        <Container fluid className='d-flex align-items-baseline ps-0'>
+                                        <Container fluid className="d-flex align-items-baseline ps-0">
                                             <Card.Text className="fw-bold mb-3 fs-5">Insurance Details</Card.Text>
                                             <Image className="img-fluid ms-2 icon-color icon-20" src={insurance} alt="insurance icon" loading="lazy" />
                                         </Container>
@@ -241,12 +237,12 @@ export const FMCSA = () => {
                                         {insuranceCode === 'BIPD' && (
                                             <Card.Text className="mb-3 fs-5">BIPD: ${carrierData.bipdInsuranceOnFile},000</Card.Text>
                                         )}
-
                                     </Col>
+
                                     <Col md={4}>
-                                        <Container fluid className='d-flex align-items-center'>
+                                        <Container fluid className="d-flex align-items-center">
                                             <Image className="img-fluid me-2 icon-color icon-80" src={truckinfo} alt="truckinfo icon" loading="lazy" />
-                                            <Container className='mt-2'>
+                                            <Container className="mt-2">
                                                 <Card.Text className="my-3 fs-5">Power Units: {carrierData.totalPowerUnits}</Card.Text>
                                                 <Card.Text className="mb-3 fs-5">Drivers: {carrierData.totalDrivers}</Card.Text>
                                             </Container>
@@ -256,43 +252,40 @@ export const FMCSA = () => {
 
                                 <Card.Text className="fw-bold my-3 fs-4 text-center">Operation Classification</Card.Text>
 
-                                {carrierOperationData && carrierOperationData.map(opsData => (
+                                {carrierOperationData && carrierOperationData.map((opsData) => (
                                     <React.Fragment key={opsData.id.operationClassId}>
                                         <Card.Text className="fw-bold mb-3 fs-5 text-center">{opsData.operationClassDesc}</Card.Text>
                                     </React.Fragment>
                                 ))}
 
-
-                                {carrierAuthData && carrierAuthData.map(authData => (
+                                {carrierAuthData && carrierAuthData.map((authData) => (
                                     <Row key={authData.carrierAuthority.applicantID} className="mb-3">
-                                        <Col md={4} className='text-center'>
+                                        <Col md={4} className="text-center">
                                             <Image className="img-fluid my-2 icon-color icon-80" src={household} alt="household icon" loading="lazy" />
                                             <Card.Text className="fs-5">Authorized For Household Goods: {authData.carrierAuthority.authorizedForHouseholdGoods}</Card.Text>
                                         </Col>
-                                        <Col md={4} className='text-center'>
+                                        <Col md={4} className="text-center">
                                             <Image className="img-fluid my-2 icon-color icon-80" src={passenger} alt="passenger icon" loading="lazy" />
                                             <Card.Text className="fs-5">Authorized For Passenger: {authData.carrierAuthority.authorizedForPassenger}</Card.Text>
                                         </Col>
-                                        <Col md={4} className='text-center'>
+                                        <Col md={4} className="text-center">
                                             <Image className="img-fluid my-2 icon-color icon-80" src={property} alt="property icon" loading="lazy" />
                                             <Card.Text className="fs-5">Authorized For Property: {authData.carrierAuthority.authorizedForProperty}</Card.Text>
                                         </Col>
                                     </Row>
                                 ))}
 
-                                <Row className='mt-5'>
+                                <Row className="mt-5">
                                     <Card.Text className="mb-3 fs-5">Common Authority Status: {carrierData.commonAuthorityStatus === 'A' ? 'Active' : 'None'}</Card.Text>
                                     <Card.Text className="mb-3 fs-5">Contract Authority Status: {carrierData.contractAuthorityStatus === 'A' ? 'Active' : 'None'}</Card.Text>
                                     <Card.Text className="mb-3 fs-5">Broker Authority Status: {carrierData.bondInsuranceRequired === 'Y' ? 'Active' : 'None'}</Card.Text>
                                 </Row>
 
-
-
                                 <Row className="my-2 justify-content-center">
                                     <Card.Text className="fw-bold mb-3 fs-3 text-center">Other Details</Card.Text>
 
-                                    <Card.Text className="mb-3 fs-5">Complaint Count: {carrierData.complaintCount ? carrierData.complaintCount : 'None'}</Card.Text>
-                                    <Card.Text className="mb-3 fs-5">Safety Rating: {carrierData.safetyRating ? carrierData.safetyRating : 'None'}</Card.Text>
+                                    <Card.Text className="mb-3 fs-5">Complaint Count: {carrierData.complaintCount || 'None'}</Card.Text>
+                                    <Card.Text className="mb-3 fs-5">Safety Rating: {carrierData.safetyRating || 'None'}</Card.Text>
                                     <Col md={5} className="text-center m-3 p-3 glassmorphism">
                                         <Card.Text className="fw-bold mb-3 fs-4">OOS Details</Card.Text>
                                         <Card.Text className="mb-3 fs-5">Driver Insp: {carrierData.driverInsp}</Card.Text>
@@ -323,14 +316,13 @@ export const FMCSA = () => {
                                         <Card.Text className="mb-3 fs-5">Vehicle OOS Rate: {carrierData.vehicleOosRate}</Card.Text>
                                         <Card.Text className="mb-3 fs-5">Vehicle OOS Rate National Average: {carrierData.vehicleOosRateNationalAverage}</Card.Text>
                                     </Col>
-
                                 </Row>
-                                <Row className="my-2 justify-content-center">
 
-                                    {carrierBasicsData && carrierBasicsData.length !== 0 ?
+                                <Row className="my-2 justify-content-center">
+                                    {carrierBasicsData && carrierBasicsData.length !== 0 ? (
                                         <>
                                             <Card.Text className="fw-bold my-3 fs-4 text-center">BASIC Details</Card.Text>
-                                            {carrierBasicsData.map(basicData => (
+                                            {carrierBasicsData.map((basicData) => (
                                                 <Col md={5} className="text-center m-3 p-3 glassmorphism" key={basicData.basic.id.basicsId}>
                                                     <Card.Text className="mb-3 fs-5">Basics Code: {basicData.basic.basicsType.basicsCode}</Card.Text>
                                                     <Card.Text className="mb-3 fs-5">Violation Threshold: {basicData.basic.basicsViolationThreshold}</Card.Text>
@@ -342,24 +334,24 @@ export const FMCSA = () => {
                                             ))}
                                             <Card.Text className="my-3 fs-5">For information regarding BASIC elements please, visit <a href='https://csa.fmcsa.dot.gov/'>FMCSA CSA (Compliance, Safety, Accountability). </a> </Card.Text>
                                         </>
-                                        : null}
+                                    ) : null}
                                 </Row>
 
-                                {carrierBasicsData && carrierBasicsData.length !== 0 ?
+                                {carrierBasicsData && carrierBasicsData.length !== 0 ? (
                                     <>
                                         <Card.Text className="fw-bold mb-3 fs-4">Cargo Carried</Card.Text>
-                                        {cargoCarriedData && cargoCarriedData.map(cargoData => (
+                                        {cargoCarriedData && cargoCarriedData.map((cargoData) => (
                                             <React.Fragment key={cargoData.id.cargoClassId}>
                                                 <Card.Text className="mb-3 fs-5">{cargoData.cargoClassDesc}</Card.Text>
                                             </React.Fragment>
                                         ))}
                                     </>
-                                    : null}
+                                ) : null}
                             </Card.Body>
                         </Card>
-                    ) :
-                        (carrierList ?
-                            carrierList.map(carrier => (
+                    ) : (
+                        carrierList ? (
+                            carrierList.map((carrier) => (
                                 <Card key={carrier.carrier.dotNumber} className="glassmorphism radius-20 main-color p-4 my-3">
                                     <Card.Body>
                                         <Card.Text className="fw-bold mb-3 fs-5">{carrier.carrier.legalName}</Card.Text>
@@ -370,11 +362,15 @@ export const FMCSA = () => {
                                         }}> View Details </Button>
                                     </Card.Body>
                                 </Card>
-                            )) : <p>Loading...</p>)
-                    }
+                            ))
+                        ) : (
+                            <p>Loading...</p>
+                        )
+                    )}
                 </Container>
-            }
+            )}
         </>
     );
 };
+
 

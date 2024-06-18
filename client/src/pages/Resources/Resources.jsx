@@ -1,33 +1,28 @@
-import { Container, Image, Col, Row, Button } from 'react-bootstrap';
-import { HelmetCP } from '../../components/Helmet';
-import line from '../../assets/icons/line.png';
-import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import { Container, Col, Row, Image, Button } from 'react-bootstrap';
+import { HelmetCP } from '../../components/Helmet';
+import { Link } from 'react-router-dom';
+import { BsFillFuelPumpDieselFill } from 'react-icons/bs';
+import { HiOutlineDocumentDownload } from 'react-icons/hi';
+import { FaReadme, FaUser } from 'react-icons/fa';
+import { MdOutlinePriceCheck } from 'react-icons/md';
 import { FuelForm } from '../../components/Forms/FuelForm';
-import { BsFillFuelPumpDieselFill } from "react-icons/bs";
+import { FMCSA } from '../FMCSA';
+import line from '../../assets/icons/line.png';
 import afi from '../../assets/AFIEagle.png';
 import cw from '../../assets/cw.png';
 import forward from '../../assets/icons/forward.png';
-import { FMCSA } from '../FMCSA.jsx';
-import { HiOutlineDocumentDownload } from "react-icons/hi";
-import { FaReadme } from "react-icons/fa";
-import instructions from '../../assets/instructions.pdf'
-import { FaUser } from "react-icons/fa";
-import { MdOutlinePriceCheck } from "react-icons/md";
+import instructions from '../../assets/instructions.pdf';
 
 export const Resources = () => {
     const [fuelData, setFuelData] = useState([]);
     const [fuelInfo, setFuelInfo] = useState('');
     const [areaInfo, setAreaInfo] = useState('');
 
-    // Function to get today's date minus 7 days
     const getDateMinus7Days = () => {
         const date = new Date();
         date.setDate(date.getDate() - 7);
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
-        const day = String(date.getDate()).padStart(2, '0');
-        return `${year}-${month}-${day}`;
+        return date.toISOString().split('T')[0];
     };
 
     const startDate = getDateMinus7Days();
@@ -65,63 +60,73 @@ export const Resources = () => {
             name: 'Fuel Surcharge Calculator',
             link: 'https://www.ooida.com/trucking-tools/fuel-surcharge-calculator/'
         }
-    ]
+    ];
 
     useEffect(() => {
+        const fetchFuelData = async () => {
+            try {
+                const response = await fetch(
+                    `https://api.eia.gov/v2/petroleum/pri/gnd/data/?api_key=${process.env.REACT_APP_EIA_API_KEY}&frequency=weekly&data[0]=value&facets[duoarea][]=${fuelInfo}&start=${startDate}&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=5000`
+                );
+                const json = await response.json();
+                setFuelData(json.response.data);
+            } catch (error) {
+                console.error('Error fetching fuel data:', error);
+            }
+        };
+
         if (fuelInfo) {
-            const fetchFuelData = async () => {
-                try {
-                    const response = await fetch(`https://api.eia.gov/v2/petroleum/pri/gnd/data/?api_key=${process.env.REACT_APP_EIA_API_KEY}&frequency=weekly&data[0]=value&facets[duoarea][]=${fuelInfo}&start=${startDate}&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=5000`);
-                    const json = await response.json();
-                    setFuelData(json.response.data);
-                }
-                catch (error) {
-                    console.error('Error fetching carrier data:', error);
-                }
-            };
             fetchFuelData();
         }
-    }, [fuelInfo, startDate])
-
-    console.log(areaInfo);
+    }, [fuelInfo, startDate]);
 
     return (
         <>
-            <HelmetCP pageTitle={'Resources | Tools for Carriers'}
+            <HelmetCP
+                pageTitle={'Resources | Tools for Carriers'}
                 pageDescription={`Explore Valuable Resources Tailored for Transportation and Trucking Professionals on Our Dedicated Page. From Industry Insights to Useful Tools, Access Everything You Need to Drive Success in Your Business.`}
-                pageKeywords={'Transportation industry resources; Trucking business tools; Logistics industry insights; Freight management resources; Trucking industry guides; Transportation business articles; Logistics industry reports; Trucking industry tips; Freight management tools; Transportation industry news; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'} />
+                pageKeywords={'Transportation industry resources; Trucking business tools; Logistics industry insights; Freight management resources; Trucking industry guides; Transportation business articles; Logistics industry reports; Trucking industry tips; Freight management tools; Transportation industry news; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'}
+            />
             <Container fluid className="mb-4 p-4">
                 <p className="fw-bold text-justify mb-4 fs-40">Resources</p>
-                <Row>
+
+                <Row className="mb-5">
                     <Col md={7}>
                         <p className="fs-26 mb-2">American Fleet Insurance An Agent of Cover Whale</p>
                         <p className="secondary-color fs-22 fw-bold">Need down payment assistance?</p>
-                        <p className="fs-18 mb-1">We have an insurance department that specializes in business/commercial insurance for trucking and transportation companies.</p>
-                        <p className="fs-18 mb-1">American Fleet Insurance is an independent agency specializing in Trucking &amp; Transportation. Our goal is to help protect your business and allow you to focus on the road ahead.</p>
-                        <Link to="https://gsquaredquotes.com/" className="secondary-color fs-19">Learn More</Link>
+                        <p className="fs-18 mb-1">
+                            We have an insurance department that specializes in business/commercial insurance for trucking and transportation companies.
+                        </p>
+                        <p className="fs-18 mb-1">
+                            American Fleet Insurance is an independent agency specializing in Trucking &amp; Transportation. Our goal is to help protect your business
+                            and allow you to focus on the road ahead.
+                        </p>
+                        <a href="https://gsquaredquotes.com/" className="secondary-color fs-19">
+                            Learn More
+                        </a>
                     </Col>
-                    <Col md={5} className='d-flex flex-column align-items-center'>
-                        <Image src={afi} className='img-fluid my-2 p-2 radius-20' width={400} />
-                        <Image src={cw} className='img-fluid my-2 p-2 radius-20' width={400} />
+                    <Col md={5} className="d-flex flex-column align-items-center">
+                        <Image src={afi} className="img-fluid my-2 p-2 radius-20" width={400} />
+                        <Image src={cw} className="img-fluid my-2 p-2 radius-20" width={400} />
                     </Col>
                 </Row>
 
-                <Row className='my-5'>
-                    <p className="fs-26 mb-2">Load Board</p>
-                    <p className="secondary-color fs-22 fw-bold">Seeking help to find loads?</p>
-                    <p className="fs-18 mb-1">Access our free load board to book your next load!</p>
-                    <Row className="ms-1 mb-4">
-                        <Button className="my-2 contact-btn px-2 py-1 radius-20 border-none" role="button" href="https://getloadsnow.com/">
+                <Row className="my-5">
+                    <Col md={7}>
+                        <p className="fs-26 mb-2">Load Board</p>
+                        <p className="secondary-color fs-22 fw-bold">Seeking help to find loads?</p>
+                        <p className="fs-18 mb-1">Access our free load board to book your next load!</p>
+                        <Button className="my-2 contact-btn px-2 py-1 radius-20 border-none" href="https://getloadsnow.com/" target="_blank" rel="noopener noreferrer">
                             <span className="contact-btn-span px-3 fs-24">
                                 Get Loads Now
                                 <Image className="img-fluid ms-2 px-1 arrow-icon icon-color btn-icon" src={forward} alt="truck icon" width="45" loading="lazy" />
                             </span>
                         </Button>
-                    </Row>
-                    <p className="fs-18 mb-1">Your go-to platform for load board and freight management.</p>
+                        <p className="fs-18 my-2">Your go-to platform for load board and freight management.</p>
+                    </Col>
                 </Row>
 
-                <Row className='my-5'>
+                <Row className='my-5 d-flex align-items-middle'>
                     <p className="fs-26 mb-2">Fuel Updates</p>
                     <p className="secondary-color fs-22 fw-bold">Want to stay informed on fuel prices?</p>
                     <Col md={7}>
@@ -166,114 +171,84 @@ export const Resources = () => {
                 {/* add fuel surchage calculator */}
 
 
-                <Row className='my-5'>
+                <Row className="my-5">
                     <p className="fs-26 mb-2">Client Tools</p>
                     <p className="secondary-color fs-22 fw-bold">Need access to check credit or view your account online?</p>
-                    <Col md={2} className='my-2'>
-                        <Link to='/resources/client-portal' className='link-color hover-link-color'>
-                            <Container className='glassmorphism p-3 text-center radius-20'>
-                                <FaUser className='img-fluid text-center mb-1 icon-80' />
+                    <Col md={2} className="my-2">
+                        <Link to="/resources/client-portal" className="link-color hover-link-color">
+                            <Container className="glassmorphism p-3 text-center radius-20">
+                                <FaUser className="img-fluid text-center mb-1 icon-80" />
                                 <Row className="border-top m-2"></Row>
                                 <h5 className="mt-4 mb-2 text-center fs-22">Client Portal</h5>
                             </Container>
                         </Link>
                     </Col>
-                    <Col md={2} className='my-2'>
-                        <Link to='/resources/credit-services' className='link-color hover-link-color'>
-                            <Container className='glassmorphism p-3 text-center radius-20'>
-                                <MdOutlinePriceCheck className='img-fluid text-center mb-1 icon-80' />
+                    <Col md={2} className="my-2">
+                        <Link to="/resources/credit-services" className="link-color hover-link-color">
+                            <Container className="glassmorphism p-3 text-center radius-20">
+                                <MdOutlinePriceCheck className="img-fluid text-center mb-1 icon-80" />
                                 <Row className="border-top m-2"></Row>
                                 <h5 className="mt-4 mb-2 text-center fs-22">Credit Services</h5>
                             </Container>
                         </Link>
                     </Col>
-
-                    {/* <ul className="list-unstyled">
-                        <li className="d-flex align-items-center mb-3">
-                            <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
-                            <p className="mb-0 text-justify fs-18">
-                                Request Login for <Link to='mailto:dramirez@gsquaredfunding.com?subject=Login%20Request%20for%20WinFactor%20Client%20Portal%20-%20MC%23' className='link-color hover-link-color'>Client Portal</Link> – Include your company name and MC number.
-                            </p>
-                        </li>
-                        <li className="d-flex align-items-center mb-3">
-                            <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
-                            <p className="mb-0 text-justify fs-18">
-                                Request Login for <Link to='mailto:dramirez@gsquaredfunding.com?subject=Login%20Request%20for%20Factors%20Network%20-%20MC%23' className='link-color hover-link-color'>Credit Checks</Link> – Include your company name, MC Number and business email address for setup.
-                            </p>
-                        </li>
-                    </ul> */}
                 </Row>
 
-                <Row className='my-5'>
-                    <p className="fs-26 mb-2">Working with GSF</p>
-                    <p className="secondary-color fs-22 fw-bold">Need assistance with the factoring process?</p>
-                    <Row className="ms-2 ps-2 d-flex align-items-center justify-content-center">
-                        <Col md={6}>
-                            <p className="mt-4 fs-24 fw-semibold">Download our instructions</p>
-                            {/* Add updated pdf of the instructions */}
-                            <a href={instructions} download='gsf_instructions.pdf' className="d-flex align-items-center mt-3 link-color hover-link-color">
-                                <HiOutlineDocumentDownload className='ms-3 icon-80 img-fluid' />
-                                <p className="fs-22 mx-3">Download</p>
-                            </a>
-                        </Col>
-                        <Col md={6}>
-                            <p className="mt-4 fs-24 fw-semibold">Read it online</p>
-                            <Link to="/resources/working-gsf" className="d-flex align-items-center mt-3 link-color hover-link-color">
-                                <FaReadme className='ms-4 icon-80 img-fluid' />
-                                <p className="fs-22 mx-3">Click Here</p>
-                            </Link>
-                        </Col>
-                    </Row>
+                <Row className="my-5">
+                    <Col md={6}>
+                        <p className="fs-26 mb-2">Working with GSF</p>
+                        <p className="secondary-color fs-22 fw-bold">Need assistance with the factoring process?</p>
+                        <Row className="ms-2 ps-2 d-flex align-items-center justify-content-center">
+                            <Col md={6}>
+                                <p className="mt-4 fs-24 fw-semibold">Download our instructions</p>
+                                <a href={instructions} download="gsf_instructions.pdf" className="d-flex align-items-center mt-3 link-color hover-link-color">
+                                    <HiOutlineDocumentDownload className="ms-3 icon-80 img-fluid" />
+                                    <p className="fs-22 mx-3">Download</p>
+                                </a>
+                            </Col>
+                            <Col md={6}>
+                                <p className="mt-4 fs-24 fw-semibold">Read it online</p>
+                                <Link to="/resources/working-gsf" className="d-flex align-items-center mt-3 link-color hover-link-color">
+                                    <FaReadme className="ms-4 icon-80 img-fluid" />
+                                    <p className="fs-22 mx-3">Click Here</p>
+                                </Link>
+                            </Col>
+                        </Row>
+                    </Col>
                 </Row>
 
-                <Row className='my-5'>
-                    <p id='phone-apps' className="fs-26 mb-2">Phone Apps</p>
-                    <p className="mb-4 fs-18">
-                        If you are out on the road and don’t have access to a fax or scanner to send documents, we recommend Adobe Scan, DriveAxle App or CamScanner App. These are free apps and easy to use!
-                    </p>
+                <Row className="my-5">
+                    <Col>
+                        <p className="fs-26 mb-2">Phone Apps</p>
+                        <p className="mb-4 fs-18">
+                            If you are out on the road and don’t have access to a fax or scanner to send documents, we recommend Adobe Scan, DriveAxle App or CamScanner App. These are free apps and easy to use!
+                        </p>
 
-                    <p className="my-2 secondary-color fs-19">Adobe Scan</p>
-                    <Row>
-                        <Col>
-                            <Link tabIndex="0" to="https://apps.apple.com/us/app/adobe-scan-pdf-scanner-ocr/id1199564834">
-                                <Image className="img-fluid me-2 icon-150 m-2" src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
-                            </Link>
-                            <Link tabIndex="0" to="https://play.google.com/store/apps/details?id=com.adobe.scan.android&hl=en_US&gl=US">
-                                <Image className="img-fluid me-2 icon-150 m-2" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/2560px-Google_Play_Store_badge_EN.svg.png" alt="Get it on Google Play" />
-                            </Link>
-                        </Col>
-                    </Row>
+                        <AppLink
+                            name="Adobe Scan"
+                            appStoreLink="https://apps.apple.com/us/app/adobe-scan-pdf-scanner-ocr/id1199564834"
+                            playStoreLink="https://play.google.com/store/apps/details?id=com.adobe.scan.android&hl=en_US&gl=US"
+                        />
 
-                    <p className="my-2 secondary-color fs-19">DriveAxle</p>
-                    <Row>
-                        <Col>
-                            <Link tabIndex="0" to="https://itunes.apple.com/us/app/drive-axle/id455526813?mt=8">
-                                <Image className="img-fluid me-2 icon-150 m-2" src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
-                            </Link>
-                            <Link tabIndex="0" to="https://play.google.com/store/apps/details?id=com.eleostech.driveaxle">
-                                <Image className="img-fluid me-2 icon-150 m-2" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/2560px-Google_Play_Store_badge_EN.svg.png" alt="Get it on Google Play" />
-                            </Link>
-                        </Col>
-                    </Row>
+                        <AppLink
+                            name="DriveAxle"
+                            appStoreLink="https://itunes.apple.com/us/app/drive-axle/id455526813?mt=8"
+                            playStoreLink="https://play.google.com/store/apps/details?id=com.eleostech.driveaxle"
+                        />
 
-                    <p className="my-2 secondary-color fs-19">CamScanner</p>
-                    <Row>
-                        <Col>
-                            <Link tabIndex="0" to="https://itunes.apple.com/us/app/camscanner-free-pdf-document/id388627783?mt=8">
-                                <Image className="img-fluid me-2 icon-150 m-2" src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
-                            </Link>
-                            <Link tabIndex="0" to="https://play.google.com/store/apps/details?id=com.intsig.camscanner&hl=en">
-                                <Image className="img-fluid me-2 icon-150 m-2" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/2560px-Google_Play_Store_badge_EN.svg.png" alt="Get it on Google Play" />
-                            </Link>
-                        </Col>
-                    </Row>
+                        <AppLink
+                            name="CamScanner"
+                            appStoreLink="https://itunes.apple.com/us/app/camscanner-free-pdf-document/id388627783?mt=8"
+                            playStoreLink="https://play.google.com/store/apps/details?id=com.intsig.camscanner&hl=en"
+                        />
+                    </Col>
                 </Row>
 
-                <Row className='my-5'>
-                    <p className="fs-26 mb-2">FMCSA</p>
-                    <Row className="mx-1 mt-3 mb-4">
+                <Row className="my-5">
+                    <Col>
+                        <p className="fs-26 mb-2">FMCSA</p>
                         <FMCSA />
-                    </Row>
+                    </Col>
                 </Row>
 
                 <p className="fw-bold text-justify mb-3 fs-22">Other Links</p>
@@ -281,11 +256,31 @@ export const Resources = () => {
                     {otherLinks.map((item, index) => (
                         <li key={index} className="d-flex align-items-center mb-2">
                             <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
-                            <Link to={item.link} className="fs-18 link-color hover-link-color">{item.name}</Link>
+                            <a href={item.link} className="fs-18 link-color hover-link-color" target="_blank" rel="noopener noreferrer">
+                                {item.name}
+                            </a>
                         </li>
                     ))}
                 </ul>
-            </Container >
+            </Container>
         </>
-    )
+    );
+
+    function AppLink({ name, appStoreLink, playStoreLink }) {
+        return (
+            <div className="my-2">
+                <p className="my-2 secondary-color fs-19">{name}</p>
+                <Row>
+                    <Col>
+                        <a tabIndex="0" href={appStoreLink} target="_blank" rel="noopener noreferrer">
+                            <Image className="img-fluid me-2 icon-150 m-2" src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
+                        </a>
+                        <a tabIndex="0" href={playStoreLink} target="_blank" rel="noopener noreferrer">
+                            <Image className="img-fluid me-2 icon-150 m-2" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/2560px-Google_Play_Store_badge_EN.svg.png" alt="Get it on Google Play" />
+                        </a>
+                    </Col>
+                </Row>
+            </div>
+        );
+    }
 }

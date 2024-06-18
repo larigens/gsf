@@ -22,6 +22,6 @@ export const Header = (props) => {
           {props.children}
         </Col>
       </Row>
-    </header >
+    </header>
   );
 };

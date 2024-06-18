@@ -1,9 +1,9 @@
 import { Container, Row, Col, Image } from 'react-bootstrap';
-import line from '../../assets/icons/line.png';
 import { HelmetCP } from '../../components/Helmet';
+import line from '../../assets/icons/line.png';
 import { ContactForm } from '../../components/Forms/ContactForm';
 
-export const Transportation = () => {
+const Transportation = () => {
 
     const transportationItems = [
         {
@@ -34,14 +34,15 @@ export const Transportation = () => {
                 'Online Account Information Available 24/7.'
             ]
         }
-    ]
-
+    ];
 
     return (
         <>
-            <HelmetCP pageTitle={'Factoring for Trucking Companies'}
+            <HelmetCP
+                pageTitle={'Factoring for Trucking Companies'}
                 pageDescription={`Streamline Your Transportation Business with Our Efficient Factoring Services. Gain Access to Immediate Cash Flow Solutions Tailored to Meet the Unique Needs of the Trucking and Transportation Industry. Drive Your Success Today!`}
-                pageKeywords={'Transportation factoring services; Trucking invoice factoring; Freight bill factoring for transportation; Cash flow solutions for transportation companies; Transportation industry financing; Invoice factoring for logistics; Freight factoring for trucking companies; Transportation invoice financing; Trucking industry cash flow management; Transportation funding options; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'} />
+                pageKeywords={'Transportation factoring services; Trucking invoice factoring; Freight bill factoring for transportation; Cash flow solutions for transportation companies; Transportation industry financing; Invoice factoring for logistics; Freight factoring for trucking companies; Transportation invoice financing; Trucking industry cash flow management; Transportation funding options; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'}
+            />
             <Container fluid className="mb-4 p-4">
                 <p className="fw-bold text-justify mb-3 fs-40"> Transportation Factoring</p>
                 <Row className="me-2 d-flex align-items-center">
@@ -53,17 +54,17 @@ export const Transportation = () => {
                     </p>
                     <Col md={8}>
                         {transportationItems.map((item, index) => (
-                            <>
-                                <h3 key={index} className="secondary-color fs-24 mb-3 ">{item.title}</h3>
+                            <div key={index} className="mb-4">
+                                <h3 className="secondary-color fs-24 mb-3">{item.title}</h3>
                                 <ul className="list-unstyled">
-                                    {item.listItems.map((listItem, index) => (
-                                        <li key={index} className="d-flex align-items-start mb-3">
+                                    {item.listItems.map((listItem, idx) => (
+                                        <li key={idx} className="d-flex align-items-start mb-3">
                                             <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
                                             <p className="mb-0 text-justify fs-18">{listItem}</p>
                                         </li>
                                     ))}
                                 </ul>
-                            </>
+                            </div>
                         ))}
                     </Col>
                     <Col md={4} className="my-4">
@@ -71,5 +72,8 @@ export const Transportation = () => {
                     </Col>
                 </Row>
             </Container>
-        </>)
-}
+        </>
+    );
+};
+
+export default Transportation;

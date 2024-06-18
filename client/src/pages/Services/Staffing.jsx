@@ -1,14 +1,14 @@
 import { Container, Row, Col, Image } from 'react-bootstrap';
-import line from '../../assets/icons/line.png';
 import { HelmetCP } from '../../components/Helmet';
+import line from '../../assets/icons/line.png';
 import { ContactForm } from '../../components/Forms/ContactForm';
-import { useTheme } from '../../components/ThemeContext.jsx';
+import { useTheme } from '../../components/ThemeContext';
 
-export const Staffing = () => {
+const Staffing = () => {
     const { theme } = useTheme();
 
     function classNames(...classes) {
-        return classes.filter(Boolean).join(' ')
+        return classes.filter(Boolean).join(' ');
     }
 
     const staffingItems = [
@@ -16,8 +16,8 @@ export const Staffing = () => {
             title: 'Benefits',
             listItems: [
                 `Free up hours spent invoicing and collecting payments - we'll take care of it.`,
-                'Put debt free working capital into your business.',
-                'No long term loans or monthly payments of any type.',
+                'Put debt-free working capital into your business.',
+                'No long-term loans or monthly payments of any type.',
                 'Cover payroll, overhead, and cost of goods sold.',
                 'Expand operations and be able to fill large orders.'
             ]
@@ -30,14 +30,15 @@ export const Staffing = () => {
                 'Companies dissatisfied with their current factoring company.'
             ]
         }
-    ]
-
+    ];
 
     return (
         <>
-            <HelmetCP pageTitle={'Factoring for Staffing Agencies'}
+            <HelmetCP
+                pageTitle={'Factoring for Staffing Agencies'}
                 pageDescription={`Elevate Your Staffing Agency's Cash Flow with Our Specialized Factoring Solutions. Unlock Funds Quickly and Securely to Support Your Growth and Operations. Partner with Us Today!`}
-                pageKeywords={'Staffing agency factoring; Invoice factoring for staffing companies; Cash flow solutions for staffing agencies; Temp agency funding; Staffing industry financing; Payroll factoring for staffing firms; Invoice financing for recruiters; Staffing company funding options; Temporary staffing invoice factoring; Staffing agency cash flow management; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'} />
+                pageKeywords={'Staffing agency factoring; Invoice factoring for staffing companies; Cash flow solutions for staffing agencies; Temp agency funding; Staffing industry financing; Payroll factoring for staffing firms; Invoice financing for recruiters; Staffing company funding options; Temporary staffing invoice factoring; Staffing agency cash flow management; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'}
+            />
             <Container fluid className="mb-4 p-4">
                 <p className="fw-bold text-justify mb-3 fs-40"> Staffing Factoring</p>
                 <Row className="me-2 d-flex align-items-center">
@@ -76,20 +77,20 @@ export const Staffing = () => {
                         <p className='mb-3 text-justify fs-18'>
                             A major benefit of factoring staffing invoices is that you gain access to cash without incurring any debt. Loans may be available to generate cash flow, as well, but that option comes with a cost. Using bank loans to pay your receivables may prevent you from getting other loans to for your business. Or, you may have credit issues that limit your ability to qualify for bank loans at all. At G Squared Funding we may allow you to benefit from nonrecourse factoring in which we focus on the credit profile of your customers, not your own credit which is a major benefit of staffing factoring and staffing funding.                            </p>
                     </Container>
-                    <Row className='mt-4'>
+                    <Row className='mt-4 mx-0'>
                         <Col sm={12} md={8}>
                             {staffingItems.map((item, index) => (
-                                <>
-                                    <h3 key={index} className="secondary-color fs-24 mb-3 mt-5">{item.title}</h3>
+                                <div key={index} className="mb-4">
+                                    <h3 className="secondary-color fs-24 mb-3 mt-5">{item.title}</h3>
                                     <ul className="list-unstyled">
-                                        {item.listItems.map((listItem, index) => (
-                                            <li key={index} className="d-flex align-items-start mb-3">
+                                        {item.listItems.map((listItem, idx) => (
+                                            <li key={idx} className="d-flex align-items-start mb-3">
                                                 <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
                                                 <p className="mb-0 text-justify fs-18">{listItem}</p>
                                             </li>
                                         ))}
                                     </ul>
-                                </>
+                                </div>
                             ))}
                         </Col>
                         <Col sm={12} md={4} className="my-3">
@@ -98,5 +99,8 @@ export const Staffing = () => {
                     </Row>
                 </Row>
             </Container>
-        </>)
-}
+        </>
+    );
+};
+
+export default Staffing;

@@ -7,7 +7,7 @@ import { ContactForm } from '../../components/Forms/ContactForm';
 import { Cards } from '../../components/Cards/Cards';
 import { LinkCards } from '../../components/Cards/LinkCards';
 
-export const Services = () => {
+const Services = () => {
     const services = [
         'Swift Same-Day or 24 to 48-Hour Funding',
         'No Minimum Volume Requirements',
@@ -47,7 +47,7 @@ export const Services = () => {
             image: 'collection',
             description: `Why handle the hassle of invoices? Leave the administrative work to us, allowing you to concentrate on business growth and your well-being. We manage all the invoicing and paperwork, ensuring your success.`
         }
-    ]
+    ];
 
     const items = [
         {
@@ -85,13 +85,15 @@ export const Services = () => {
             image: 'staff',
             link: '/services/staffing'
         }
-    ]
+    ];
 
     return (
         <>
-            <HelmetCP pageTitle={'Services | Factoring Solutions'}
+            <HelmetCP
+                pageTitle={'Services | Factoring Solutions'}
                 pageDescription={`Discover Our Comprehensive Range of Tailored Services Designed to Meet the Diverse Needs of Transportation and Trucking Companies. From Freight Factoring to Logistics Support, We've Got You Covered!`}
-                pageKeywords={'Trucking industry services; Transportation solutions; Freight factoring services; Logistics support for trucking; Trucking company offerings; Transportation service provider; Freight invoice financing; Trucking industry support; Logistics services for transportation; Trucking business solutions; Factoring services in Georgia; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'} />
+                pageKeywords={'Trucking industry services; Transportation solutions; Freight factoring services; Logistics support for trucking; Trucking company offerings; Transportation service provider; Freight invoice financing; Trucking industry support; Logistics services for transportation; Trucking business solutions; Factoring services in Georgia; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'}
+            />
             <Container fluid className="mb-4 p-4">
                 <p className="fw-bold text-justify mb-3 fs-40">Our Services</p>
                 <p className="text-justify my-3 fs-24">We offer a seamless and cost-effective solution to boost your business's cash flow, accompanied by a wide array of valuable features, including:</p>
@@ -116,7 +118,7 @@ export const Services = () => {
                     <p className=" mb-4 text-justify fs-22">Running a business comes with its fair share of challenges, and managing cash flow can often be a daunting task. That's where factoring steps in as a powerful financial solution.</p>
                     <h3 className="secondary-color mb-3 fs-22 fw-bold"> What is Factoring?</h3>
                     <p className="mb-4 text-justify fs-18">Factoring, also known as accounts receivable financing, is a flexible and efficient way for businesses to secure immediate access to their outstanding invoices. Instead of waiting for customers to pay, you can convert your accounts receivable into working capital, helping you meet ongoing operational needs, seize growth opportunities, and maintain a healthy financial position.</p>
-                    <h3 className="secondary-color mb-3 fs-22 fw-bold" >How Does Factoring Work?</h3>
+                    <h3 className="secondary-color mb-3 fs-22 fw-bold">How Does Factoring Work?</h3>
                     <Image className="img-fluid align-items-center radius-20 w-60" src={roadmap} alt="factoring process diagram" />
                     <h3 className="secondary-color mb-3 mt-5 fs-22 fw-bold">The Benefits of Factoring:</h3>
                     <ul className="list-unstyled">
@@ -150,5 +152,6 @@ export const Services = () => {
             </Container>
         </>
     );
-}
+};
 
+export default Services;

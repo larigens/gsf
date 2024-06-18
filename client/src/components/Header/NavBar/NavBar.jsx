@@ -35,7 +35,6 @@ export const NavBar = () => {
                     href: '/careers'
                 },
             ]
-
         },
         {
             id: 2,
@@ -72,13 +71,13 @@ export const NavBar = () => {
             current: location.pathname === '/apply-now',
             isDropdown: false,
         }
-    ]
+    ];
 
     return (
         <Navbar expand="lg" data-bs-theme={theme === 'Light Mode' ? "light" : "dark"} className='mt-3 background'>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto d-flex align-items-center" >
+                <Nav className="me-auto d-flex align-items-center">
                     {navlinks.map(link => (
                         <React.Fragment key={link.id}>
                             {link.name === 'Apply Now' ? (
@@ -97,7 +96,8 @@ export const NavBar = () => {
                                     <NavDropdown
                                         bsPrefix='custom-dropdown'
                                         title={link.name}
-                                        className='p-1 fs-17 me-2' >
+                                        className='p-1 fs-17 me-2'
+                                    >
                                         {link.dropDownItems.map(item => (
                                             <NavDropdown.Item key={item.id} href={item.href}>{item.name}</NavDropdown.Item>
                                         ))}
@@ -128,6 +128,6 @@ export const NavBar = () => {
                     ))}
                 </Nav>
             </Navbar.Collapse>
-        </Navbar >
+        </Navbar>
     );
-}
+};

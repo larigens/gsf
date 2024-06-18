@@ -5,6 +5,7 @@ import LowCostTristate from '../assets/skleinrichert/applications/application_sk
 import AllForYouProductions from '../assets/bdavidson/applications/application_bdavidson_allforyouprod.pdf';
 import BondItLogistics from '../assets/bdavidson/applications/application_bdavidson_bonditlogistics.pdf';
 
+
 export const GetApplications = (application) => {
     if (application === 'KarenKing') {
         return KarenKing;

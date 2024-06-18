@@ -43,7 +43,7 @@ export const Cards = ({ cardInfo }) => {
 
 
     return (
-        <Row className="my-5 d-flex justify-content-center">
+        <Row className="mt-2 mb-5 d-flex justify-content-center">
             {cardInfo && cardInfo.map((info, index) => (
                 <Col key={index} md={5} className="text-center m-3 ms-4 p-2 glassmorphism">
                     <Image className="img-fluid my-2 icon-color icon-80" src={imageSrcs[index]} alt={`${info.image} icon`} />

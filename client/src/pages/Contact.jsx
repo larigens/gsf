@@ -1,17 +1,17 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import { MdEmail } from "react-icons/md";
-import { FaPhone } from "react-icons/fa6";
-import { ContactForm } from '../components/Forms/ContactForm';
+import { FaPhone } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { HelmetCP } from '../components/Helmet';
-import { useTheme } from '../components/ThemeContext.jsx';
+import { ContactForm } from '../components/Forms/ContactForm';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import { useTheme } from '../components/ThemeContext';
 
-export const Contact = () => {
+const Contact = () => {
     const { theme } = useTheme();
 
     function classNames(...classes) {
-        return classes.filter(Boolean).join(' ')
+        return classes.filter(Boolean).join(' ');
     }
 
     const containerStyle = {
@@ -31,7 +31,7 @@ export const Contact = () => {
         },
         {
             question: 'How Much Does It Cost?',
-            answer: 'You are only charged for invoices that you factor. You will never be forced to factor every invoice. The rates depend on the volume of your business. The higher the volume, the lower your rate will be. Rates are as low as 1.5%'
+            answer: 'You are only charged for invoices that you factor. You will never be forced to factor every invoice. The rates depend on the volume of your business. The higher the volume, the lower your rate will be. Rates are as low as 1.5%.'
         },
         {
             question: 'How Much Do I Need To Factor?',
@@ -45,13 +45,15 @@ export const Contact = () => {
                 </>
             )
         }
-    ]
+    ];
 
     return (
         <>
-            <HelmetCP pageTitle={'Contact Us | Unlock Working Capital'}
+            <HelmetCP
+                pageTitle={'Contact Us | Unlock Working Capital'}
                 pageDescription={'Get in Touch with Us Today to Explore Partnership Opportunities or Inquire About Our Services in the Transportation and Trucking Sector. Our Team is Ready to Assist You. Contact Us Now!'}
-                pageKeywords={'Transportation company contact; Trucking industry inquiries; Contact us trucking; Transportation service inquiries; Trucking partnership opportunities; Logistics collaboration; Reach out to us in transportation; Contact information for trucking services; Trucking business inquiries; Transportation service provider contact; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'} />
+                pageKeywords={'Transportation company contact; Trucking industry inquiries; Contact us trucking; Transportation service inquiries; Trucking partnership opportunities; Logistics collaboration; Reach out to us in transportation; Contact information for trucking services; Trucking business inquiries; Transportation service provider contact; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'}
+            />
             <Container fluid className="mb-4 p-4">
                 <p className="fw-bold text-justify mb-3 fs-40">Contact Us</p>
                 <Container fluid className="d-flex align-items-center my-2">
@@ -62,7 +64,7 @@ export const Contact = () => {
                 </Container>
                 <Container fluid className="d-flex align-items-center my-3">
                     <MdEmail className='icon-color' />
-                    <Link to="mailto: contact@gsquaredfunding.com" className='fs-19 main-color mx-2'>
+                    <Link to="mailto:contact@gsquaredfunding.com" className='fs-19 main-color mx-2'>
                         contact@gsquaredfunding.com
                     </Link>
                 </Container>
@@ -88,9 +90,7 @@ export const Contact = () => {
                                     center={center}
                                     zoom={17}
                                     options={{ mapId: 'GSFLocation' }}
-                                >
-                                    {/* add markers or other components here */}
-                                </GoogleMap>
+                                />
                             </LoadScript>
                         </Container>
                     </Col>
@@ -98,13 +98,15 @@ export const Contact = () => {
                 <Row className='mt-5 mb-2'>
                     <p className="fw-bold text-justify mb-3 mt-5 fs-32">FAQ</p>
                     {faqItems.map((faqItem, index) => (
-                        <>
-                            <p key={index} className="text-justify fw-bold secondary-color fs-22 mb-2">{faqItem.question}</p>
+                        <div key={index} className="mb-4">
+                            <p className="text-justify fw-bold secondary-color fs-22 mb-2">{faqItem.question}</p>
                             <p className='text-justify fs-18 mb-3'>{faqItem.answer}</p>
-                        </>
+                        </div>
                     ))}
                 </Row>
             </Container>
         </>
     );
-}
+};
+
+export default Contact;
