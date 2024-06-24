@@ -80,6 +80,8 @@ export const Resources = () => {
         }
     }, [fuelInfo, startDate]);
 
+    console.log(fuelData);
+
     return (
         <>
             <HelmetCP
@@ -129,10 +131,10 @@ export const Resources = () => {
                 <Row className='my-5 d-flex align-items-middle'>
                     <p className="fs-26 mb-2">Fuel Updates</p>
                     <p className="secondary-color fs-22 fw-bold">Want to stay informed on fuel prices?</p>
-                    <Col md={7}>
+                    <Col sm={12} md={7}>
                         <FuelForm setFuelInfo={setFuelInfo} setAreaInfo={setAreaInfo} />
                     </Col>
-                    <Col md={5} >
+                    <Col sm={12} md={5} >
                         <div className='iframe-container radius-20 mb-1'>
                             <iframe
                                 id="diesel-price-per-gallon"
@@ -149,25 +151,28 @@ export const Resources = () => {
                             </Link>
                         </div>
                     </Col>
-                    {fuelInfo && fuelData ?
-                        <Container fluid className='p-3'>
-                            <Row className='m-3'>
-                                <p className="fw-bold text-justify m-3 fs-22">{areaInfo}</p>
-                            </Row>
-                            <Row className='p-4 mx-2'>
-                                {fuelData.map((product, index) => (
-                                    <Col key={index} md={4} className="d-flex align-items-center m-2 p-2 glassmorphism">
+                </Row>
+                {fuelInfo && fuelData ?
+                    <Container fluid className='p-3'>
+                        <Row className='m-3'>
+                            <p className="fw-bold text-justify m-3 fs-22">{areaInfo}</p>
+                        </Row>
+                        <Row className='p-4 mx-2'>
+                            {fuelData
+                                .filter(product => product['product-name'] === 'Regular Gasoline' || product['product-name'] === 'No 2 Diesel')
+                                .map((product, index) => (
+                                    <Col key={index} md={6} className="d-flex align-items-center m-2 p-2 glassmorphism mobile-column">
                                         <p className="secondary-color text-center fs-20 nowrap-text my-2">{product['product-name']}</p>
-                                        <Container className='d-flex align-items-center justify-content-end text-end'>
-                                            <BsFillFuelPumpDieselFill className="img-fluid mx-2 icon-color icon-40" />
+                                        <Container className='d-flex align-items-center justify-content-end text-end mobile-column'>
+                                            <BsFillFuelPumpDieselFill className="img-fluid mx-2 icon-color icon-40 mobile-column-icon" />
                                             <p className="text-justify fs-17 mt-3">${product['value']}/GAL </p>
                                         </Container>
                                     </Col>
                                 ))}
-                            </Row>
-                        </Container>
-                        : null}
-                </Row>
+                        </Row>
+                    </Container>
+                    : null}
+
                 {/* add fuel surchage calculator */}
 
 

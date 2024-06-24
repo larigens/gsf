@@ -568,8 +568,19 @@ h1 {
   }
 
   .iframe-container {
-    height: 300px;
-    /* Adjust height for mobile screens */
+    width:750px;
+    height: 560px;
+    position: relative;
+    overflow: hidden; 
+  }
+  
+  .iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none; /* Remove iframe border */
+    transform-origin: 0 0;
+    margin: 20px 0px;
+    transform: scale(0.5); /* Scale iframe to 50% of its original size */
   }
 
   .card-body-fixed-height {
@@ -582,6 +593,15 @@ h1 {
 
   .letter {
     width: 100% !important;
+  }
+
+  .mobile-column {
+    flex-direction: column;
+  }
+
+  .mobile-column-icon {
+    text-align: center;
+    justify-content: center;
   }
 }
 
