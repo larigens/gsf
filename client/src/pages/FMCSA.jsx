@@ -20,7 +20,7 @@ export const FMCSA = () => {
     const [insuranceOnFile, setInsuranceOnFile] = useState('');
     const [insuranceCode, setInsuranceCode] = useState('');
     const [submittedCompanyInfo, setSubmittedCompanyInfo] = useState(null);
-    const [typeOfCompanyInfo, setTypeOfCompanyInfo] = useState(null);
+    const [typeOfCompanyInfo, setTypeOfCompanyInfo] = useState('');
     const [dotNumber, setDotNumber] = useState(null);
 
     const [authorityStatus, setAuthorityStatus] = useState(null);
@@ -32,36 +32,40 @@ export const FMCSA = () => {
 
     useEffect(() => {
         const fetchCarrierData = async () => {
-            if (!submittedCompanyInfo) return;
+            if (submittedCompanyInfo) {
+                const getTypeOfCompanyUrl = () => {
+                    const baseApiUrl = 'https://mobile.fmcsa.dot.gov/qc/services/carriers/';
+                    switch (typeOfCompanyInfo) {
+                        case 'dotNumber':
+                            return `${baseApiUrl}${submittedCompanyInfo}?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`;
+                        case 'mcNumber':
+                            return `${baseApiUrl}docket-number/${submittedCompanyInfo}?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`;
+                        default:
+                            return `${baseApiUrl}name/${submittedCompanyInfo}?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`;
+                    }
+                };
 
-            const getTypeOfCompanyUrl = () => {
-                const baseApiUrl = 'https://mobile.fmcsa.dot.gov/qc/services/carriers/';
-                switch (typeOfCompanyInfo) {
-                    case 'dotNumber':
-                        return `${baseApiUrl}${submittedCompanyInfo}?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`;
-                    case 'mcNumber':
-                        return `${baseApiUrl}docket-number/${submittedCompanyInfo}?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`;
-                    default:
-                        return `${baseApiUrl}name/${submittedCompanyInfo}?webKey=${process.env.REACT_APP_FMCSA_WEBKEY}`;
+                const url = getTypeOfCompanyUrl();
+
+                try {
+                    const response = await fetch(url);
+                    const json = await response.json();
+
+                    if (typeOfCompanyInfo === 'dotNumber') {
+                        setCarrierData(json.content.carrier)
+                        setDotNumber(json.content.carrier.dotNumber);
+                    }
+                    else if (typeOfCompanyInfo === 'mcNumber') {
+                        setCarrierData(json.content[0].carrier);
+                        setDotNumber(json.content[0].carrier.dotNumber);
+                    } else {
+                        setCarrierList(json.content);
+                    }
+                } catch (error) {
+                    console.error('Error fetching carrier data:', error);
                 }
             };
-
-            const url = getTypeOfCompanyUrl();
-
-            try {
-                const response = await fetch(url);
-                const json = await response.json();
-
-                if (typeOfCompanyInfo === 'dotNumber' || typeOfCompanyInfo === 'mcNumber') {
-                    setCarrierData(typeOfCompanyInfo === 'dotNumber' ? json.content.carrier : json.content[0].carrier);
-                    setDotNumber(json.content.carrier.dotNumber);
-                } else {
-                    setCarrierList(json.content);
-                }
-            } catch (error) {
-                console.error('Error fetching carrier data:', error);
-            }
-        };
+        }
         fetchCarrierData();
     }, [submittedCompanyInfo, typeOfCompanyInfo]);
 
@@ -175,7 +179,6 @@ export const FMCSA = () => {
     };
 
     console.log(carrierData);
-    console.log(typeOfCompanyInfo);
 
     return (
         <>

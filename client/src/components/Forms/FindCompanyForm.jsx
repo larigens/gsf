@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 
-export const FindCompanyForm = ({ submittedcompanyInfo, setSubmittedCompanyInfo, typeOfCompanyInfo, setTypeOfCompanyInfo }) => {
+export const FindCompanyForm = ({ submittedCompanyInfo, setSubmittedCompanyInfo, typeOfCompanyInfo, setTypeOfCompanyInfo }) => {
     const [formData, setFormData] = useState({
         companyInfo: '',
         selectedOption: ''

@@ -13,7 +13,7 @@ export const Footer = () => {
         <footer className='d-flex flex-column align-items-center mt-3 main-color' style={{ minHeight: '18vh' }}>
             <Row className="w-100">
                 <Col md={2} className='d-flex justify-content-center mt-3'>
-                    <Image src={award} alt="footeraward" width={120} />
+                    <Image src={award} alt="footeraward" width={132} />
                 </Col>
                 <Col md={8} className='mt-5'>
                     <Row className='d-flex justify-content-center'>

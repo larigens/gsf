@@ -7,6 +7,7 @@ import { GetLogos } from '../utils/logos';
 import { HelmetCP } from '../components/Helmet';
 import { ContactForm } from '../components/Forms/ContactForm';
 import { Application } from '../components/Application';
+import { FaHome } from "react-icons/fa";
 
 const Referral = () => {
     const { id } = useParams();
@@ -25,32 +26,47 @@ const Referral = () => {
                 pageDescription={'Ready to Accelerate Your Cash Flow? Apply Now to Factor with Us and Experience Tailored Solutions for Your Transportation or Trucking Business. Unlock Financial Flexibility and Drive Your Success Today!'}
                 pageKeywords={'Apply now for transportation factoring; Factoring application for trucking companies; Transportation invoice factoring application; Apply for freight bill factoring; Trucking industry funding application; Apply for cash flow solutions; Transportation factoring services application; Invoice financing for transportation companies; Apply for trucking industry financing; Quick funding for transportation businesses; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'}
             />
-
-            <Container fluid className="mb-4 p-4">
-                <Row className="d-flex align-items-center">
-                    <Col md={6}>
-                        <p className="fw-bold text-justify mb-3 fs-40">Factoring Application</p>
-                        <p className="text-justify my-3 tracking-in-expand fst-italic fs-26">
-                            Referred by <span className='secondary-color'>{referralbyLinkID.company}</span>
-                        </p>
-                    </Col>
-                    <Col md={5} className="d-flex referral-logo">
-                        {png && png.endsWith(".png") && (
-                            <img className="img-fluid h-auto" src={png} alt="logo" width="150" />
-                        )}
-                    </Col>
-                </Row>
-                <p className="text-justify mt-3 mb-2 fs-24 pe-4">
-                    You can <Link to='/contact-us' className='fs-24 link-color hover-link-color me-1 pe-1'>contact us</Link> if you have any inquiries regarding factoring or need assistance with the signup process. Please kindly mention that you were referred to us by our esteemed partner, {referralbyLinkID.company}!
-                </p>
-                <p className="text-justify mb-5 mt-1 fs-24">Or simply fill out and submit your application to us, and we will respond to you as soon as possible!</p>
-                <Row>
-                    <Col md={4} className="mb-4">
-                        <ContactForm referralLink={true} referralName={referralbyLinkID.company} />
-                    </Col>
-                    <Application pdf={pdf} />
-                </Row>
-            </Container>
+            {referralbyLinkID ? (
+                <Container fluid className="mb-4 p-4">
+                    <Row className="d-flex align-items-center">
+                        <Col md={6}>
+                            <p className="fw-bold text-justify mb-3 fs-40">Factoring Application</p>
+                            <p className="text-justify my-3 tracking-in-expand fst-italic fs-26">
+                                Referred by <span className='secondary-color'>{referralbyLinkID.company}</span>
+                            </p>
+                        </Col>
+                        <Col md={5} className="d-flex referral-logo">
+                            {png && png.endsWith(".png") && (
+                                <img className="img-fluid h-auto" src={png} alt="logo" width="150" />
+                            )}
+                        </Col>
+                    </Row>
+                    <p className="text-justify mt-3 mb-2 fs-24 pe-4">
+                        You can <Link to='/contact-us' className='fs-24 link-color hover-link-color me-1 pe-1'>contact us</Link> if you have any inquiries regarding factoring or need assistance with the signup process. Please kindly mention that you were referred to us by our esteemed partner, {referralbyLinkID.company}!
+                    </p>
+                    <p className="text-justify mb-5 mt-1 fs-24">Or simply fill out and submit your application to us, and we will respond to you as soon as possible!</p>
+                    <Row>
+                        <Col md={4} className="mb-4">
+                            <ContactForm referralLink={true} referralName={referralbyLinkID.company} />
+                        </Col>
+                        <Application pdf={pdf} />
+                    </Row>
+                </Container>
+            ) :
+                <Container fluid className='d-flex justify-content-center flex-column my-5 p-5'>
+                    <Container className='text-center my-4 p-2'>
+                        <p className='fw-bold fs-55'>Oops!</p>
+                        <p className='secondary-color fs-36'>404 - Page not found</p>
+                        <p className='fs-19'>The referral you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+                        <Row className='text-center w-25'>
+                            <a href='/' className='d-flex text-center justify-content-center text-center mt-3 button button--naira button--round-s button--border-thin'>
+                                <FaHome className='icon-80 img-fluid button__icon icon' />
+                                <span>Go to Homepage</span>
+                            </a>
+                        </Row>
+                    </Container>
+                </Container>
+            }
         </>
     );
 };

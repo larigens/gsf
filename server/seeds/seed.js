@@ -58,7 +58,18 @@ async function main() {
                 brokerID: 'dbrownlee',
                 email: 'dbrownlee@gsquaredfunding.com',
                 phoneNumber: '(678)916-5954',
-                referral: []
+                referral: [{
+                    company: 'All In One Dispatching LLC',
+                    linkID: 'allinonedisp',
+                    logo: 'allinonedisp.png',
+                    application: 'AllInOneDispatching',
+                    broker: [
+                        {
+                            name: 'David Brownlee'
+                        }
+                    ]
+                }
+                ]
             },
             {
                 name: 'Elizabeth Murphy',
@@ -147,7 +158,29 @@ async function main() {
                 brokerID: 'twaller',
                 email: 'twaller@gsquaredfunding.com',
                 phoneNumber: '(678)352-2439',
-                referral: []
+                referral: [{
+                    company: 'ZR Links LLC',
+                    linkID: 'zrlinks',
+                    logo: 'zrlinks.png',
+                    application: 'ZRLinks',
+                    broker: [
+                        {
+                            name: 'Todd Waller'
+                        }
+                    ]
+                },
+                {
+                    company: 'Tailored Insurance Group',
+                    linkID: 'tailoredins',
+                    logo: 'tailoredins.png',
+                    application: 'TailoredInsGrp',
+                    broker: [
+                        {
+                            name: 'Todd Waller'
+                        }
+                    ]
+                }
+                ]
             }
         ]
 
@@ -204,6 +237,39 @@ async function main() {
                 broker: [
                     {
                         name: 'Stephen Kleinrichert'
+                    }
+                ]
+            },
+            {
+                company: 'ZR Links LLC',
+                linkID: 'zrlinks',
+                logo: 'zrlinks.png',
+                application: 'ZRLinks',
+                broker: [
+                    {
+                        name: 'Todd Waller'
+                    }
+                ]
+            },
+            {
+                company: 'Tailored Insurance Group',
+                linkID: 'tailoredins',
+                logo: 'tailoredins.png',
+                application: 'TailoredInsGrp',
+                broker: [
+                    {
+                        name: 'Todd Waller'
+                    }
+                ]
+            },
+            {
+                company: 'All In One Dispatching LLC',
+                linkID: 'allinonedisp',
+                logo: 'allinonedisp.png',
+                application: 'AllInOneDispatching',
+                broker: [
+                    {
+                        name: 'David Brownlee'
                     }
                 ]
             }

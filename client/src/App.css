@@ -300,12 +300,20 @@ h1 {
   font-size: 50px !important;
 }
 
+.fs-55 {
+  font-size: 55px;
+}
+
 .fs-40 {
   font-size: 40px;
 }
 
 .fs-36 {
   font-size: 36px;
+}
+
+.fs-34 {
+  font-size: 34px;
 }
 
 .fs-32 {
@@ -386,6 +394,11 @@ h1 {
 .border-top {
   border-top: var(--border-bottom) !important;
 }
+
+.border-right {
+  border-right: var(--border-bottom) !important;
+}
+
 
 .border-total {
   border: 2px solid #034078;
@@ -633,7 +646,7 @@ h1 {
 
 /* Common button styles */
 .button {
-  float: left;
+  /* float: left; */
   min-width: 150px;
   max-width: 250px;
   display: block;
@@ -680,7 +693,7 @@ h1 {
 .button--naira::before {
   content: '';
   position: absolute;
-  left: -50%;
+  /* left: -50%; */
   width: 200%;
   height: 200%;
   background: var(--text-main-color);
