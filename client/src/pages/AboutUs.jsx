@@ -38,6 +38,7 @@ const AboutUs = () => {
                 pageTitle={'About Us | Your Favorite Factor'}
                 pageDescription={'Discover Our Story and Commitment to Excellence in the Transportation and Trucking Sector. Learn About Our Passion, Values, and Dedication to Serving Our Clients with Integrity and Innovation.'}
                 pageKeywords={'Transportation company history; Trucking industry expertise; Our mission in transportation; About us trucking; Our team in logistics; Company values in transportation; Commitment to excellence trucking; Trucking industry innovation; Our story in transportation; Serving clients in logistics; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'}
+                canonicalURL={'about-us'}
             />
             <Container fluid className="mb-4 p-4">
                 <p className="fw-bold text-justify mb-3 fs-40">About Us</p>

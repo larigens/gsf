@@ -32,6 +32,7 @@ const Home = () => {
         pageTitle="G Squared Funding, LLC | Factoring Services for Trucking Companies"
         pageDescription="Accelerate Your Cash Flow with Our Expert Factoring Services for Transportation and Trucking Companies. Unlock Working Capital and Fuel Your Business Growth Today!"
         pageKeywords="Trucking company factoring; Transportation invoice factoring; Transportation factoring; Freight factoring services; Freight bill factoring; Trucking industry funding; Cash flow solutions for trucking businesses; Transportation factoring experts; Quick funding for trucking companies; Invoice financing for logistics companies; Fueling growth with factoring for truckers; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring; factoring for transportation"
+        canonicalURL={''}
       />
       <Layout>
         <HeroSection />

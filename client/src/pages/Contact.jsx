@@ -53,6 +53,7 @@ const Contact = () => {
                 pageTitle={'Contact Us | Unlock Working Capital'}
                 pageDescription={'Get in Touch with Us Today to Explore Partnership Opportunities or Inquire About Our Services in the Transportation and Trucking Sector. Our Team is Ready to Assist You. Contact Us Now!'}
                 pageKeywords={'Transportation company contact; Trucking industry inquiries; Contact us trucking; Transportation service inquiries; Trucking partnership opportunities; Logistics collaboration; Reach out to us in transportation; Contact information for trucking services; Trucking business inquiries; Transportation service provider contact; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'}
+                canonicalURL={'contact-us'}
             />
             <Container fluid className="mb-4 p-4">
                 <p className="fw-bold text-justify mb-3 fs-40">Contact Us</p>

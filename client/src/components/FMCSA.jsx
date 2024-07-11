@@ -7,7 +7,7 @@ import insurance from '../assets/icons/insurance.png';
 import truckinfo from '../assets/icons/truckinfo.png';
 import location from '../assets/icons/location.png';
 
-import { FindCompanyForm } from '../components/Forms/FindCompanyForm.jsx';
+import { FindCompanyForm } from './Forms/FindCompanyForm.jsx';
 
 export const FMCSA = () => {
     const [carrierData, setCarrierData] = useState(null);

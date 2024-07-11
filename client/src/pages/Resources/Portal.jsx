@@ -16,7 +16,8 @@ export const Portal = () => {
                 pageTitle={'Client Portal'}
                 pageDescription={`Access Your Dedicated Client Portal for Seamless Management of Your Transportation or Trucking Business. Streamline Operations, Track Invoices, and Stay Informed Anytime, Anywhere. Experience Efficiency at Your Fingertips!`}
                 pageKeywords={'Transportation client portal; Trucking company dashboard; Logistics client management; Freight tracking portal; Trucking industry software; Transportation business portal; Client portal for freight carriers; Trucking company invoice tracking; Logistics management platform; Transportation business solutions; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'}
-            />
+                canonicalURL={'resources/client-portal'}
+           />
             <Container fluid className="p-4">
                 <p className="fw-bold text-justify mb-4 fs-40">Client Portal</p>
 

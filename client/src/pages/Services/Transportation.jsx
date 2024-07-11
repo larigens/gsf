@@ -42,6 +42,7 @@ const Transportation = () => {
                 pageTitle={'Factoring for Trucking Companies'}
                 pageDescription={`Streamline Your Transportation Business with Our Efficient Factoring Services. Gain Access to Immediate Cash Flow Solutions Tailored to Meet the Unique Needs of the Trucking and Transportation Industry. Drive Your Success Today!`}
                 pageKeywords={'Transportation factoring services; Trucking invoice factoring; Freight bill factoring for transportation; Cash flow solutions for transportation companies; Transportation industry financing; Invoice factoring for logistics; Freight factoring for trucking companies; Transportation invoice financing; Trucking industry cash flow management; Transportation funding options; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'}
+                canonicalURL={'services/transportation'}
             />
             <Container fluid className="mb-4 p-4">
                 <p className="fw-bold text-justify mb-3 fs-40"> Transportation Factoring</p>

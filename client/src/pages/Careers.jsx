@@ -52,6 +52,7 @@ const Careers = () => {
                 pageTitle={'Join our Team | Careers at GSF'}
                 pageDescription={'Join Our Dynamic Team in the Transportation and Trucking Industry! Explore Exciting Career Opportunities with a Company Committed to Your Success. Apply Today and Drive Your Future Forward!'}
                 pageKeywords={'Factoring job opportunities; Transportation industry careers; Trucking employment; Logistics job openings; Supply chain career opportunities; Join our team in transportation; Career growth in the trucking industry; Client relations manager; CRM job opportunity; Business Development Officer; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'}
+                canonicalURL={'careers'}
             />
             <Container fluid className="mb-4 p-4">
                 <p className="fw-bold text-justify mb-3 fs-40">Careers</p>

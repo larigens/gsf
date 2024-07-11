@@ -85,6 +85,7 @@ export const WorkingGSF = () => {
                 pageTitle={'Working with GSF | Simple Freight Factoring'}
                 pageDescription={`Discover How Our Streamlined Factoring Process Empowers Transportation and Trucking Businesses. From Application to Funding, Explore the Effortless Steps to Unlock Working Capital and Drive Financial Success.`}
                 pageKeywords={'Factoring process for transportation companies; Trucking industry funding steps; Transportation invoice factoring process; Freight bill factoring explained; Trucking company cash flow solutions; Factoring application to funding; Transportation industry financing process; Invoice financing for logistics companies; Trucking factoring step-by-step; Factoring process for freight carriers; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'}
+                canonicalURL={'resources/working-gsf'}
             />
             <Container fluid className="mb-4 p-4">
                 <p className="fw-bold text-justify mb-4 fs-40">Working with GSF</p>

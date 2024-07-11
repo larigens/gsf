@@ -7,7 +7,7 @@ import { HiOutlineDocumentDownload } from 'react-icons/hi';
 import { FaReadme, FaUser } from 'react-icons/fa';
 import { MdOutlinePriceCheck } from 'react-icons/md';
 import { FuelForm } from '../../components/Forms/FuelForm';
-import { FMCSA } from '../FMCSA';
+import { FMCSA } from '../../components/FMCSA';
 import line from '../../assets/icons/line.png';
 import afi from '../../assets/AFIEagle.png';
 import cw from '../../assets/cw.png';
@@ -88,7 +88,8 @@ export const Resources = () => {
                 pageTitle={'Resources | Tools for Carriers'}
                 pageDescription={`Explore Valuable Resources Tailored for Transportation and Trucking Professionals on Our Dedicated Page. From Industry Insights to Useful Tools, Access Everything You Need to Drive Success in Your Business.`}
                 pageKeywords={'Transportation industry resources; Trucking business tools; Logistics industry insights; Freight management resources; Trucking industry guides; Transportation business articles; Logistics industry reports; Trucking industry tips; Freight management tools; Transportation industry news; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'}
-            />
+                canonicalURL={'resources'}
+          />
             <Container fluid className="mb-4 p-4">
                 <p className="fw-bold text-justify mb-4 fs-40">Resources</p>
 

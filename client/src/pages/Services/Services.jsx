@@ -93,7 +93,8 @@ const Services = () => {
                 pageTitle={'Services | Factoring Solutions'}
                 pageDescription={`Discover Our Comprehensive Range of Tailored Services Designed to Meet the Diverse Needs of Transportation and Trucking Companies. From Freight Factoring to Logistics Support, We've Got You Covered!`}
                 pageKeywords={'Trucking industry services; Transportation solutions; Freight factoring services; Logistics support for trucking; Trucking company offerings; Transportation service provider; Freight invoice financing; Trucking industry support; Logistics services for transportation; Trucking business solutions; Factoring services in Georgia; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'}
-            />
+                canonicalURL={'services'}
+           />
             <Container fluid className="mb-4 p-4">
                 <p className="fw-bold text-justify mb-3 fs-40">Our Services</p>
                 <p className="text-justify my-3 fs-24">We offer a seamless and cost-effective solution to boost your business's cash flow, accompanied by a wide array of valuable features, including:</p>

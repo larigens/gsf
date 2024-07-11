@@ -16,6 +16,7 @@ export const Credit = () => {
                 pageTitle={'Credit Services'}
                 pageDescription={`Ensure Financial Stability with Our Reliable Credit Services for Transportation and Trucking Companies. Discover How We Assess and Manage Credit to Support Your Business Growth Safely and Strategically.`}
                 pageKeywords={'Credit services for transportation businesses; Trucking company credit checks; Transportation industry credit assessment; Credit management for trucking companies; Freight carrier credit services; Credit evaluation for logistics firms; Trucking industry credit solutions; Credit monitoring for transportation companies; Transportation credit analysis; Trucking business credit management; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'}
+                canonicalURL={'resources/credit-services'}
             />
             <Container fluid className="p-4">
                 <p className="fw-bold text-justify mb-4 fs-40">Working with GSF</p>

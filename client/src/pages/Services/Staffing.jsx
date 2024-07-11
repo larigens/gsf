@@ -38,6 +38,7 @@ const Staffing = () => {
                 pageTitle={'Factoring for Staffing Agencies'}
                 pageDescription={`Elevate Your Staffing Agency's Cash Flow with Our Specialized Factoring Solutions. Unlock Funds Quickly and Securely to Support Your Growth and Operations. Partner with Us Today!`}
                 pageKeywords={'Staffing agency factoring; Invoice factoring for staffing companies; Cash flow solutions for staffing agencies; Temp agency funding; Staffing industry financing; Payroll factoring for staffing firms; Invoice financing for recruiters; Staffing company funding options; Temporary staffing invoice factoring; Staffing agency cash flow management; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'}
+                canonicalURL={'services/staffing'}
             />
             <Container fluid className="mb-4 p-4">
                 <p className="fw-bold text-justify mb-3 fs-40"> Staffing Factoring</p>
