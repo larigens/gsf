@@ -103,13 +103,14 @@ export const ContactForm = ({ referralLink, referralName }) => {
                 <Form.Group className="my-3" controlId="agree">
                     <Form.Check
                         type="checkbox"
-                        label={`By checking this box you agree to receive recurring messages from G Squared Funding, LLC. Reply STOP to Opt out. Reply HELP for help. Message frequency varies. Message and data rates may apply. Carriers are not liable for delayed or undelivered messages.`}
+                        label={`By checking this box you agree to receive recurring messages from G Squared Funding, LLC.`}
                         checked={formData.agree}
                         onChange={handleInputChange}
                         name="agree"
-                        className='me-2 fs-15 text-justify'
+                        className='me-2 mb-2 fs-15 text-justify'
                         required
                     />
+                    <Form.Text className='main-color fs-14 text-justify'>Reply STOP to Opt out. Reply HELP for help. Message frequency varies. Message and data rates may apply. Carriers are not liable for delayed or undelivered messages.</Form.Text>
                 </Form.Group>
                 <Row className='d-flex justify-content-end me-1 my-2'>
                     <Button className='submit-btn radius-20 border-none mt-2' type="submit">Submit</Button>

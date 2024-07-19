@@ -1,4 +1,4 @@
-import { Container, Row, Col, Image, Button } from 'react-bootstrap';
+import { Container, Row, Col, Image, Button, Carousel, Card } from 'react-bootstrap';
 
 
 import { motion } from "framer-motion";
@@ -7,6 +7,14 @@ import { useTheme } from '../components/ThemeContext';
 import { Layout } from '../components/Layout';
 import { ContactForm } from '../components/Forms/ContactForm';
 import { Link } from 'react-router-dom';
+import { IoStarSharp } from "react-icons/io5";
+import { BiHappyAlt } from "react-icons/bi";
+import { BiHappyHeartEyes } from "react-icons/bi";
+import { BiHappyBeaming } from "react-icons/bi";
+import { BiHappy } from "react-icons/bi";
+
+import { RiDoubleQuotesL } from "react-icons/ri";
+import { RiDoubleQuotesR } from "react-icons/ri";
 
 import wallet from '../assets/icons/wallet.png';
 import rightArrow from '../assets/icons/right-arrow.png';
@@ -25,6 +33,7 @@ const Home = () => {
   const { theme } = useTheme();
 
   const classNames = (...classes) => classes.filter(Boolean).join(' ');
+  const variant = (...variants) => variants.filter(Boolean).join(' ');
 
   return (
     <>
@@ -38,9 +47,14 @@ const Home = () => {
         <HeroSection />
         <IndustriesSection theme={theme} classNames={classNames} />
         <BenefitsSection theme={theme} classNames={classNames} />
+        <TestimonialsSection theme={theme} classNames={classNames} variant={variant} />
+
         <TransitionSection theme={theme} classNames={classNames} />
+        {/* <Container fluid className={classNames(theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent', 'pt-2')}> */}
+
+        {/* </Container> */}
         <MissionSection theme={theme} classNames={classNames} />
-      </Layout>
+      </Layout >
     </>
   );
 };
@@ -178,12 +192,145 @@ const BenefitsSection = ({ theme, classNames }) => {
   );
 };
 
+const TestimonialCarousel = ({ theme, classNames, variant }) => {
+  const testimonials = [
+    {
+      icon: (<BiHappyHeartEyes className={classNames(theme === 'Light Mode' ? 'secondary-color' : 'main-color', 'text-center mt-3 mb-0')} style={{ height: 'auto', width: '110px' }} />),
+      title: 'Kadyn Hernandez',
+      review: 'G Squared Funding set a standard of excellence in the factoring industry. Their dedication to client satisfaction, coupled with their expertise in financial solutions, makes them a standout choice for any business seeking funding support. I would highly recommend G Squared Funding to anyone looking for a reliable partner in achieving their financial goals. Five stars all around for their outstanding service and commitment to excellence!'
+    },
+    {
+      icon: (<BiHappyAlt className={classNames(theme === 'Light Mode' ? 'secondary-color' : 'main-color', 'text-center mt-3 mb-0')} style={{ height: 'auto', width: '110px' }} />),
+      title: 'Corina Munteanu',
+      review: 'Partnering up with G Squared Finding was my best decision ever! Customer service is great, true professionals gathered all in one place. They deliver a highly adaptable service. All of my questions were answered in a professional manner and all my issues were solved in no time. On the top of that, I have got all the support I needed as a start up. I highly recommend this guys!'
+    },
+    {
+      icon: (<BiHappyBeaming className={classNames(theme === 'Light Mode' ? 'secondary-color' : 'main-color', 'text-center mt-3 mb-0')} style={{ height: 'auto', width: '110px' }} />),
+      title: 'Darren Gilbert',
+      review: 'I was very pleased with my BDO. He was very professional and through. He was able to get my contract done, inspite of unexpected challenges. I would highly recommend this company for future business opportunities. Thank you, for all your hard work.'
+    },
+    {
+      icon: (<BiHappy className={classNames(theme === 'Light Mode' ? 'secondary-color' : 'main-color', 'text-center mt-3 mb-0')} style={{ height: 'auto', width: '110px' }} />),
+      title: 'Steve Fischer',
+      review: 'Awesome people to work with'
+    },
+    {
+      icon: (<BiHappyHeartEyes className={classNames(theme === 'Light Mode' ? 'secondary-color' : 'main-color', 'text-center mt-3 mb-0')} style={{ height: 'auto', width: '110px' }} />),
+      title: 'Kingori Trucking LLC',
+      review: 'They have served me for over for 4 years and no issues. No doubt this is the best factoring company in the country.'
+    },
+    {
+      icon: (<BiHappyAlt className={classNames(theme === 'Light Mode' ? 'secondary-color' : 'main-color', 'text-center mt-3 mb-0')} style={{ height: 'auto', width: '110px' }} />),
+      title: 'Rodney Smith',
+      review: 'Great Funding Company. Affordable rates, Great CR reps!'
+    },
+    {
+      icon: (<BiHappyBeaming className={classNames(theme === 'Light Mode' ? 'secondary-color' : 'main-color', 'text-center mt-3 mb-0')} style={{ height: 'auto', width: '110px' }} />),
+      title: 'Keith Mims',
+      review: 'Great Great Company!! I consider all these guys like "Family"!'
+    },
+    {
+      icon: (<BiHappy className={classNames(theme === 'Light Mode' ? 'secondary-color' : 'main-color', 'text-center mt-3 mb-0')} style={{ height: 'auto', width: '110px' }} />),
+      title: 'Martha Ortegon',
+      review: 'I would not change or go with another factoring company, they are the best. I am really happy with their service.'
+    },
+    {
+      icon: (<BiHappyHeartEyes className={classNames(theme === 'Light Mode' ? 'secondary-color' : 'main-color', 'text-center mt-3 mb-0')} style={{ height: 'auto', width: '110px' }} />),
+      title: 'Eddie Oliver',
+      review: 'Great company, great service, never had an issue in 5 years, there process is super easy and efficient!'
+    },
+    {
+      icon: (<BiHappyAlt className={classNames(theme === 'Light Mode' ? 'secondary-color' : 'main-color', 'text-center mt-3 mb-0')} style={{ height: 'auto', width: '110px' }} />),
+      title: 'Anonymous',
+      review: 'The G Squared Funding team is the best factoring company when it comes to efficiency, profissionalism and customer service. Our funding is always on time without issues. I can always get someone on the phone that speaks clearly and is easy to understand. G Squared Funding customer service is not outsourced and not automated. In this highly stressful industry, the staff are always calm and professional and extremely knowledgeable.'
+    },
+    {
+      icon: (<BiHappyBeaming className={classNames(theme === 'Light Mode' ? 'secondary-color' : 'main-color', 'text-center mt-3 mb-0')} style={{ height: 'auto', width: '110px' }} />),
+      title: 'Wayne Crockett',
+      review: 'Absolutely the best and most professional factoring company out there! We have used G2 for over a year now and have not had any problems. Our agent is hands down top notch. The rates are outstanding and funding is extremely fast. The funding reports are always sent over quickly as well. If you are reading this review save yourself a lot of TIME and MONEY and go with G2. I guarantee you will be on here giving them a great review as well!'
+    },
+
+  ]
+  return (
+    <Carousel data-bs-theme={variant(theme === 'Light Mode' ? 'dark' : 'light', '')} className='mt-2 mb-5'>
+      {testimonials.map((testimonial, index) => (
+        <Carousel.Item key={index} interval={10000} className='radius-20'>
+          <Card className='text-center background'>
+            <Card.Header className='border-none'>
+              {testimonial.icon}
+            </Card.Header>
+            <Card.Body className='d-flex justify-content-center flex-column text-center'>
+              <Card.Title className='secondary-color mb-3 mt-0 fs-28'>{testimonial.title}</Card.Title>
+              <div className='d-flex flex-row justify-content-center mb-3'>
+                <IoStarSharp className='icon-star me-1' />
+                <IoStarSharp className='icon-star me-1' />
+                <IoStarSharp className='icon-star me-1' />
+                <IoStarSharp className='icon-star me-1' />
+                <IoStarSharp className='icon-star me-1' />
+              </div>
+              <Card.Text className='main-color mx-4 mt-2 mb-5 px-4 pt-2  text-center fs-19'>
+                <RiDoubleQuotesL className='mb-2 me-2 icon-30 secondary-color' />
+                {testimonial.review}
+                <RiDoubleQuotesR className='ms-2 mt-1 icon-30 secondary-color' />
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Carousel.Item>
+      ))}
+    </Carousel>
+  );
+};
+
+const TestimonialsSection = ({ theme, classNames, variant }) => {
+  return (
+    <>
+      <svg id="clouds" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <path d="M-5 100 Q 0 20 5 100 Z
+						 M0 100 Q 5 0 10 100
+						 M5 100 Q 10 30 15 100
+						 M10 100 Q 15 10 20 100
+						 M15 100 Q 20 30 25 100
+						 M20 100 Q 25 -10 30 100
+						 M25 100 Q 30 10 35 100
+						 M30 100 Q 35 30 40 100
+						 M35 100 Q 40 10 45 100
+						 M40 100 Q 45 50 50 100
+						 M45 100 Q 50 20 55 100
+						 M50 100 Q 55 40 60 100
+						 M55 100 Q 60 60 65 100
+						 M60 100 Q 65 50 70 100
+						 M65 100 Q 70 20 75 100
+						 M70 100 Q 75 45 80 100
+						 M75 100 Q 80 30 85 100
+						 M80 100 Q 85 20 90 100
+						 M85 100 Q 90 50 95 100
+						 M90 100 Q 95 25 100 100
+						 M95 100 Q 100 15 105 100 Z"
+          className={classNames(theme === 'Light Mode' ? 'secondary-fill' : 'dark-accent-fill', '')}
+        >
+        </path>
+      </svg>
+      <Container fluid className={classNames(theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent', 'my-0 ms-auto pt-5')}>
+        <h2 className="fw-bold py-2 mb-2 secondary-color text-center fs-34">What Clients Say?</h2>
+        <p className="mb-4 fs-22 text-center">We place huge value on strong relationships and have seen the benefit they bring to our business. Client feedback is vital in helping us to get it right!</p>
+        <Container fluid className='d-flex justify-content-center text-center w-80'>
+          <TestimonialCarousel theme={theme} classNames={classNames} variant={variant} />
+        </Container>
+      </Container>
+    </>
+  );
+};
+
 const TransitionSection = ({ theme, classNames }) => {
   return (
     <>
-      <Container fluid className='py-5 mx-auto glassmorphism my-2'>
+      <svg id="bigTriangleShadow" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <path id="trianglePath1" d="M0 0 L50 100 L100 0 Z" className={classNames(theme === 'Light Mode' ? 'secondary-fill' : 'dark-accent-fill', '')} />
+        <path id="trianglePath2" d="M50 100 L100 40 L100 0 Z" className={classNames(theme === 'Light Mode' ? 'secondary-fill' : 'dark-accent-fill', '')} />
+      </svg>
+      <Container fluid className='py-5 mx-auto mt-3 mb-2'>
         <h2 className="fw-bold py-2 mb-2 secondary-color text-center fs-34">How can we tailor our factoring services to meet your unique needs?</h2>
-        <Row className="d-flex align-items-center radius-20 mt-3 text-center justify-content-center">
+        <Row className="d-flex align-items-center radius-20 my-3 text-center justify-content-center">
           <p className="mt-2 fs-22">With years of experience and expertise in the field, we have been helping businesses like yours thrive by offering fast and flexible financing options.</p>
           <Image className="img-fluid icon-color icon-80 pt-1 mt-2" src={logo} alt="logo" loading="lazy" />
         </Row>
@@ -195,8 +342,11 @@ const TransitionSection = ({ theme, classNames }) => {
 const MissionSection = ({ theme, classNames }) => {
   return (
     <>
-      <Container fluid className={classNames(theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent', 'ms-auto pb-3 mt-2')}>
-        <Row className='p-4 my-2'></Row>
+      <svg id="bigHalfCircle" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <path d="M0 100 C40 0 60 0 100 100 Z" className={classNames(theme === 'Light Mode' ? 'secondary-fill' : 'dark-accent-fill', 'p-1')} />
+      </svg>
+      <Container fluid className={classNames(theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent', 'ms-auto pb-3 mt-0')}>
+        <Row className='p-4 mb-2'></Row>
         <Row className="my-3 mx-auto">
           <Col xs={12} sm={6} className="mt-2 me-auto">
             <Container className="p-2 mt-2 text-center">
@@ -215,12 +365,35 @@ const MissionSection = ({ theme, classNames }) => {
               ))}
               <p className="text-justify my-4 mx-3 fs-18">has earned us the trust of countless clients in the transportation sector. Whether you're a trucking company, freight broker, or staffing agency, we have the financial solutions to support your growth and success.</p>
             </Container>
-            <Container className="d-flex align-items-center my-4 p-2">
-              <p className="me-2 fs-28">Let's drive your business forward together!</p>
+            <Container className="d-flex align-items-center mt-4 p-2 pb-0 mb-0">
+              <p className="me-2 mt-2 mb-0 fs-28">Let's drive your business forward together!</p>
               <motion.div className="forward" animate={{ x: [0, 100], transition: { duration: 2, ease: "linear", loop: Infinity } }}>
-                <Image className="img-fluid icon-color mb-3" src={forward} alt="truck icon" width="60" height="60" loading="lazy" />
+                <Image className="img-fluid icon-color" src={forward} alt="truck icon" width="60" height="60" loading="lazy" />
               </motion.div>
             </Container>
+            <svg id="stamp" xmlns="http://www.w3.org/2000/svg" version="1.1" width="92%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <path d="M0 0 Q 2.5 40 5 0 
+						 Q 7.5 40 10 0
+						 Q 12.5 40 15 0
+						 Q 17.5 40 20 0
+						 Q 22.5 40 25 0
+						 Q 27.5 40 30 0
+						 Q 32.5 40 35 0
+						 Q 37.5 40 40 0
+						 Q 42.5 40 45 0
+						 Q 47.5 40 50 0 
+						 Q 52.5 40 55 0
+						 Q 57.5 40 60 0
+						 Q 62.5 40 65 0
+						 Q 67.5 40 70 0
+						 Q 72.5 40 75 0
+						 Q 77.5 40 80 0
+						 Q 82.5 40 85 0
+						 Q 87.5 40 90 0
+						 Q 92.5 40 95 0
+						 Q 97.5 40 100 0 Z" className='accent-fill'>
+              </path>
+            </svg>
           </Col>
           <Col xs={12} sm={6} md={4} className="my-auto mx-auto">
             <ContactForm />
