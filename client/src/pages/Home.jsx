@@ -271,7 +271,7 @@ const TestimonialCarousel = ({ theme, classNames, variant }) => {
               <Card.Text className='main-color mx-4 mt-2 mb-5 px-4 pt-2  text-center fs-19'>
                 <RiDoubleQuotesL className='mb-2 me-2 icon-30 secondary-color' />
                 {testimonial.review}
-                <RiDoubleQuotesR className='ms-2 mt-1 icon-30 secondary-color' />
+                <RiDoubleQuotesR className='ms-2 mt-0 icon-30 secondary-color' />
               </Card.Text>
             </Card.Body>
           </Card>

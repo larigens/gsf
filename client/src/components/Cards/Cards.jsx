@@ -1,4 +1,4 @@
-import { Row, Col, Image } from 'react-bootstrap';
+import { Row, Col, Image, Container } from 'react-bootstrap';
 import collection from '../../assets/icons/collection.png';
 import creditScore from '../../assets/icons/credit-score.png';
 import recourse from '../../assets/icons/recourse.png';
@@ -45,10 +45,12 @@ export const Cards = ({ cardInfo }) => {
     return (
         <Row className="mt-2 mb-5 d-flex justify-content-center">
             {cardInfo && cardInfo.map((info, index) => (
-                <Col key={index} md={5} className="text-center m-3 ms-4 p-2 glassmorphism">
+                <Col key={index} md={5} className="text-center m-3 ms-4 p-2 glassmorphism radius-20">
                     <Image className="img-fluid my-2 icon-color icon-80" src={imageSrcs[index]} alt={`${info.image} icon`} />
-                    <p className="mb-3 text-center secondary-color fs-22">{info.title}</p>
-                    <p className="text-justify fs-17 px-1">{info.description}</p>
+                    <Container fluid className='px-2 me-1'>
+                        <p className="mb-3 text-center secondary-color fs-22">{info.title}</p>
+                        <p className="text-justify fs-17 px-1">{info.description}</p>
+                    </Container>
                 </Col>
             ))}
         </Row>

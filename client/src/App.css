@@ -419,6 +419,16 @@ h1 {
   border-radius: 20px;
 }
 
+.radius-right {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.radius-left {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
 /* Line Height */
 .line-30 {
   line-height: 30px;

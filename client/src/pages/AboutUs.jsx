@@ -31,6 +31,8 @@ const aboutInfo = [
 ];
 
 const AboutUs = () => {
+    const { theme } = useTheme();
+    const classNames = (...classes) => classes.filter(Boolean).join(' ');
 
     return (
         <>
@@ -43,7 +45,7 @@ const AboutUs = () => {
             <Container fluid className="mb-4 p-4">
                 <p className="fw-bold text-justify mb-3 fs-40">About Us</p>
                 <Row className="mt-4 mb-2">
-                    <Col xs={12} md={7} className="me-auto">
+                    <Col xs={12} md={6} className="me-auto">
                         <p className="fw-bold text-justify mb-2 fs-24">Our Company's History</p>
                         <p className="text-justify mb-2 fs-20 secondary-color">Founded in 2010</p>
                         <p className="text-justify mb-2 fs-18 line-30">G Squared Funding has become a leading authority in Invoice Factoring Services nationwide. Our inception was driven by a vision to empower transportation companies with tailored and innovative financial solutions.</p>
@@ -51,8 +53,9 @@ const AboutUs = () => {
                         <p className="fw-bold text-justify mb-2 fs-24">Our Mission</p>
                         <p className="text-justify mb-2 fs-18 line-30">We are dedicated to fostering growth and prosperity within the transportation industry. We take pride in offering immediate, cost-effective business factoring services that simplify your financial journey. Your satisfaction and success are our top priorities, and our ultimate goal is to meet your needs while providing an effortless and satisfying experience.</p>
                     </Col>
-                    <Col xs={12} md={4} className="text-center mt-3 mt-md-0">
-                        <Image className="img-fluid radius-20 my-1" src={entry} alt="gsf office" loading="lazy" />
+                    <Col xs={0} md={1} className={classNames(theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent', 'text-center ms-1 mb-1 p-3 radius-left')}></Col>
+                    <Col xs={12} md={4} className={classNames(theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent', 'text-center mb-1 p-3 radius-right')}>
+                        <Image className="img-fluid radius-20 my-1 p-2" src={entry} alt="gsf office" loading="lazy" />
                     </Col>
                 </Row>
                 {/* Values section */}
@@ -62,16 +65,16 @@ const AboutUs = () => {
                 </Row>
                 {/* Why Choose section */}
                 <Row className="mt-5 text-justify">
-                    <WhyChooseSection />
+                    <WhyChooseSection theme={theme} />
                 </Row>
                 {/* Apply Now section */}
-                <Row className="my-2 justify-content-center align-items-center my-5 border-total p-2">
+                <Row className="justify-content-center align-items-center my-5 border-total p-2 mx-4 radius-20">
                     <Col xs={12} md={3} className="text-center">
                         <Link to='/apply-now' className="mt-2">
                             <Image className='icon-color icon-80' src={apply} alt="apply now icon" loading="lazy" />
                         </Link>
                     </Col>
-                    <Col xs={12} md={8} className="mt-3 mt-md-0">
+                    <Col xs={12} md={8} className="mt-3">
                         <p className="text-justify mb-3 fs-18">Embark on a journey to elevate your transportation business to new heights with G Squared Funding. Your satisfaction drives us, and we look forward to becoming your trusted financial partner.</p>
                         <p className="text-justify fs-18">Thank you for considering us for your factoring needs. We are excited about the opportunity to serve you and contribute to your continued success in the transportation industry!</p>
                     </Col>
@@ -81,8 +84,7 @@ const AboutUs = () => {
     );
 };
 
-const WhyChooseSection = () => {
-    const { theme } = useTheme();
+const WhyChooseSection = ({ theme }) => {
 
     const renderWhyChooseItem = (title, description) => (
         <>
@@ -95,8 +97,8 @@ const WhyChooseSection = () => {
     );
 
     return (
-        <Container fluid className={`ms-auto pb-2 ms-2 ${theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent'}`}>
-            <Row className="mt-5">
+        <Container fluid className={`ms-auto pb-2 ms-2 radius-20 ${theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent'}`}>
+            <Row className="mt-5 mx-1">
                 <p className="fw-bold mb-3 fs-24">Why Choose G Squared Funding?</p>
             </Row>
             {renderWhyChooseItem('Industry Leadership', 'With Expertise since 2010, we understand the intricacies of your industry, making us one of the nation\'s foremost and trusted Invoice Factoring Companies.')}
