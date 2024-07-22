@@ -4,6 +4,7 @@ import { BsArrow90DegDown } from "react-icons/bs";
 import { IoArrowBack } from "react-icons/io5";
 import React, { useState } from 'react';
 import { JobPost } from '../components/JobPost.jsx';
+import { useTheme } from '../components/ThemeContext';
 
 const jobInfo = [
     {
@@ -38,6 +39,10 @@ const JobCard = ({ job, onClick }) => (
 );
 
 const Careers = () => {
+    const { theme } = useTheme();
+
+    const classNames = (...classes) => classes.filter(Boolean).join(' ');
+
     const [jobPosition, setJobPosition] = useState('');
     const [cardsVisibility, setCardsVisibility] = useState(true);
 
@@ -64,15 +69,20 @@ const Careers = () => {
                 </Row>
                 {cardsVisibility ? (
                     <>
-                        <Container fluid className='d-flex align-items-center text-justify'>
-                            <BsArrow90DegDown className='icon-color icon-80 icon-desktop-only' />
-                            <p className="text-justify my-5 secondary-color fs-26">Step into our team today and help us transform the factoring experience into a seamless, stress-free journey!</p>
+                        <svg id="curveUpColor" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100"  preserveAspectRatio="none">
+                            <path d="M0 100 C 20 0 50 0 100 100 Z" className={classNames(theme === 'Light Mode' ? 'secondary-fill' : 'dark-accent-fill', '')} />
+                        </svg>
+                        <Container fluid className={classNames(theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent', '')}>
+                            <Container fluid className='d-flex align-items-center text-justify'>
+                                <BsArrow90DegDown className='icon-color icon-80 icon-desktop-only' />
+                                <p className="text-justify my-5 secondary-color fs-26">Step into our team today and help us transform the factoring experience into a seamless, stress-free journey!</p>
+                            </Container>
+                            <Row className='my-5 justify-content-center pb-4'>
+                                {jobInfo.map((job) => (
+                                    <JobCard key={job.position} job={job} onClick={handleJobClick} />
+                                ))}
+                            </Row>
                         </Container>
-                        <Row className="my-5 justify-content-center">
-                            {jobInfo.map((job) => (
-                                <JobCard key={job.position} job={job} onClick={handleJobClick} />
-                            ))}
-                        </Row>
                     </>
                 ) : (
                     <>

@@ -44,8 +44,8 @@ const AboutUs = () => {
             />
             <Container fluid className="mb-4 p-4">
                 <p className="fw-bold text-justify mb-3 fs-40">About Us</p>
-                <Row className="mt-4 mb-2">
-                    <Col xs={12} md={6} className="me-auto">
+                <Row className={classNames(theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent', 'mt-4 mb-2 mx-1 radius-right')}>
+                    <Col xs={12} md={6} className="mt-4 mb-2 me-auto">
                         <p className="fw-bold text-justify mb-2 fs-24">Our Company's History</p>
                         <p className="text-justify mb-2 fs-20 secondary-color">Founded in 2010</p>
                         <p className="text-justify mb-2 fs-18 line-30">G Squared Funding has become a leading authority in Invoice Factoring Services nationwide. Our inception was driven by a vision to empower transportation companies with tailored and innovative financial solutions.</p>
@@ -53,14 +53,18 @@ const AboutUs = () => {
                         <p className="fw-bold text-justify mb-2 fs-24">Our Mission</p>
                         <p className="text-justify mb-2 fs-18 line-30">We are dedicated to fostering growth and prosperity within the transportation industry. We take pride in offering immediate, cost-effective business factoring services that simplify your financial journey. Your satisfaction and success are our top priorities, and our ultimate goal is to meet your needs while providing an effortless and satisfying experience.</p>
                     </Col>
-                    <Col xs={0} md={1} className={classNames(theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent', 'text-center ms-1 mb-1 p-3 radius-left')}></Col>
-                    <Col xs={12} md={4} className={classNames(theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent', 'text-center mb-1 p-3 radius-right')}>
+                    <Col md={1}>
+                        <svg id="bigHalfCircleLeft" xmlns="http://www.w3.org/2000/svg" version="1.1" width="120%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none" className='radius-20 ps-1'>
+                            <path d="M100 0 C0 40 0 60 100 100 Z" className={classNames(theme === 'Light Mode' ? 'accent-fill' : 'main-fill', '')} />
+                        </svg>
+                    </Col>
+                    <Col xs={12} md={4} className={classNames(theme === 'Light Mode' ? 'background-light' : 'bg-main-brand', 'text-center my-0 p-3 radius-20')}>
                         <Image className="img-fluid radius-20 my-1 p-2" src={entry} alt="gsf office" loading="lazy" />
                     </Col>
                 </Row>
                 {/* Values section */}
                 <Row className="mt-5 mb-2">
-                    <p className="fw-bold text-justify fs-24">Our Values</p>
+                    <p className="fw-bold text-justify fs-24 ms-3">Our Values</p>
                     <Cards cardInfo={aboutInfo} />
                 </Row>
                 {/* Why Choose section */}

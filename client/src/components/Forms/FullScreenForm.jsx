@@ -85,6 +85,7 @@ export const FullScreenForm = () => {
             case 1:
                 return (
                     <div>
+                        <h1>Page is under construction!</h1>
                         <Form.Group controlId="q1">
                             <Form.Label className="fs-field-label fs-anim-upper">Business Exact Legal Name</Form.Label>
                             <Form.Control

@@ -6,8 +6,12 @@ import roadmap from '../../assets/roadmap.png';
 import { ContactForm } from '../../components/Forms/ContactForm';
 import { Cards } from '../../components/Cards/Cards';
 import { LinkCards } from '../../components/Cards/LinkCards';
+import { useTheme } from '../../components/ThemeContext';
 
 const Services = () => {
+    const { theme } = useTheme();
+    const classNames = (...classes) => classes.filter(Boolean).join(' ');
+
     const services = [
         'Swift Same-Day or 24 to 48-Hour Funding',
         'No Minimum Volume Requirements',
@@ -94,12 +98,12 @@ const Services = () => {
                 pageDescription={`Discover Our Comprehensive Range of Tailored Services Designed to Meet the Diverse Needs of Transportation and Trucking Companies. From Freight Factoring to Logistics Support, We've Got You Covered!`}
                 pageKeywords={'Trucking industry services; Transportation solutions; Freight factoring services; Logistics support for trucking; Trucking company offerings; Transportation service provider; Freight invoice financing; Trucking industry support; Logistics services for transportation; Trucking business solutions; Factoring services in Georgia; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'}
                 canonicalURL={'services'}
-           />
+            />
             <Container fluid className="mb-4 p-4">
                 <p className="fw-bold text-justify mb-3 fs-40">Our Services</p>
                 <p className="text-justify my-3 fs-24">We offer a seamless and cost-effective solution to boost your business's cash flow, accompanied by a wide array of valuable features, including:</p>
-                <Row className="justify-content-between">
-                    <Col md={6}>
+                <Row className={classNames(theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent', 'mt-4 mb-5 mx-1 radius-right')}>
+                    <Col md={5} className='mt-4 mb-2 me-auto'>
                         <ul className="list-unstyled fs-18">
                             {services.map((service, index) => (
                                 <li key={index} className="d-flex align-items-center mb-2">
@@ -109,37 +113,44 @@ const Services = () => {
                             ))}
                         </ul>
                     </Col>
-                    <Col md={6} className="mt-3 mx-auto">
-                        <Image src={potential} alt="financial services" className="img-fluid align-items-center radius-20" />
+                    <Col md={1}>
+                        <svg id="bigHalfCircleLeft" xmlns="http://www.w3.org/2000/svg" version="1.1" width="114.5%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none" className='radius-20 ms-1'>
+                            <path d="M100 0 C0 40 0 60 100 100 Z" className={classNames(theme === 'Light Mode' ? 'accent-fill' : 'main-fill', '')} />
+                        </svg>
+                    </Col>
+                    <Col md={6} className={classNames(theme === 'Light Mode' ? 'background-light' : 'bg-main-brand', 'd-flex align-items-center text-center my-0 p-3 radius-20')}>
+                        <Image src={potential} alt="financial services" className="img-fluid radius-20" />
                     </Col>
                 </Row>
                 <Cards cardInfo={servicesInfo} />
-                <Row className="p-1 me-3 my-4">
+                <Row className="p-1 me-3 my-5">
                     <h2 className="fw-bold secondary-color mb-3 fs-32">Unlocking Your Cash Flow: How Factoring Works</h2>
                     <p className=" mb-4 text-justify fs-22">Running a business comes with its fair share of challenges, and managing cash flow can often be a daunting task. That's where factoring steps in as a powerful financial solution.</p>
                     <h3 className="secondary-color mb-3 fs-22 fw-bold"> What is Factoring?</h3>
                     <p className="mb-4 text-justify fs-18">Factoring, also known as accounts receivable financing, is a flexible and efficient way for businesses to secure immediate access to their outstanding invoices. Instead of waiting for customers to pay, you can convert your accounts receivable into working capital, helping you meet ongoing operational needs, seize growth opportunities, and maintain a healthy financial position.</p>
                     <h3 className="secondary-color mb-3 fs-22 fw-bold">How Does Factoring Work?</h3>
-                    <Image className="img-fluid align-items-center radius-20 w-60" src={roadmap} alt="factoring process diagram" />
-                    <h3 className="secondary-color mb-3 mt-5 fs-22 fw-bold">The Benefits of Factoring:</h3>
-                    <ul className="list-unstyled">
-                        {items.map((item, index) => (
-                            <li key={index} className="d-flex align-items-center mb-3">
-                                <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
-                                <p className="mb-0 text-justify fs-18">
-                                    <span className='fw-bold'>{item.title}:</span> {item.text}
-                                </p>
-                            </li>
-                        ))}
-                    </ul>
-                    <p className="mb-3 text-justify fs-18 line-25 me-2">At G Squared Funding, we specialize in providing factoring solutions tailored to your unique requirements. Our goal is to help you unlock your business's full potential by providing the working capital you need when you need it. Explore the benefits of factoring with us and experience the financial freedom that can take your business to new heights.</p>
+                    <Image className="img-fluid align-items-center radius-20 w-60 mb-2" src={roadmap} alt="factoring process diagram" />
+                    <Container fluid className={`ms-auto py-2 ms-2 mt-3 radius-20 ${theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent'}`}>
+                        <h3 className="secondary-color mb-3 mt-5 fs-22 fw-bold">The Benefits of Factoring:</h3>
+                        <ul className="list-unstyled">
+                            {items.map((item, index) => (
+                                <li key={index} className="d-flex align-items-center mb-3">
+                                    <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
+                                    <p className="mb-0 text-justify fs-18">
+                                        <span className='fw-bold'>{item.title}:</span> {item.text}
+                                    </p>
+                                </li>
+                            ))}
+                        </ul>
+                        <p className="my-3 px-2 text-justify fs-18 line-25 me-2">At G Squared Funding, we specialize in providing factoring solutions tailored to your unique requirements. Our goal is to help you unlock your business's full potential by providing the working capital you need when you need it. Explore the benefits of factoring with us and experience the financial freedom that can take your business to new heights.</p>
+                    </Container>
                 </Row>
                 <Row>
                     <h2 className="fw-bold secondary-color fs-32 my-4">Ready to get started?</h2>
                     <Col md={4} className="mt-2 mb-5 me-2">
                         <ContactForm />
                     </Col>
-                    <Col md={7} className="ms-2">
+                    <Col md={7} className={`mx-2 ps-4 pt-3 mb-5 radius-20 ${theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent'}`}>
                         <h2 className="secondary-color mb-4 mt-1 fs-32">Industries Served</h2>
                         <Row>
                             {industries.map((industry, index) => (

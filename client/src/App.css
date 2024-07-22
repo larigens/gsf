@@ -439,7 +439,8 @@ h1 {
 }
 
 /* Size */
-.w-80, .carousel {
+.w-80,
+.carousel {
   width: 80% !important;
 }
 
@@ -647,6 +648,10 @@ h1 {
 
   .carousel {
     width: 100% !important;
+  }
+
+  #bigHalfCircleLeft {
+    display: none;
   }
 }
 
