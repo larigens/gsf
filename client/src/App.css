@@ -439,7 +439,7 @@ h1 {
 }
 
 /* Size */
-.w-80 {
+.w-80, .carousel {
   width: 80% !important;
 }
 
@@ -643,6 +643,10 @@ h1 {
   .mobile-column-icon {
     text-align: center;
     justify-content: center;
+  }
+
+  .carousel {
+    width: 100% !important;
   }
 }
 

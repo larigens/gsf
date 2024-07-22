@@ -7,6 +7,7 @@ import { useTheme } from '../components/ThemeContext.jsx';
 const jobData = {
     CRM: {
         title: 'Client Relations Manager',
+        initials: 'CRM',
         description: [
             `This is an entry level position at a growing company with lots of room for growth. A Bachelor's degree is a plus. Team player is a must.`,
             `As a Client Relations Manager, your role is pivotal in managing the financial interactions for G Squared Funding's diverse clientele. You will be at the forefront of overseeing both accounts payable and receivable, ensuring an efficient and effective cash flow cycle. Your key responsibilities include acting as a vital link and facilitator among various stakeholders such as carriers, brokers, shippers, and other parties, with a focus on smoothing out business transactions and promptly resolving any issues that arise.`,
@@ -39,6 +40,7 @@ const jobData = {
     },
     BDO: {
         title: 'Business Development Officer',
+        initials: 'BDO',
         description: [
             `Are you a competitive person that thrives under pressure, wants to make a difference on a daily basis and be well compensated for your excellence? This is the company for you. We pay a base salary (not a draw) and a rich unlimited bonus structure. OUR TOP NOTCH TRAINING PROGRAM PRODUCES VERY SUCCESSFUL BDOs. All you need is the desire to succeed and we'll take care of the rest!`,
             `We are seeking a highly motivated and results-driven Business Development Officer to join our team. The Business Development Officer will play a critical role in identifying and acquiring new clients, developing and maintaining strong relationships, and promoting our factoring services to businesses in need of working capital solutions. `,
@@ -104,7 +106,6 @@ export const JobPost = ({ jobPosition }) => {
     const [formVisibility, setFormVisibility] = useState(false);
     const { theme } = useTheme();
     const jobDetails = jobData[jobPosition] || {};
-
     return (
         <>
             {jobPosition && (
@@ -120,7 +121,7 @@ export const JobPost = ({ jobPosition }) => {
                     </Row>
                 </Container>
             )}
-            {formVisibility && <CareerForm jobTitle={jobDetails.title} />}
+            {formVisibility && <CareerForm jobTitle={jobDetails.title} jobPosition={jobPosition} />}
         </>
     );
 };

@@ -3,6 +3,7 @@ import React, { useState, useRef } from 'react';
 import { MdArrowDropDown } from "react-icons/md";
 import { GetAllBrokers, GetAllReferrals } from '../../utils/helper.jsx';
 import { Modals } from '../Modals';
+import emailjs from '@emailjs/browser';
 
 export const ContactForm = ({ referralLink, referralName }) => {
     const [formData, setFormData] = useState({
@@ -12,9 +13,11 @@ export const ContactForm = ({ referralLink, referralName }) => {
         phone: '',
         mcNumber: '',
         referral: '',
+        otherReferral: '',
         message: '',
         agree: false,
     });
+    const [showTextarea, setShowTextarea] = useState(false);
 
     const [modalInfo, setModalInfo] = useState({ show: false, title: '', body: '' });
     const form = useRef();
@@ -27,6 +30,9 @@ export const ContactForm = ({ referralLink, referralName }) => {
             ...prev,
             [name]: type === 'checkbox' ? checked : value,
         }));
+        if (value === 'other') {
+            setShowTextarea(true);
+        }
     };
 
     const handleShowModal = (title, body) => {
@@ -41,20 +47,35 @@ export const ContactForm = ({ referralLink, referralName }) => {
         if (!phoneRegex.test(formData.phone)) {
             handleShowModal('Error', 'Please enter a valid phone number!');
         } else {
-            // Placeholder for emailjs integration
-            handleShowModal(`Thank you ${formData.firstName} ${formData.lastName}!`, 'I received your message and will respond within 24 hours!');
-            setFormData({
-                firstName: '',
-                lastName: '',
-                email: '',
-                phone: '',
-                mcNumber: '',
-                referral: '',
-                message: '',
-                agree: false,
-            });
+            emailjs
+                .sendForm('service_hdfufsq', 'template_wyvz9qw', form.current, 'MNwS57tO5kZNtyQeh')
+                .then(
+                    () => {
+                        console.log('SUCCESS!');
+                        handleShowModal(`Thank you ${formData.firstName} ${formData.lastName}!`, 'We will contact you as soon as possible!');
+                    },
+                    (error) => {
+                        console.log('FAILED...', error.text);
+                        handleShowModal(
+                            `Oops, ${formData.firstName} ${formData.lastName}, there was an issue with your submission.`,
+                            'Please try again, and if the problem persists, contact us for assistance.'
+                        );
+                    }
+                );
         }
-    };
+
+        setFormData({
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            mcNumber: '',
+            referral: '',
+            otherReferral: '',
+            message: '',
+            agree: false,
+        });
+    }
 
     return (
         <>
@@ -62,12 +83,12 @@ export const ContactForm = ({ referralLink, referralName }) => {
                 <h2>Connect with Us</h2>
                 <p className='fs-17'>Fill out this form, and one of our Business Development Officers will promptly contact you to provide personalized answers and assistance!</p>
                 <Row>
-                    <InputField name="firstName" label="First Name" value={formData.firstName} onChange={handleInputChange} />
-                    <InputField name="lastName" label="Last Name" value={formData.lastName} onChange={handleInputChange} />
+                    <InputField name="firstName" label="First Name" value={formData.firstName} onChange={handleInputChange} required />
+                    <InputField name="lastName" label="Last Name" value={formData.lastName} onChange={handleInputChange} required />
                 </Row>
                 <Row>
-                    <InputField name="email" label="Email address" type="email" value={formData.email} onChange={handleInputChange} />
-                    <InputField name="phone" label="Phone Number" type="tel" value={formData.phone} onChange={handleInputChange} />
+                    <InputField name="email" label="Email address" type="email" value={formData.email} onChange={handleInputChange} required />
+                    <InputField name="phone" label="Phone Number" type="tel" value={formData.phone} onChange={handleInputChange} required />
                 </Row>
                 <Row>
                     <InputField name="mcNumber" label="MC Number" type="number" value={formData.mcNumber} onChange={handleInputChange} />
@@ -88,11 +109,14 @@ export const ContactForm = ({ referralLink, referralName }) => {
                                             {referrals.map(referral => (
                                                 <option key={referral._id} value={referral.company}>{referral.company}</option>
                                             ))}
-                                            <option value='Other'>Other</option>
+                                            <option value='other'>Other</option>
                                         </>
                                     )}
                                 </Form.Control>
                             </div>
+                            {showTextarea ? (
+                                < Form.Control as="textarea" value={formData.otherReferral} name='otherReferral' onChange={handleInputChange} rows={1} className='mt-2'></Form.Control>
+                            ) : null}
                         </Form.Group>
                     </Col>
                 </Row>
@@ -107,6 +131,7 @@ export const ContactForm = ({ referralLink, referralName }) => {
                         checked={formData.agree}
                         onChange={handleInputChange}
                         name="agree"
+                        value='Agree'
                         className='me-2 mb-2 fs-15 text-justify'
                         required
                     />
@@ -115,7 +140,7 @@ export const ContactForm = ({ referralLink, referralName }) => {
                 <Row className='d-flex justify-content-end me-1 my-2'>
                     <Button className='submit-btn radius-20 border-none mt-2' type="submit">Submit</Button>
                 </Row>
-            </Form>
+            </Form >
             <Modals title={modalInfo.title} body={modalInfo.body} showModal={modalInfo.show} setShowModal={(show) => setModalInfo({ ...modalInfo, show })} />
         </>
     );

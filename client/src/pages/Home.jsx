@@ -48,11 +48,7 @@ const Home = () => {
         <IndustriesSection theme={theme} classNames={classNames} />
         <BenefitsSection theme={theme} classNames={classNames} />
         <TestimonialsSection theme={theme} classNames={classNames} variant={variant} />
-
         <TransitionSection theme={theme} classNames={classNames} />
-        {/* <Container fluid className={classNames(theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent', 'pt-2')}> */}
-
-        {/* </Container> */}
         <MissionSection theme={theme} classNames={classNames} />
       </Layout >
     </>
@@ -133,11 +129,11 @@ const IndustriesSection = ({ theme, classNames }) => {
   return (
     <>
       <svg id="curveUpColor" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" className='mt-5' preserveAspectRatio="none">
-        <path d="M0 100 C 20 0 50 0 100 100 Z" className={classNames(theme === 'Light Mode' ? 'secondary-fill' : 'dark-accent-fill', 'p-1')} />
+        <path d="M0 100 C 20 0 50 0 100 100 Z" className={classNames(theme === 'Light Mode' ? 'secondary-fill' : 'dark-accent-fill', '')} />
       </svg>
-      <Container fluid className={classNames(theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent', 'my-0 ms-auto pt-5')} style={{ minHeight: '77vh' }}>
+      <Container fluid className={classNames(theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent', 'my-0 ms-auto pt-5')} style={{ minHeight: '70vh' }}>
         <h2 className="fw-bold mt-1 mb-4 secondary-color text-center fs-40">Grow your business with us</h2>
-        <Row className="my-5 d-flex justify-content-center">
+        <Row className="mt-5 d-flex justify-content-center">
           {industries.map((item, index) => (
             <Col xs={12} md={3} className="my-4 mx-3 border-right" key={index}>
               <Container className="d-flex align-items-center flex-column mt-2">
@@ -145,7 +141,7 @@ const IndustriesSection = ({ theme, classNames }) => {
                 <p className="ms-1 my-1 fs-28 fw-bold secondary-color">{item.name}</p>
                 <p className="ms-1 mb-2 fs-20 text-justify">{item.text}</p>
               </Container>
-              <Row className="ms-auto text-end my-2">
+              <Row className="ms-auto text-end mt-2 mb-4">
                 <Link className="link-color hover-link-color fs-22" to={item.href}>Discover More Now!</Link>
               </Row>
             </Col>
@@ -168,7 +164,7 @@ const BenefitsSection = ({ theme, classNames }) => {
   return (
     <>
       <svg id="curveDownColor" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <path d="M0 0 C 50 100 80 100 100 0 Z" className={classNames(theme === 'Light Mode' ? 'secondary-fill' : 'dark-accent-fill', 'p-1')} />
+        <path d="M0 0 C 50 100 80 100 100 0 Z" className={classNames(theme === 'Light Mode' ? 'secondary-fill' : 'dark-accent-fill', '')} />
       </svg>
       <Container fluid className='my-0 ms-auto pt-5' style={{ minHeight: '77vh' }}>
         <h2 className="fw-bold my-3 secondary-color">Unlock Your Transportation Company's Financial Potential Today!</h2>
@@ -313,7 +309,7 @@ const TestimonialsSection = ({ theme, classNames, variant }) => {
       <Container fluid className={classNames(theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent', 'my-0 ms-auto pt-5')}>
         <h2 className="fw-bold py-2 mb-2 secondary-color text-center fs-34">What Clients Say?</h2>
         <p className="mb-4 fs-22 text-center">We place huge value on strong relationships and have seen the benefit they bring to our business. Client feedback is vital in helping us to get it right!</p>
-        <Container fluid className='d-flex justify-content-center text-center w-80'>
+        <Container fluid className='d-flex justify-content-center text-center carousel'>
           <TestimonialCarousel theme={theme} classNames={classNames} variant={variant} />
         </Container>
       </Container>
@@ -348,7 +344,7 @@ const MissionSection = ({ theme, classNames }) => {
       <Container fluid className={classNames(theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent', 'ms-auto pb-3 mt-0')}>
         <Row className='p-4 mb-2'></Row>
         <Row className="my-3 mx-auto">
-          <Col xs={12} sm={6} className="mt-2 me-auto">
+          <Col xs={12} sm={6} className="mt-2 mb-4 me-auto">
             <Container className="p-2 mt-2 text-center">
               <p className="font-weight-bold text-center fs-28">Our mission is simple:</p>
             </Container>
@@ -371,27 +367,31 @@ const MissionSection = ({ theme, classNames }) => {
                 <Image className="img-fluid icon-color" src={forward} alt="truck icon" width="60" height="60" loading="lazy" />
               </motion.div>
             </Container>
-            <svg id="stamp" xmlns="http://www.w3.org/2000/svg" version="1.1" width="92%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <path d="M0 0 Q 2.5 40 5 0 
-						 Q 7.5 40 10 0
-						 Q 12.5 40 15 0
-						 Q 17.5 40 20 0
-						 Q 22.5 40 25 0
-						 Q 27.5 40 30 0
-						 Q 32.5 40 35 0
-						 Q 37.5 40 40 0
-						 Q 42.5 40 45 0
-						 Q 47.5 40 50 0 
-						 Q 52.5 40 55 0
-						 Q 57.5 40 60 0
-						 Q 62.5 40 65 0
-						 Q 67.5 40 70 0
-						 Q 72.5 40 75 0
-						 Q 77.5 40 80 0
-						 Q 82.5 40 85 0
-						 Q 87.5 40 90 0
-						 Q 92.5 40 95 0
-						 Q 97.5 40 100 0 Z" className='accent-fill'>
+            {/* Change that to a road? */}
+            <svg id="clouds" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <path d="M-5 100 Q 0 20 5 100 Z
+						 M0 100 Q 5 0 10 100
+						 M5 100 Q 10 30 15 100
+						 M10 100 Q 15 10 20 100
+						 M15 100 Q 20 30 25 100
+						 M20 100 Q 25 -10 30 100
+						 M25 100 Q 30 10 35 100
+						 M30 100 Q 35 30 40 100
+						 M35 100 Q 40 10 45 100
+						 M40 100 Q 45 50 50 100
+						 M45 100 Q 50 20 55 100
+						 M50 100 Q 55 40 60 100
+						 M55 100 Q 60 60 65 100
+						 M60 100 Q 65 50 70 100
+						 M65 100 Q 70 20 75 100
+						 M70 100 Q 75 45 80 100
+						 M75 100 Q 80 30 85 100
+						 M80 100 Q 85 20 90 100
+						 M85 100 Q 90 50 95 100
+						 M90 100 Q 95 25 100 100
+						 M95 100 Q 100 15 105 100 Z"
+                className='accent-fill'
+              >
               </path>
             </svg>
           </Col>

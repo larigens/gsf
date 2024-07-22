@@ -3,8 +3,10 @@ import React, { useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Modals } from '../Modals';
 import { HelmetCP } from '../Helmet';
+import emailjs from '@emailjs/browser';
+import axios from 'axios';
 
-export const CareerForm = ({ jobTitle }) => {
+export const CareerForm = ({ jobTitle, jobPosition }) => {
     const location = useLocation();
     const form = useRef();
     const [formData, setFormData] = useState({
@@ -16,19 +18,39 @@ export const CareerForm = ({ jobTitle }) => {
         hearAbout: '',
         authorized: true,
         sponsorship: false,
-        resume: '',
-        coverLetter: '',
+        resume: null,
+        coverLetter: null,
         availability: new Date().toISOString().split('T')[0],
         position: ''
     });
     const [modalInfo, setModalInfo] = useState({ show: false, title: '', body: '' });
 
     const handleInputChange = (e) => {
-        const { name, value, type, checked } = e.target;
+        const { name, type, value, checked, files } = e.target;
         setFormData((prev) => ({
             ...prev,
-            [name]: type === 'checkbox' ? checked : value,
+            [name]: type === 'checkbox' ? checked : (type === 'file' ? files[0] : value),
         }));
+    };
+
+    const handleFileUpload = async (file) => {
+        if (!file) return '';
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+            const response = await axios.post('/upload', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+            console.log('File upload response:', response);
+            return `/file/${response.data.file.filename}`;
+        } catch (error) {
+            console.error('Error uploading file:', error);
+            return '';
+        }
     };
 
     const handleShowModal = (title, body) => {
@@ -45,33 +67,60 @@ export const CareerForm = ({ jobTitle }) => {
         }
 
         const { firstName, lastName, authorized, sponsorship } = formData;
-        let modalMessage = `Thank you ${firstName} ${lastName} for applying to our recent job posting!`;
+        let modalMessage='';
 
         if (!authorized && !sponsorship) {
-            modalMessage += ` Unfortunately, we will not be moving forward with your application as this position requires legal authorization to work in the United States.`;
+            modalMessage = ` Unfortunately, we will not be moving forward with your application as this position requires legal authorization to work in the United States.`;
         } else if (sponsorship && authorized) {
-            modalMessage += ` Unfortunately, we will not be moving forward with your application as this position is not eligible for sponsorship.`;
+            modalMessage = ` Unfortunately, we will not be moving forward with your application as this position is not eligible for sponsorship.`;
         } else if (!authorized && sponsorship) {
-            modalMessage += ` Unfortunately, we will not be moving forward with your application as this position requires legal authorization to work in the United States and is not eligible for sponsorship.`;
+            modalMessage = ` Unfortunately, we will not be moving forward with your application as this position requires legal authorization to work in the United States and is not eligible for sponsorship.`;
         } else {
-            modalMessage += ` We've received your application and will be reviewing it shortly. We appreciate the time and effort you've taken to reach out to us, and we look forward to exploring the possibility of having you join our team.`;
-            setFormData({
-                firstName: '',
-                lastName: '',
-                email: '',
-                phone: '',
-                linkedin: '',
-                hearAbout: '',
-                authorized: true,
-                sponsorship: false,
-                resume: '',
-                coverLetter: '',
-                availability: new Date().toISOString().split('T')[0],
-                position: ''
-            });
-        }
+            try {
+                const resumeUrl = await handleFileUpload(formData.resume);
+                const coverLetterUrl = formData.coverLetter ? await handleFileUpload(formData.coverLetter) : '';
+                const emailData = {
+                    firstName: formData.firstName,
+                    lastName: formData.lastName,
+                    email: formData.email,
+                    phone: formData.phone,
+                    linkedin: formData.linkedin,
+                    hearAbout: formData.hearAbout,
+                    authorized: formData.authorized,
+                    sponsorship: formData.sponsorship,
+                    resume: resumeUrl,
+                    coverLetter: coverLetterUrl,
+                    availability: formData.availability,
+                    position: formData.position || jobPosition,
+                };
 
-        handleShowModal(modalMessage, '');
+                await emailjs.send('service_hdfufsq', 'template_oyrtuq6', emailData, 'MNwS57tO5kZNtyQeh');
+                console.log('SUCCESS!');
+                modalMessage = ` We've received your application and will be reviewing it shortly. We appreciate the time and effort you've taken to reach out to us, and we look forward to exploring the possibility of having you join our team.`;
+                handleShowModal(`Thank you ${firstName} ${lastName} for applying to our recent job posting!`, `${modalMessage}`);
+
+                setFormData({
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    phone: '',
+                    linkedin: '',
+                    hearAbout: '',
+                    authorized: true,
+                    sponsorship: false,
+                    resume: null,
+                    coverLetter: null,
+                    availability: new Date().toISOString().split('T')[0],
+                    position: ''
+                });
+            } catch (error) {
+                console.log('FAILED...', error);
+                handleShowModal(
+                    `Oops, ${firstName} ${lastName}, there was an issue with your submission.`,
+                    'Please try again, and if the problem persists, contact us for assistance.'
+                );
+            }
+        }
     };
 
     return (
@@ -88,7 +137,7 @@ export const CareerForm = ({ jobTitle }) => {
                         Step into our team today and help us transform the factoring experience into a seamless, stress-free journey!
                     </p>
                 )}
-                <Form ref={form} onSubmit={handleFormSubmit} className='glassmorphism radius-20 main-color p-3'>
+                <Form ref={form} onSubmit={handleFormSubmit} encType="multipart/form-data" className='glassmorphism radius-20 main-color p-3'>
                     <Section title="Personal Information">
                         <Row className='border-top mt-2 mx-1'>
                             <InputField name="firstName" label="First Name" value={formData.firstName} onChange={handleInputChange} />
@@ -99,7 +148,7 @@ export const CareerForm = ({ jobTitle }) => {
                             <InputField name="phone" label="Phone Number" type="tel" value={formData.phone} onChange={handleInputChange} />
                         </Row>
                         <Row className='mb-2 mt-0 mx-1'>
-                            <InputField name="linkedin" label="LinkedIn" value={formData.linkedin} onChange={handleInputChange} />
+                            <InputField name="linkedin" label="LinkedIn" value={formData.linkedin} onChange={handleInputChange} type='url' placeholder={'https://linkedin.com/in/your-name'} />
                         </Row>
                     </Section>
                     <Section title="Position">
@@ -114,7 +163,7 @@ export const CareerForm = ({ jobTitle }) => {
                                             <option value="BDO">Business Development Officer</option>
                                         </Form.Select>
                                     ) : (
-                                        <Form.Control type="text" value={jobTitle} disabled />
+                                        <Form.Control type="text" value={jobTitle} disabled></Form.Control>
                                     )}
                                 </Form.Group>
                                 <InputField name="hearAbout" label="How did you hear about this job?" value={formData.hearAbout} onChange={handleInputChange} />
@@ -139,8 +188,8 @@ export const CareerForm = ({ jobTitle }) => {
                     </Section>
                     <Section title="Resume and Cover Letter Upload">
                         <Row className='border-top my-2 mx-1'>
-                            <InputField name="resume" label="Resume" type="file" value={formData.resume} onChange={handleInputChange} required />
-                            <InputField name="coverLetter" label="Cover Letter" type="file" value={formData.coverLetter} onChange={handleInputChange} />
+                            <InputField name="resume" label="Resume" type="file" onChange={handleInputChange} required />
+                            <InputField name="coverLetter" label="Cover Letter" type="file" onChange={handleInputChange} />
                         </Row>
                     </Section>
                     <Section title="Availability">
@@ -175,18 +224,18 @@ const Section = ({ title, children }) => (
     </>
 );
 
-const InputField = ({ name, label, type = 'text', value, onChange, required = false, min }) => (
+const InputField = ({ name, label, type = 'text', value, onChange, required = false, min, placeholder }) => (
     <Col>
         <Form.Group className="my-3" controlId={name}>
             <Form.Label className='fs-18'>{label}</Form.Label>
             <Form.Control
                 name={name}
-                value={value}
                 onChange={onChange}
                 type={type}
-                placeholder={`Enter ${label.toLowerCase()}`}
+                placeholder={type !== 'url' ? `Enter ${label.toLowerCase()}` : placeholder}
                 required={required}
                 min={min}
+                {...(type !== 'file' && { value })}
             />
         </Form.Group>
     </Col>
