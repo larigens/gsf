@@ -23,8 +23,8 @@ export const Application = ({ pdf }) => {
                     </Link>
                 </Container>
             </Col>
-            <Col md={4}>
-                <Container className='mb-4'>
+            <Col md={4} className='border-left'>
+                <Container className='mb-4 ms-2'>
                     <h1 className="text-justify fw-bold">OR</h1>
                     <p className="mt-4 fs-24 fw-semibold">1. Fill out the application online</p>
 

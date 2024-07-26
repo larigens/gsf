@@ -5,8 +5,12 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import postage from '../../assets/icons/postage-stamp.png';
 import stamp from '../../assets/icons/stamp.png';
+import { useTheme } from '../../components/ThemeContext';
 
 export const WorkingGSF = () => {
+    const { theme } = useTheme();
+    const classNames = (...classes) => classes.filter(Boolean).join(' ');
+
     const instructions = [
         {
             title: 'Is It Factorable?',
@@ -90,7 +94,7 @@ export const WorkingGSF = () => {
             <Container fluid className="mb-4 p-4">
                 <p className="fw-bold text-justify mb-4 fs-40">Working with GSF</p>
                 <Row className="text-justify mb-5">
-                    <Col md={8}>
+                    <Col md={8} className={classNames(theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent', 'px-3 py-4 radius-20')} >
                         <p className="fw-bold fs-26">Our Instructions</p>
                         {instructions.map((instruction, index) => (
                             <Container fluid key={index} className='my-3'>
@@ -109,13 +113,12 @@ export const WorkingGSF = () => {
                             </Container>
                         ))}
                     </Col>
-                    <Col md={4} className="text-center">
-                        <Image className='img-fluid icon-color mx-2' src={logo} alt="gsf logo" />
+                    <Col md={4} className="text-center my-3">
+                        <Image className='img-fluid icon-color mx-2 mb-5' src={logo} alt="gsf logo" />
+                        <Link className='bordered-text fs-28 my-5' to="/apply-now">Sign Up Today!</Link>
+                        <p className='text-center fs-20 my-2'>If you have any questions, please feel free to call us at</p>
+                        <Link className='link-color hover-link-color fs-19 text-center' to="tel:+18889427253">+1-888-942-7253</Link>
                     </Col>
-                </Row>
-                <Row className="text-center mt-5">
-                    <Link className='bordered-text fs-19 mb-2' to="/apply-now">Sign Up Today!</Link>
-                    <p className='text-center fs-18'>If you have any questions, please feel free to call us at <Link className='link-color hover-link-color' to="tel:+18889427253">+1-888-942-7253</Link></p>
                 </Row>
             </Container>
         </>

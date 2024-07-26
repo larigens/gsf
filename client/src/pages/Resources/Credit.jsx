@@ -23,7 +23,7 @@ export const Credit = () => {
 
                 <Row className="d-flex justify-content-center">
                     <Col md={4} className="text-center">
-                        <Image className="img-fluid" style={{ width: '350px', height: 'auto' }} src={creditck} alt="factors network webpage screenshot" />
+                        <Image className="img-fluid my-4 h-auto w-60"  src={creditck} alt="factors network webpage screenshot" />
                     </Col>
                     <Col md={8} className={classNames(theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent', 'me-auto p-5 radius-20')}>
                         <h2 className="secondary-color fw-bold my-2 fs-36 tracking-in-expand">Credit Services</h2>

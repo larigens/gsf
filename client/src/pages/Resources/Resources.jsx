@@ -344,3 +344,21 @@ export const Resources = () => {
         );
     }
 }
+
+export const AppLink = ({ name, appStoreLink, playStoreLink }) => {
+    return (
+        <div className="my-3">
+            <p className="my-2 secondary-color fs-19">{name}</p>
+            <Row>
+                <Col>
+                    <a tabIndex="0" href={appStoreLink} target="_blank" rel="noopener noreferrer">
+                        <Image className="img-fluid me-2 icon-150 m-2" src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
+                    </a>
+                    <a tabIndex="0" href={playStoreLink} target="_blank" rel="noopener noreferrer">
+                        <Image className="img-fluid me-2 icon-150 m-2" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/2560px-Google_Play_Store_badge_EN.svg.png" alt="Get it on Google Play" />
+                    </a>
+                </Col>
+            </Row>
+        </div>
+    );
+}

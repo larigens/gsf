@@ -15,6 +15,7 @@ import { BiHappy } from "react-icons/bi";
 
 import { RiDoubleQuotesL } from "react-icons/ri";
 import { RiDoubleQuotesR } from "react-icons/ri";
+import { RiUserSearchFill } from "react-icons/ri";
 
 import wallet from '../assets/icons/wallet.png';
 import rightArrow from '../assets/icons/right-arrow.png';
@@ -50,6 +51,7 @@ const Home = () => {
         <TestimonialsSection theme={theme} classNames={classNames} variant={variant} />
         <TransitionSection theme={theme} classNames={classNames} />
         <MissionSection theme={theme} classNames={classNames} />
+        <CareerSection theme={theme} classNames={classNames} />
       </Layout >
     </>
   );
@@ -368,32 +370,7 @@ const MissionSection = ({ theme, classNames }) => {
               </motion.div>
             </Container>
             {/* Change that to a road? */}
-            <svg id="clouds" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <path d="M-5 100 Q 0 20 5 100 Z
-						 M0 100 Q 5 0 10 100
-						 M5 100 Q 10 30 15 100
-						 M10 100 Q 15 10 20 100
-						 M15 100 Q 20 30 25 100
-						 M20 100 Q 25 -10 30 100
-						 M25 100 Q 30 10 35 100
-						 M30 100 Q 35 30 40 100
-						 M35 100 Q 40 10 45 100
-						 M40 100 Q 45 50 50 100
-						 M45 100 Q 50 20 55 100
-						 M50 100 Q 55 40 60 100
-						 M55 100 Q 60 60 65 100
-						 M60 100 Q 65 50 70 100
-						 M65 100 Q 70 20 75 100
-						 M70 100 Q 75 45 80 100
-						 M75 100 Q 80 30 85 100
-						 M80 100 Q 85 20 90 100
-						 M85 100 Q 90 50 95 100
-						 M90 100 Q 95 25 100 100
-						 M95 100 Q 100 15 105 100 Z"
-                className='accent-fill'
-              >
-              </path>
-            </svg>
+
           </Col>
           <Col xs={12} sm={6} md={4} className="my-auto mx-auto">
             <ContactForm />
@@ -404,6 +381,23 @@ const MissionSection = ({ theme, classNames }) => {
         <path d="M0 0 C 50 100 80 100 100 0 Z" className={classNames(theme === 'Light Mode' ? 'secondary-fill' : 'dark-accent-fill', 'p-1')} />
       </svg>
     </>
+  );
+};
+
+const CareerSection = ({ theme, classNames }) => {
+  return (
+    <Container className='border my-3 p-3 d-flex justify-content-center'>
+      <Container className={classNames(theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent', 'py-5 mx-2 my-2 border')}>
+        <Container className='d-flex align-items-center text-center justify-content-center'>
+          <h2 className="fw-bold py-2 my-2 secondary-color fs-36">WE'RE HIRING!</h2>
+          <RiUserSearchFill className="secondary-color icon-40 ms-3" />
+        </Container>
+        <Row className="d-flex align-items-center radius-20 my-3 text-center justify-content-center">
+          <p className="mt-2 fs-24">Join our dynamic team and be a part of an innovative and growing company! We are looking for talented individuals who are passionate about making a difference. <Link to='careers' className='link-color hover-link-color'>Explore our open positions </Link>and start your journey with us today. Your next career move could be just a click away!</p>
+          <Link to='/careers/application' className='bordered-text hover-link-color fs-26'>Apply now!</Link>
+        </Row>
+      </Container>
+    </Container>
   );
 };
 
