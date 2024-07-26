@@ -13,8 +13,12 @@ import afi from '../../assets/AFIEagle.png';
 import cw from '../../assets/cw.png';
 import forward from '../../assets/icons/forward.png';
 import instructions from '../../assets/instructions.pdf';
+import { useTheme } from '../../components/ThemeContext';
 
 export const Resources = () => {
+    const { theme } = useTheme();
+    const classNames = (...classes) => classes.filter(Boolean).join(' ');
+
     const [fuelData, setFuelData] = useState([]);
     const [fuelInfo, setFuelInfo] = useState('');
     const [areaInfo, setAreaInfo] = useState('');
@@ -89,54 +93,63 @@ export const Resources = () => {
                 pageDescription={`Explore Valuable Resources Tailored for Transportation and Trucking Professionals on Our Dedicated Page. From Industry Insights to Useful Tools, Access Everything You Need to Drive Success in Your Business.`}
                 pageKeywords={'Transportation industry resources; Trucking business tools; Logistics industry insights; Freight management resources; Trucking industry guides; Transportation business articles; Logistics industry reports; Trucking industry tips; Freight management tools; Transportation industry news; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'}
                 canonicalURL={'resources'}
-          />
-            <Container fluid className="mb-4 p-4">
+            />
+            <Container fluid className="mx-auto p-4">
                 <p className="fw-bold text-justify mb-4 fs-40">Resources</p>
-
-                <Row className="mb-5">
-                    <Col md={7}>
+                <Row>
+                    <Col md={7} className='my-2'>
                         <p className="fs-26 mb-2">American Fleet Insurance An Agent of Cover Whale</p>
                         <p className="secondary-color fs-22 fw-bold">Need down payment assistance?</p>
-                        <p className="fs-18 mb-1">
+                        <p className="fs-18 mb-2">
                             We have an insurance department that specializes in business/commercial insurance for trucking and transportation companies.
                         </p>
-                        <p className="fs-18 mb-1">
+                        <p className="fs-18 mb-2">
                             American Fleet Insurance is an independent agency specializing in Trucking &amp; Transportation. Our goal is to help protect your business
                             and allow you to focus on the road ahead.
                         </p>
-                        <a href="https://gsquaredquotes.com/" className="secondary-color fs-19">
+                        <Link to="https://gsquaredquotes.com/" className="secondary-color fs-19 my-3">
                             Learn More
-                        </a>
+                        </Link>
                     </Col>
-                    <Col md={5} className="d-flex flex-column align-items-center">
-                        <Image src={afi} className="img-fluid my-2 p-2 radius-20" width={400} />
-                        <Image src={cw} className="img-fluid my-2 p-2 radius-20" width={400} />
+                    <Col md={1}>
+                        <svg id="bigHalfCircleLeft" xmlns="http://www.w3.org/2000/svg" version="1.1" width="117%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none" className='radius-20 ms-1'>
+                            <path d="M100 0 C0 40 0 60 100 100 Z" className='secondary-fill' />
+                        </svg>
+                    </Col>
+                    <Col md={4} className='d-flex flex-column align-items-center secondary-bg text-center my-0 p-1 radius-20'>
+                        <Image src={afi} className="img-fluid my-2 p-1 radius-20" width={400} />
+                        <Image src={cw} className="img-fluid my-2 p-1 radius-20" width={400} />
                     </Col>
                 </Row>
-
-                <Row className="my-5">
+            </Container>
+            <Container fluid className="mb-2 p-4">
+                <Row className="mb-4">
                     <Col md={7}>
                         <p className="fs-26 mb-2">Load Board</p>
                         <p className="secondary-color fs-22 fw-bold">Seeking help to find loads?</p>
-                        <p className="fs-18 mb-1">Access our free load board to book your next load!</p>
-                        <Button className="my-2 contact-btn px-2 py-1 radius-20 border-none" href="https://getloadsnow.com/" target="_blank" rel="noopener noreferrer">
+                        <p className="fs-18 mb-2">Access our free load board to book your next load!</p>
+                        <Button className="my-3 contact-btn px-2 py-1 radius-20 border-none" href="https://getloadsnow.com/" target="_blank" rel="noopener noreferrer">
                             <span className="contact-btn-span px-3 fs-24">
                                 Get Loads Now
                                 <Image className="img-fluid ms-2 px-1 arrow-icon icon-color btn-icon" src={forward} alt="truck icon" width="45" loading="lazy" />
                             </span>
                         </Button>
-                        <p className="fs-18 my-2">Your go-to platform for load board and freight management.</p>
+                        <p className="fs-18 mt-3">Your go-to platform for load board and freight management.</p>
                     </Col>
                 </Row>
-
-                <Row className='my-5 d-flex align-items-middle'>
-                    <p className="fs-26 mb-2">Fuel Updates</p>
-                    <p className="secondary-color fs-22 fw-bold">Want to stay informed on fuel prices?</p>
-                    <Col sm={12} md={7}>
+            </Container>
+            <Container fluid className="my-0 p-0">
+                <svg id="curveUpColor" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" className='mt-5' preserveAspectRatio="none">
+                    <path d="M0 100 C 20 0 50 0 100 100 Z" className={classNames(theme === 'Light Mode' ? 'secondary-fill' : 'dark-accent-fill', '')} />
+                </svg>
+                <Row className={classNames(theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent', 'px-3 py-4 d-flex align-items-middle')}>
+                    <p className="fs-32 mb-2">Fuel Updates</p>
+                    <p className="secondary-color fs-24 fw-semibold">Want to stay informed on fuel prices?</p>
+                    <Col sm={12} md={7} className='mb-2'>
                         <FuelForm setFuelInfo={setFuelInfo} setAreaInfo={setAreaInfo} />
                     </Col>
-                    <Col sm={12} md={5} >
-                        <div className='iframe-container radius-20 mb-1'>
+                    <Col sm={12} md={5}>
+                        <div className='iframe-container radius-20'>
                             <iframe
                                 id="diesel-price-per-gallon"
                                 title="diesel-price-per-gallon"
@@ -176,11 +189,15 @@ export const Resources = () => {
 
                 {/* add fuel surchage calculator */}
 
-
-                <Row className="my-5">
-                    <p className="fs-26 mb-2">Client Tools</p>
-                    <p className="secondary-color fs-22 fw-bold">Need access to check credit or view your account online?</p>
-                    <Col md={2} className="my-2">
+                <svg id="curveDownColor" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none" className='mb-4'>
+                    <path d="M0 0 C 50 100 80 100 100 0 Z" className={classNames(theme === 'Light Mode' ? 'secondary-fill' : 'dark-accent-fill', '')} />
+                </svg>
+            </Container>
+            <Container fluid className="mx-auto p-4 my-5 text-center">
+                <Row className='text-center d-flex justify-content-center'>
+                    <p className="fs-34 mb-2">Client Tools</p>
+                    <p className="secondary-color fs-26">Need access to check credit or view your account online?</p>
+                    <Col md={2} className="my-4">
                         <Link to="/resources/client-portal" className="link-color hover-link-color">
                             <Container className="glassmorphism p-3 text-center radius-20">
                                 <FaUser className="img-fluid text-center mb-1 icon-80" />
@@ -189,7 +206,7 @@ export const Resources = () => {
                             </Container>
                         </Link>
                     </Col>
-                    <Col md={2} className="my-2">
+                    <Col md={2} className="my-4">
                         <Link to="/resources/credit-services" className="link-color hover-link-color">
                             <Container className="glassmorphism p-3 text-center radius-20">
                                 <MdOutlinePriceCheck className="img-fluid text-center mb-1 icon-80" />
@@ -199,20 +216,50 @@ export const Resources = () => {
                         </Link>
                     </Col>
                 </Row>
+            </Container>
+            <Container fluid className='mt-5 pt-5'>
 
-                <Row className="my-5">
-                    <Col md={6}>
-                        <p className="fs-26 mb-2">Working with GSF</p>
-                        <p className="secondary-color fs-22 fw-bold">Need assistance with the factoring process?</p>
+            </Container>
+            <svg id="clouds" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M-5 100 Q 0 20 5 100 Z
+						 M0 100 Q 5 0 10 100
+						 M5 100 Q 10 30 15 100
+						 M10 100 Q 15 10 20 100
+						 M15 100 Q 20 30 25 100
+						 M20 100 Q 25 -10 30 100
+						 M25 100 Q 30 10 35 100
+						 M30 100 Q 35 30 40 100
+						 M35 100 Q 40 10 45 100
+						 M40 100 Q 45 50 50 100
+						 M45 100 Q 50 20 55 100
+						 M50 100 Q 55 40 60 100
+						 M55 100 Q 60 60 65 100
+						 M60 100 Q 65 50 70 100
+						 M65 100 Q 70 20 75 100
+						 M70 100 Q 75 45 80 100
+						 M75 100 Q 80 30 85 100
+						 M80 100 Q 85 20 90 100
+						 M85 100 Q 90 50 95 100
+						 M90 100 Q 95 25 100 100
+						 M95 100 Q 100 15 105 100 Z"
+                    className={classNames(theme === 'Light Mode' ? 'secondary-fill' : 'dark-accent-fill', '')}
+                >
+                </path>
+            </svg>
+            <Container fluid className={classNames(theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent', 'mx-auto p-4')}>
+                <Row className='my-3 d-flex justify-content-center mx-auto'>
+                    <p className="fs-34 mb-2 text-center">Working with GSF</p>
+                    <p className="secondary-color fs-26 fw-bold text-center">Need assistance with the factoring process?</p>
+                    <Col md={6} className='ps-5 mt-3'>
                         <Row className="ms-2 ps-2 d-flex align-items-center justify-content-center">
-                            <Col md={6}>
+                            <Col md={6} className='me-1'>
                                 <p className="mt-4 fs-24 fw-semibold">Download our instructions</p>
                                 <a href={instructions} download="gsf_instructions.pdf" className="d-flex align-items-center mt-3 link-color hover-link-color">
                                     <HiOutlineDocumentDownload className="ms-3 icon-80 img-fluid" />
                                     <p className="fs-22 mx-3">Download</p>
                                 </a>
                             </Col>
-                            <Col md={6}>
+                            <Col md={5}>
                                 <p className="mt-4 fs-24 fw-semibold">Read it online</p>
                                 <Link to="/resources/working-gsf" className="d-flex align-items-center mt-3 link-color hover-link-color">
                                     <FaReadme className="ms-4 icon-80 img-fluid" />
@@ -222,7 +269,12 @@ export const Resources = () => {
                         </Row>
                     </Col>
                 </Row>
-
+            </Container>
+            <svg id="bigTriangleShadow" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path id="trianglePath1" d="M0 0 L50 100 L100 0 Z" className={classNames(theme === 'Light Mode' ? 'secondary-fill' : 'dark-accent-fill', '')} />
+                <path id="trianglePath2" d="M50 100 L100 40 L100 0 Z" className={classNames(theme === 'Light Mode' ? 'secondary-fill' : 'dark-accent-fill', '')} />
+            </svg>
+            <Container fluid className="my-5 p-4">
                 <Row className="my-5">
                     <Col>
                         <p className="fs-26 mb-2">Phone Apps</p>
@@ -249,32 +301,34 @@ export const Resources = () => {
                         />
                     </Col>
                 </Row>
+            </Container>
 
-                <Row className="my-5">
-                    <Col>
-                        <p className="fs-26 mb-2">FMCSA</p>
-                        <FMCSA />
-                    </Col>
+            <Container fluid className="mt-4 p-1">
+                <p className="fs-30 my-4 ms-3 ps-2">FMCSA</p>
+                <FMCSA />
+            </Container>
+
+            <Container fluid className="mt-5 p-2">
+                <Row className={`${theme === 'Light Mode' ? 'secondary-bg' : ''} mx-4 p-4 border`}>
+                    <p className="fw-bold text-justify mb-3 fs-22">Other Links</p>
+                    <ul className="list-unstyled fs-18">
+                        {otherLinks.map((item, index) => (
+                            <li key={index} className="d-flex align-items-center mb-2">
+                                <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
+                                <a href={item.link} className="fs-18 link-color hover-link-color" target="_blank" rel="noopener noreferrer">
+                                    {item.name}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
                 </Row>
-
-                <p className="fw-bold text-justify mb-3 fs-22">Other Links</p>
-                <ul className="list-unstyled fs-18">
-                    {otherLinks.map((item, index) => (
-                        <li key={index} className="d-flex align-items-center mb-2">
-                            <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
-                            <a href={item.link} className="fs-18 link-color hover-link-color" target="_blank" rel="noopener noreferrer">
-                                {item.name}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
             </Container>
         </>
     );
 
     function AppLink({ name, appStoreLink, playStoreLink }) {
         return (
-            <div className="my-2">
+            <div className="my-3">
                 <p className="my-2 secondary-color fs-19">{name}</p>
                 <Row>
                     <Col>
