@@ -67,32 +67,36 @@ const Careers = () => {
                     <p className="text-justify my-2 fs-20">Our services are designed to provide swift financial access for both emerging and established businesses, aiding their day-to-day operations. We're not just about setting high standards; we're about surpassing them. Our workplace is vibrant and engaging, fostering an environment where great careers are built.</p>
                     <p className="text-justify my-3 fs-20">We embrace team members from all backgrounds and levels of experience.</p>
                 </Row>
-                {cardsVisibility ? (
-                    <>
-                        <svg id="curveUpColor" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100"  preserveAspectRatio="none">
-                            <path d="M0 100 C 20 0 50 0 100 100 Z" className={classNames(theme === 'Light Mode' ? 'secondary-fill' : 'dark-accent-fill', '')} />
-                        </svg>
-                        <Container fluid className={classNames(theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent', '')}>
-                            <Container fluid className='d-flex align-items-center text-justify'>
-                                <BsArrow90DegDown className='icon-color icon-80 icon-desktop-only' />
-                                <p className="text-justify my-5 secondary-color fs-26">Step into our team today and help us transform the factoring experience into a seamless, stress-free journey!</p>
-                            </Container>
-                            <Row className='my-5 justify-content-center pb-4'>
-                                {jobInfo.map((job) => (
-                                    <JobCard key={job.position} job={job} onClick={handleJobClick} />
-                                ))}
-                            </Row>
-                        </Container>
-                    </>
-                ) : (
-                    <>
-                        <Button className='text-end remove-bg border-none main-color m-1 fs-18' onClick={() => setCardsVisibility(true)}>
-                            <IoArrowBack className='icon-color icon-20' /> Go Back
-                        </Button>
-                        <JobPost jobPosition={jobPosition} />
-                    </>
-                )}
             </Container>
+
+            {cardsVisibility ? (
+                <>
+                    <svg id="curveUpColor" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <path d="M0 100 C 20 0 50 0 100 100 Z" className={classNames(theme === 'Light Mode' ? 'secondary-fill' : 'dark-accent-fill', '')} />
+                    </svg>
+                    <Container fluid className={classNames(theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent', 'p-4')}>
+                        <Container fluid className='d-flex align-items-center text-justify'>
+                            <BsArrow90DegDown className='icon-color icon-80 icon-desktop-only' />
+                            <p className="text-justify my-5 secondary-color fs-26">Step into our team today and help us transform the factoring experience into a seamless, stress-free journey!</p>
+                        </Container>
+                        <Row className='my-5 justify-content-center pb-2 mx-2'>
+                            {jobInfo.map((job) => (
+                                <JobCard key={job.position} job={job} onClick={handleJobClick} />
+                            ))}
+                        </Row>
+                    </Container>
+                    <svg id="curveDownColor" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <path d="M0 0 C 50 100 80 100 100 0 Z" className={classNames(theme === 'Light Mode' ? 'secondary-fill' : 'dark-accent-fill', '')} />
+                    </svg>
+                </>
+            ) : (
+                <>
+                    <Button className='text-end remove-bg border-none main-color m-1 fs-18' onClick={() => setCardsVisibility(true)}>
+                        <IoArrowBack className='icon-color icon-20' /> Go Back
+                    </Button>
+                    <JobPost jobPosition={jobPosition} />
+                </>
+            )}
         </>
     );
 };

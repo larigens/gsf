@@ -73,7 +73,7 @@ const AboutUs = () => {
                 </Row>
                 {/* Apply Now section */}
                 <Row className="justify-content-center align-items-center my-5 border-total p-2 mx-4 radius-20">
-                    <Col xs={12} md={3} className="text-center">
+                    <Col xs={12} md={3} className="text-center mt-2">
                         <Link to='/apply-now' className="mt-2">
                             <Image className='icon-color icon-80' src={apply} alt="apply now icon" loading="lazy" />
                         </Link>

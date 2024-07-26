@@ -131,9 +131,9 @@ export const CareerForm = ({ jobTitle, jobPosition }) => {
                 pageKeywords={'Factoring job opportunities; Transportation industry careers; Trucking employment; Logistics job openings; Supply chain career opportunities; Join our team in transportation; Career growth in the trucking industry; Client relations manager; CRM job opportunity; Business Development Officer; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'}
                 canonicalURL={'careers/application'}
             />
-            <Container className='my-4 p-2'>
+            <Container fluid className='my-4 p-3'>
                 {location.pathname === '/careers/application' && (
-                    <p className="text-justify my-5 secondary-color fs-26">
+                    <p className="text-justify my-5 fs-26">
                         Step into our team today and help us transform the factoring experience into a seamless, stress-free journey!
                     </p>
                 )}

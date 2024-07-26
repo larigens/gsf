@@ -7,6 +7,7 @@ import { ContactForm } from '../../components/Forms/ContactForm';
 import { Cards } from '../../components/Cards/Cards';
 import { LinkCards } from '../../components/Cards/LinkCards';
 import { useTheme } from '../../components/ThemeContext';
+import logo from '../../assets/logo.png';
 
 const Services = () => {
     const { theme } = useTheme();
@@ -99,7 +100,7 @@ const Services = () => {
                 pageKeywords={'Trucking industry services; Transportation solutions; Freight factoring services; Logistics support for trucking; Trucking company offerings; Transportation service provider; Freight invoice financing; Trucking industry support; Logistics services for transportation; Trucking business solutions; Factoring services in Georgia; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'}
                 canonicalURL={'services'}
             />
-            <Container fluid className="mb-4 p-4">
+            <Container fluid className="p-4">
                 <p className="fw-bold text-justify mb-3 fs-40">Our Services</p>
                 <p className="text-justify my-3 fs-24">We offer a seamless and cost-effective solution to boost your business's cash flow, accompanied by a wide array of valuable features, including:</p>
                 <Row className={classNames(theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent', 'mt-4 mb-5 mx-1 radius-right')}>
@@ -119,22 +120,27 @@ const Services = () => {
                         </svg>
                     </Col>
                     <Col md={6} className={classNames(theme === 'Light Mode' ? 'background-light' : 'bg-main-brand', 'd-flex align-items-center text-center my-0 p-3 radius-20')}>
-                        <Image src={potential} alt="financial services" className="img-fluid radius-20" />
+                        <Image id='potential' src={potential} alt="financial services - elevate your potential with GSF" className="img-fluid radius-20 p-4" />
                     </Col>
                 </Row>
+
                 <Cards cardInfo={servicesInfo} />
-                <Row className="p-1 me-3 my-5">
-                    <h2 className="fw-bold secondary-color mb-3 fs-32">Unlocking Your Cash Flow: How Factoring Works</h2>
-                    <p className=" mb-4 text-justify fs-22">Running a business comes with its fair share of challenges, and managing cash flow can often be a daunting task. That's where factoring steps in as a powerful financial solution.</p>
-                    <h3 className="secondary-color mb-3 fs-22 fw-bold"> What is Factoring?</h3>
-                    <p className="mb-4 text-justify fs-18">Factoring, also known as accounts receivable financing, is a flexible and efficient way for businesses to secure immediate access to their outstanding invoices. Instead of waiting for customers to pay, you can convert your accounts receivable into working capital, helping you meet ongoing operational needs, seize growth opportunities, and maintain a healthy financial position.</p>
+            </Container>
+            <Container fluid className="mb-2 p-2 mx-1">
+                <Row className="p-1 my-5">
+                    <Container fluid className='py-3 pe-5 radius-top'>
+                        <h2 className="fw-bold secondary-color mb-3 fs-32">Unlocking Your Cash Flow: How Factoring Works</h2>
+                        <p className=" mb-4 text-justify fs-22">Running a business comes with its fair share of challenges, and managing cash flow can often be a daunting task. That's where factoring steps in as a powerful financial solution.</p>
+                        <h3 className="secondary-color mb-3 fs-22 fw-bold"> What is Factoring?</h3>
+                        <p className="mb-4 text-justify fs-18">Factoring, also known as accounts receivable financing, is a flexible and efficient way for businesses to secure immediate access to their outstanding invoices. Instead of waiting for customers to pay, you can convert your accounts receivable into working capital, helping you meet ongoing operational needs, seize growth opportunities, and maintain a healthy financial position.</p>
+                    </Container>
                     <h3 className="secondary-color mb-3 fs-22 fw-bold">How Does Factoring Work?</h3>
-                    <Image className="img-fluid align-items-center radius-20 w-60 mb-2" src={roadmap} alt="factoring process diagram" />
-                    <Container fluid className={`ms-auto py-2 ms-2 mt-3 radius-20 ${theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent'}`}>
-                        <h3 className="secondary-color mb-3 mt-5 fs-22 fw-bold">The Benefits of Factoring:</h3>
+                    <Image id='roadmap' className="img-fluid align-items-center radius-20 w-40 mb-5" src={roadmap} alt="factoring process diagram" />
+                    <Container fluid className={`py-3 mt-4 radius-top ${theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent'}`}>
+                        <h3 className="secondary-color mb-3 mt-3 fs-22 fw-bold">The Benefits of Factoring:</h3>
                         <ul className="list-unstyled">
                             {items.map((item, index) => (
-                                <li key={index} className="d-flex align-items-center mb-3">
+                                <li key={index} className="d-flex align-items-center mb-3 pe-3">
                                     <Image src={line} alt="lines" className="img-fluid me-2 icon-20" />
                                     <p className="mb-0 text-justify fs-18">
                                         <span className='fw-bold'>{item.title}:</span> {item.text}
@@ -144,15 +150,51 @@ const Services = () => {
                         </ul>
                         <p className="my-3 px-2 text-justify fs-18 line-25 me-2">At G Squared Funding, we specialize in providing factoring solutions tailored to your unique requirements. Our goal is to help you unlock your business's full potential by providing the working capital you need when you need it. Explore the benefits of factoring with us and experience the financial freedom that can take your business to new heights.</p>
                     </Container>
+                    <svg id="bigTriangleShadow" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none" className='p-0'>
+                        <path id="trianglePath1" d="M0 0 L50 100 L100 0 Z" className={classNames(theme === 'Light Mode' ? 'secondary-fill' : 'dark-accent-fill', '')} />
+                        <path id="trianglePath2" d="M50 100 L100 40 L100 0 Z" className={classNames(theme === 'Light Mode' ? 'secondary-fill' : 'dark-accent-fill', '')} />
+                    </svg>
                 </Row>
-                <Row>
-                    <h2 className="fw-bold secondary-color fs-32 my-4">Ready to get started?</h2>
-                    <Col md={4} className="mt-2 mb-5 me-2">
+            </Container>
+            <Container fluid className="mb-2 mx-0 px-0">
+                <Container fluid className='d-flex flex-column align-items-center justify-content-center text-center'>
+                    <Image className="img-fluid icon-color icon-80 pt-1 my-2 " src={logo} alt="logo" loading="lazy" />
+                    <h2 className="fw-bold fs-36 mt-2 mb-5 ps-3">Ready to get started?</h2>
+                </Container>
+                <svg id="clouds" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <path d="M-5 100 Q 0 20 5 100 Z
+						 M0 100 Q 5 0 10 100
+						 M5 100 Q 10 30 15 100
+						 M10 100 Q 15 10 20 100
+						 M15 100 Q 20 30 25 100
+						 M20 100 Q 25 -10 30 100
+						 M25 100 Q 30 10 35 100
+						 M30 100 Q 35 30 40 100
+						 M35 100 Q 40 10 45 100
+						 M40 100 Q 45 50 50 100
+						 M45 100 Q 50 20 55 100
+						 M50 100 Q 55 40 60 100
+						 M55 100 Q 60 60 65 100
+						 M60 100 Q 65 50 70 100
+						 M65 100 Q 70 20 75 100
+						 M70 100 Q 75 45 80 100
+						 M75 100 Q 80 30 85 100
+						 M80 100 Q 85 20 90 100
+						 M85 100 Q 90 50 95 100
+						 M90 100 Q 95 25 100 100
+						 M95 100 Q 100 15 105 100 Z"
+                        className={classNames(theme === 'Light Mode' ? 'secondary-fill' : 'dark-accent-fill', '')}
+                    >
+                    </path>
+                </svg>
+                <Row className={`py-2 px-3 mx-0 ${theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent'}`} >
+                    <Col md={4} className="mt-3 mb-5">
                         <ContactForm />
                     </Col>
-                    <Col md={7} className={`mx-2 ps-4 pt-3 mb-5 radius-20 ${theme === 'Light Mode' ? 'secondary-bg' : 'bg-dark-accent'}`}>
-                        <h2 className="secondary-color mb-4 mt-1 fs-32">Industries Served</h2>
-                        <Row>
+                    <Col md={1} className='mx-0'></Col>
+                    <Col id='industries-served' md={4} className={classNames(theme === 'Light Mode' ? 'background-light' : 'bg-main-brand', 'px-2 pb-3 mt-3 mb-5 w-55 h-50 radius-20')}>
+                        <h2 className="my-4 fs-32 light-color text-center">Industries Served</h2>
+                        <Row className='d-flex justify-content-center'>
                             {industries.map((industry, index) => (
                                 <Col key={index} md={5} className="mb-3">
                                     <LinkCards title={industry.title} subtitle={industry.subtitle} image={industry.image} link={industry.link} />
@@ -161,7 +203,10 @@ const Services = () => {
                         </Row>
                     </Col>
                 </Row>
-            </Container>
+                <svg id="curveDownColor" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <path d="M0 0 C 50 100 80 100 100 0 Z" className={classNames(theme === 'Light Mode' ? 'secondary-fill' : 'dark-accent-fill', '')} />
+                </svg>
+            </Container >
         </>
     );
 };
