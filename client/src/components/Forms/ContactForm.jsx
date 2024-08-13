@@ -4,6 +4,7 @@ import { MdArrowDropDown } from "react-icons/md";
 import { GetAllBrokers, GetAllReferrals } from '../../utils/helper.jsx';
 import { Modals } from '../Modals';
 import emailjs from '@emailjs/browser';
+import { Link } from 'react-router-dom';
 
 export const ContactForm = ({ referralLink, referralName }) => {
     const [formData, setFormData] = useState({
@@ -127,7 +128,7 @@ export const ContactForm = ({ referralLink, referralName }) => {
                 <Form.Group className="my-3" controlId="agree">
                     <Form.Check
                         type="checkbox"
-                        label={`By checking this box you agree to receive recurring messages from G Squared Funding, LLC.`}
+                        label={`By submitting this form you agree to receive text/SMS messages from G Squared Funding, LLC.`}
                         checked={formData.agree}
                         onChange={handleInputChange}
                         name="agree"
@@ -140,6 +141,7 @@ export const ContactForm = ({ referralLink, referralName }) => {
                 <Row className='d-flex justify-content-end me-1 my-2'>
                     <Button className='submit-btn radius-20 border-none mt-2' type="submit">Submit</Button>
                 </Row>
+                <Link to='/privacy-policy' className='main-color hover-link-color fs-14 ms-2'>Privacy Policy</Link>
             </Form >
             <Modals title={modalInfo.title} body={modalInfo.body} showModal={modalInfo.show} setShowModal={(show) => setModalInfo({ ...modalInfo, show })} />
         </>

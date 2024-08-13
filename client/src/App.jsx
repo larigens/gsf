@@ -28,6 +28,7 @@ import Careers from './pages/Careers';
 import Transportation from './pages/Services/Transportation';
 import Staffing from './pages/Services/Staffing';
 import Contact from './pages/Contact';
+import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { Resources } from './pages/Resources/Resources';
 import { WorkingGSF } from './pages/Resources/WorkingGSF';
 import { Credit } from './pages/Resources/Credit';
@@ -80,6 +81,7 @@ export const App = () => {
               <Route path="/apply-now" element={<ApplyNow />} />
               <Route path="/application" element={<FullScreenForm />} />
               <Route path="/referrals/:id" element={<Referral />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             </Routes>
           </main>
           <Footer />
