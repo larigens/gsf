@@ -7,9 +7,9 @@ export const PrivacyPolicy = () => {
     return (
         <>
             <HelmetCP
-                pageTitle={'About Us | Your Favorite Factor'}
-                pageDescription={'Discover Our Story and Commitment to Excellence in the Transportation and Trucking Sector. Learn About Our Passion, Values, and Dedication to Serving Our Clients with Integrity and Innovation.'}
-                pageKeywords={'Transportation company history; Trucking industry expertise; Our mission in transportation; About us trucking; Our team in logistics; Company values in transportation; Commitment to excellence trucking; Trucking industry innovation; Our story in transportation; Serving clients in logistics; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring'}
+                pageTitle={'Privacy Policy and Terms of Service'}
+                pageDescription={'Privacy Policy and Terms of Service - G Squared Funding, LLC'}
+                pageKeywords={'Factoring company history; Trucking industry expertise; Our mission in transportation; factoring companies; factoring company in Atlanta; factoring company in Georgia; truck factors; best factoring companies; factoring solutions; financial services; factoring services for trucking companies; invoice factoring; privacy policy; terms of service'}
                 canonicalURL={'privacy-policy'}
             />
             <Container fluid className="p-4 text-justify">
